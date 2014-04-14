@@ -6,21 +6,21 @@
 	// TFS 1.0 = TFS_10 (Under developement)
 	$config['TFSVersion'] = 'TFS_10';
 	
-	$config['site_title'] = 'Znote AAC';
-	$config['site_title_context'] = 'Because open communities are good communities. :3';
+	$config['site_title'] = 'World of Comodato';
+	$config['site_title_context'] = 'WELLCOME EVERYONE. :3';
 	
 	// ------------------------ \\
 	// MYSQL CONNECTION DETAILS \\
 	// ------------------------ \\
 	
 	// phpmyadmin username for OT server: (DONT USE "root" if ur hosting to public.).
-	$config['sqlUser'] = 'daler';
+	$config['sqlUser'] = 'root';
 	
 	// phpmyadmin password for OT server:
 	$config['sqlPassword'] = 'daler';
 	
 	// The database name to connect to. (This is usually same as username).
-	$config['sqlDatabase'] = 'daler';
+	$config['sqlDatabase'] = 'comodato';
 	
 	// Hostname is usually localhost or 127.0.0.1.
 	$config['sqlHost'] = 'localhost';
@@ -68,20 +68,20 @@
 
 	// - TFS 1.0 ONLY -- HOUSE AUCTION SYSTEM!
 	$config['houseConfig'] = array(
-		'HouseListDefaultTown' => 1, // Default town id to display when visting house list page page.
-		'minimumBidSQM' => 200, // minimum bid cost on auction (per SQM)
+		'HouseListDefaultTown' => 3, // Default town id to display when visting house list page page.
+		'minimumBidSQM' => 1000, // minimum bid cost on auction (per SQM)
 		'auctionPeriod' => 24 * 60 * 60, // 24 hours auction time.
 		'housesPerPlayer' => 1,
-		'requirePremium' => false,
+		'requirePremium' => true,
 		'levelToBuyHouse' => 8,
 	);
 	
 	// Leave on black square in map and player should get teleported to their selected town.
 	// If chars get buggy set this position to a beginner location to force players there.
 	$config['default_pos'] = array(
-		'x' => 5,
-		'y' => 5,
-		'z' => 2,
+		'x' => 32369,
+		'y' => 32241,
+		'z' => 7,
 	);
 	
 	$config['war_status'] = array(
@@ -145,7 +145,7 @@
 	// Highscore configuration
 	$config['highscore'] = array(
 			'rows' => 100,
-			'rowsPerPage' => 20,
+			'rowsPerPage' => 30,
 			'ignoreGroupId' => 2, // Ignore group id higher than this (staff)
 		);
 
@@ -184,7 +184,7 @@
 	
 	// What client version and server port are you using on this OT?
 	// Used for the Downloads page.
-	$config['client'] = 960; // 954 = tibia 9.54
+	$config['client'] = 1037; // 954 = tibia 9.54
 	
 	 // Download link to client. Recommended:
 	 // Select download link from remere map editor website!
@@ -200,7 +200,7 @@
 	$config['page_admin_access'] = array(
 		//'otland0',
 		//'otland1',
-		'znote'
+		'themask'
 	);
 	
 	// Built-in FORUM
@@ -229,6 +229,7 @@
 	// IMPORTANT! Write a character name(that exist) that will represent website bans!
 	// Or remember to create character "God Website" character exist.
 	// If you don't do this, bann from admin panel won't work properly.
+	// NAO ESQUECER DE VER ISSO
 	$config['website_char'] = 'Luxitur';
 	
 	//----------------\\
@@ -250,7 +251,7 @@
 	);
 	
 	// Enable OS advanced feautures? false = no, true = yes
-	$config['os_enabled'] = false;
+	$config['os_enabled'] = yes;
 	
 	// What kind of computer are you hosting this website on?
 	// Available options: LINUX or WINDOWS
@@ -374,8 +375,8 @@
 	// Write your paypal address here, and what currency you want to recieve money in.
 	$config['paypal'] = array(
 		'enabled' => true,
-		'email' => 'stefan_brannfjell@live.no', // Example: paypal@mail.com
-		'currency' => 'EUR',
+		'email' => 'felipemartini@brturbo.com.br', // Example: paypal@mail.com
+		'currency' => 'BLR',
 		'points_per_currency' => 10, // 1 currency = ? points? [ONLY used to calculate bonuses]
 		'success' => "http://".$_SERVER['HTTP_HOST']."/success.php",
 		'failed' => "http://".$_SERVER['HTTP_HOST']."/failed.php",
@@ -429,7 +430,7 @@
 	/// Let players sell characters.
 	/////////
 	$config['shop_auction'] = array(
-			'characterAuction' => true, // Enable/disable this system
+			'characterAuction' => false, // Enable/disable this system
 			'requiredLevel' => 50, // Minimum level of sold character
 			'leastValue' => 10, // Lowest donation points a char can be sold for.
 			'leastTime' => 24, // In hours. False to disable.
