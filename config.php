@@ -189,7 +189,7 @@
 	 // Download link to client. Recommended:
 	 // Select download link from remere map editor website!
 	 // See list of clients: http://remeresmapeditor.com/marklar.php?clients
-	$config['client_download'] = 'http://remeresmapeditor.com/rmedl.php?file=tibia'. $config['client'] .'.exe';
+	$config['client_download'] = 'http://tibia.sx/res/clients/exe/tibia'. $config['client'] .'.exe';
 	
 	$config['port'] = 7171; // Port number to connect to your OT.
 	

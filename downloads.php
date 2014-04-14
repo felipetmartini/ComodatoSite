@@ -9,7 +9,7 @@
 <h2>How to connect and play:</h2>
 <ol>
 	<li>
-		<a href="http://remeresmapeditor.com/rmedl.php?file=tibia<?php echo ($config['client']); ?>.exe">Download</a>, install and start the tibia client if you havent already.
+		<a href="http://tibia.sx/res/clients/exe/tibia<?php echo ($config['client']); ?>.exe">Download</a>, install and start the tibia client if you havent already.
 	</li>
 	<li>
 		<a href="http://static0.otland.net/ipchanger.exe">Download</a> and run the IP changer.
