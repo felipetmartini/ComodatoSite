@@ -1,6 +1,17 @@
 <?php require_once 'engine/init.php'; include 'layout/overall/header.php'; ?>
 
-<h1>Server Information</h1>
-<p>Edit this page for server information.</p>
+
+
+<h1>World of Comodato</h1>
+
+<h1>NOVO LANÇAMENTO SERVIDOR DEDICADO 100% GLOBAL, STAGES E VOCAÇÕES BALANCEADAS, VENHA CONFERERIR, COMODATO UM OT PENSANDO EM VOCÊ.</h1>
+<p>
+-ATUALIZAÇÕES FREQUENTES
+-UPDATES
+- PREMMY ACCOUNT, VARIAS VANTAGENS. 
+- STAGES BALANCEADAS
+-PROMOÇÕES
+OQUE ESTÁ ESPERANDO, ENTREM JÁ,  VENHAM CONFERIR O MELHOR SERVIDOR GLOBAL 10.37 ATUALIZADO SEM BUGS, O SERVIDOR SEMPRE ATUALIZANDO COM O DECORRER DO UPDATE.
+</p>
 
 <?php include 'layout/overall/footer.php'; ?>
