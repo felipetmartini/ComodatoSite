@@ -7,7 +7,7 @@
 	$config['TFSVersion'] = 'TFS_10';
 	
 	$config['site_title'] = 'World of Comodato';
-	$config['site_title_context'] = 'WELLCOME EVERYONE. :3';
+	$config['site_title_context'] = 'Global 100% Full SERVER DEDICADO 24h';
 	
 	// ------------------------ \\
 	// MYSQL CONNECTION DETAILS \\
@@ -62,14 +62,15 @@
 	// Town ids and names: (In RME map editor, open map, click CTRL + T to view towns, their names and their IDs. 
 	// townID => 'townName' etc: ['3'=>'Thais']
 	$config['towns'] = array(
-		2 => 'Thyrfing',
-		3 => 'Town 3',
+		3 => 'Thais',
+		2 => 'Venore',
+		4 => 'Carlin',
 	);
 
 	// - TFS 1.0 ONLY -- HOUSE AUCTION SYSTEM!
 	$config['houseConfig'] = array(
 		'HouseListDefaultTown' => 3, // Default town id to display when visting house list page page.
-		'minimumBidSQM' => 1000, // minimum bid cost on auction (per SQM)
+		'minimumBidSQM' => 100, // minimum bid cost on auction (per SQM)
 		'auctionPeriod' => 24 * 60 * 60, // 24 hours auction time.
 		'housesPerPlayer' => 1,
 		'requirePremium' => true,
@@ -237,7 +238,7 @@
 	//----------------\\
 	// Api config
 	$config['api'] = array(
-		'debug' => false,
+		'debug' => true,
 	);
 
 	// Don't touch this unless you know what you are doing. (modifying this(key value) also requires modifications in OT files /XML/commands.xml).
@@ -251,7 +252,7 @@
 	);
 	
 	// Enable OS advanced feautures? false = no, true = yes
-	$config['os_enabled'] = yes;
+	$config['os_enabled'] = true;
 	
 	// What kind of computer are you hosting this website on?
 	// Available options: LINUX or WINDOWS
@@ -345,7 +346,7 @@
 		to configure flush_ip_logs if IPs are logged.
 	*/
 	
-	$config['log_ip'] = false;
+	$config['log_ip'] = true;
 	
 	// Flush IP logs each configured seconds, 60 * 15 = 15 minutes.
 	// Set to false to entirely disable ip log flush. 
@@ -376,7 +377,7 @@
 	$config['paypal'] = array(
 		'enabled' => true,
 		'email' => 'felipemartini@brturbo.com.br', // Example: paypal@mail.com
-		'currency' => 'BLR',
+		'currency' => 'BRL',
 		'points_per_currency' => 10, // 1 currency = ? points? [ONLY used to calculate bonuses]
 		'success' => "http://".$_SERVER['HTTP_HOST']."/success.php",
 		'failed' => "http://".$_SERVER['HTTP_HOST']."/failed.php",
@@ -388,7 +389,7 @@
 	// Giving some bonus points for higher donations will tempt users to donate more.
 	$config['paypal_prices'] = array(
 	//	price => points,
-		1 => 45, // -10% bonus
+		5 => 45, // -10% bonus
 		10 => 100, // 0% bonus
 		15 => 165, // +10% bonus
 		20 => 240, // +20% bonus
@@ -403,7 +404,7 @@
 	// You can configure paygol to send each month, then they will send money 
 	// to you 1 month after recieving 50+ eur.
 	$config['paygol'] = array(
-		'enabled' => true,
+		'enabled' => false,
 		'serviceID' => 86648,// Service ID from paygol.com
 		'currency' => 'SEK',
 		'price' => 20,
@@ -420,7 +421,7 @@
 	$config['shop'] = array(
 		'enabled' => true,
 		'enableShopConfirmation' => true, // Verify that user wants to buy with popup
-		'useDB' => false, // Fetch offers from database, or the below config array
+		'useDB' => true, // Fetch offers from database, or the below config array
 		'showImage' => true,
 		'imageServer' => 'items.znote.eu',
 		'imageType' => 'gif',
