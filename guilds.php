@@ -33,11 +33,9 @@ if ($guilds !== false) {
 	</tr>
 		<?php
 		
-		echo '<pre>';
-print_r($rows);
-echo '</pre>';
+
 		
-		foreach ($guilds as $guild) {
+		foreach (var_dump($guilds) as $guild) {
 			$gcount = count_guild_members($guild['id']);
 			if ($gcount >= 1) {
 				$url = url("guilds.php?name=". $guild['name']);
