@@ -22,7 +22,7 @@ if (empty($_GET['name'])) {
 
 <h1>Guild List:</h1>
 <?php
-$guilds = get_guilds_list();
+var_dump($guilds) = get_guilds_list();
 if ($guilds !== false) {
 ?>
 <table id="guildsTable" class="table table-striped table-hover">
@@ -35,7 +35,7 @@ if ($guilds !== false) {
 		
 
 		
-		foreach (var_dump($guilds) as $guild) {
+		foreach ($guilds as $guild) {
 			$gcount = count_guild_members($guild['id']);
 			if ($gcount >= 1) {
 				$url = url("guilds.php?name=". $guild['name']);
