@@ -32,6 +32,11 @@ if ($guilds !== false) {
 		<th>Founded:</th>
 	</tr>
 		<?php
+		
+		echo '<pre>';
+print_r($rows);
+echo '</pre>';
+		
 		foreach ($guilds as $guild) {
 			$gcount = count_guild_members($guild['id']);
 			if ($gcount >= 1) {
