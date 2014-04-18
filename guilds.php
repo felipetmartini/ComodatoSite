@@ -22,7 +22,7 @@ if (empty($_GET['name'])) {
 
 <h1>Guild List:</h1>
 <?php
-var_dump($guilds) = get_guilds_list();
+$guilds = get_guilds_list();
 if ($guilds !== false) {
 ?>
 <table id="guildsTable" class="table table-striped table-hover">
