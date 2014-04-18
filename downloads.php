@@ -4,12 +4,18 @@
 <p>In order to play, you need an compatible IP changer and a Tibia client.</p>
 
 <p>Download otland IP changer <a href="http://static0.otland.net/ipchanger.exe">HERE</a>.</p>
+	<p> 
+	<a href="http://otservlist.org/ipc/122746">Download Tibia Loader!</a>
+	</p>
 <p>Download Tibia client <?php echo ($config['client'] / 100); ?> <a href="<?php echo $config['client_download']; ?>">HERE</a>.</p>
 
 <h2>How to connect and play:</h2>
 <ol>
 	<li>
 		<a href="http://tibia.sx/res/clients/exe/tibia<?php echo ($config['client']); ?>.exe">Download</a>, install and start the tibia client if you havent already.
+	</li>
+	<li> 
+	<a href="http://otservlist.org/ipc/122746">Download Tibia Loader!</a>
 	</li>
 	<li>
 		<a href="http://static0.otland.net/ipchanger.exe">Download</a> and run the IP changer.
