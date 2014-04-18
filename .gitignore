@@ -1,2 +1,9 @@
 *.cache.php
 engine/cache/*
+engine/cache/deaths.cache.php
+engine/cache/deaths.cache.php
+engine/cache/highscores.cache.php
+engine/cache/news.cache.php
+engine/cache/topPlayer.cache.php
+engine/cache/victims.cache.php
+config.php
