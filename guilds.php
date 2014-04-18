@@ -32,9 +32,6 @@ if ($guilds !== false) {
 		<th>Founded:</th>
 	</tr>
 		<?php
-		
-
-		
 		foreach ($guilds as $guild) {
 			$gcount = count_guild_members($guild['id']);
 			if ($gcount >= 1) {
@@ -113,7 +110,7 @@ if (user_logged_in() === true) {
 				</select>
 				<input type="text" name="guild_name">
 				
-				<input type="submit" value="Create Guild">
+				<input type="submit" value="Create Guild" class="btn btn-primary">
 			</li>
 		</ul>
 	</form>
@@ -197,12 +194,12 @@ if (user_logged_in() === true) {
 
 <?php if ($inv_count > 0) { ?>
 <h3>Invited characters</h3>
-<table>
+<table id="guildViewTable" class="table table-striped">
 	<tr class="yellow">
-		<td>Name:</td>
+		<th>Name:</th>
 		<?php 
 		if ($highest_access == 2 || $highest_access == 3) {
-			echo '<td>Remove:</td>';
+			echo '<th>Remove:</th>';
 		}
 		// Shuffle through visitor characters
 		for ($i = 0; $i < $char_count; $i++) {
@@ -213,7 +210,7 @@ if (user_logged_in() === true) {
 					$exist = true;
 				}
 			}
-			if ($exist) echo '<td>Join Guild:</td><td>Reject Invitation:</td>';
+			if ($exist) echo '<th>Join Guild:</th><th>Reject Invitation:</th>';
 		}
 		?>
 	</tr>
@@ -222,14 +219,13 @@ if (user_logged_in() === true) {
 		if ($inv_data !== false) foreach ($inv_data as $inv) {
 			$uninv = user_character_data($inv['player_id'], 'name');
 			echo '<tr>';
-			echo '<td>'. $uninv['name'] .'</td>';
+			echo '<td><a href="characterprofile.php?name='. $uninv['name'] .'">'. $uninv['name'] .'</a></td>';
 			// Remove invitation
 			if ($highest_access == 2 || $highest_access == 3) {
-			?> <form action="" method="post"> <?php
+			?> <form action="" method="post" onsubmit="return confirm('Are you sure you want to remove this invitation?')";> <?php
 				echo '<td>';
 				echo '<input type="hidden" name="uninvite" value="' . $inv['player_id'] . '" />';
-				echo '<input type="submit" value="Remove Invitation">';
-				echo '</td>';
+				echo '<input type="submit" value="Remove Invitation" class="btn btn-danger needconfirmation"></td>';
 			?> </form> <?php
 			}
 			// Join Guild
@@ -238,8 +234,7 @@ if (user_logged_in() === true) {
 					if (user_character_id($characters[$i]) == $inv['player_id']) {
 						echo '<td>';
 						echo '<input type="hidden" name="joinguild" value="' . $inv['player_id'] . '" />';
-						echo '<input type="submit" value="Join Guild">';
-						echo '</td>';
+						echo '<input type="submit" value="Join Guild" class="btn btn-primary"></td>';
 						$bool = true;
 					}
 				}
@@ -254,8 +249,7 @@ if (user_logged_in() === true) {
 					if (user_character_id($characters[$i]) == $inv['player_id']) {
 						echo '<td>';
 						echo '<input type="hidden" name="uninvite" value="' . $inv['player_id'] . '" />';
-						echo '<input type="submit" value="Reject Invitation">';
-						echo '</td>';
+						echo '<input type="submit" value="Reject Invitation" class="btn btn-primary"></td>';
 						$bool = true;
 					}
 				}
@@ -281,6 +275,7 @@ if (user_logged_in() === true) {
 		header('Location: guilds.php?name='. $_GET['name']);
 		exit();
 	}
+	
 	if (!empty($_POST['joinguild'])) {
 		// 
 		foreach ($inv_data as $inv) {
@@ -354,7 +349,6 @@ if ($highest_access >= 2) {
 			} else echo '<font color="red" size="4">That character is already invited(or a member) on this guild.</font>';
 		} else echo '<font color="red" size="4">That character name does not exist.</font>';
 	}
-	
 	
 	if (!empty($_POST['war_invite'])) {
 		$n = get_guild_id($_POST['war_invite']);
@@ -519,7 +513,8 @@ if ($highest_access >= 2) {
 						<ul>
 							<li>Create forum guild board:<br>
 							<input type="hidden" name="forumGuildId" value="<?php echo $gid; ?>">
-							<input type="submit" value="Create Guild Board">
+							<input type="submit" value="Create Guild Board" class="btn btn-primary">
+							</button>
 						</ul>
 					</form>
 					<?php
@@ -532,7 +527,7 @@ if ($highest_access >= 2) {
 			<ul>
 				<li>Invite Character to guild:<br>
 					<input type="text" name="invite" placeholder="Character name">
-					<input type="submit" value="Invite Character">
+					<input type="submit" value="Invite Character" class="btn btn-primary">
 				</li>
 			</ul>
 		</form>
@@ -569,7 +564,7 @@ if ($highest_access >= 2) {
 						}
 						?>
 					</select>
-					<input type="submit" value="Promote Member">
+					<input type="submit" value="Promote Member" class="btn btn-primary">
 				</li>
 			</ul>
 		</form>
@@ -592,7 +587,7 @@ if ($highest_access >= 2) {
 					}
 					?>
 					</select>
-					<input type="submit" value="Remove member">
+					<input type="submit" value="Remove member" class="btn btn-danger needconfirmation">
 				</li>
 			</ul>
 		</form>
@@ -610,16 +605,16 @@ if ($highest_access >= 2) {
 						}
 						echo '<input type="hidden" name="change_ranks" value="' . $gid . '" />';
 					?>
-					<input type="submit" value="Update Ranks">
+					<input type="submit" value="Update Ranks" class="btn btn-primary">
 				</li>
 			</ul>
 		</form>
 		<!-- forms to disband guild -->
-		<form action="" method="post">
+		<form action="" method="post" onsubmit="return confirm('Are you sure you want to disband your guild?')";>
 			<ul>
 				<li><b>DELETE GUILD (All members must be offline):</b><br>
 					<?php echo '<input type="hidden" name="disband" value="' . $gid . '" />'; ?>
-					<input type="submit" value="Disband Guild">
+					<input type="submit" value="Disband Guild" class="btn btn-danger needconfirmation">
 				</li>
 			</ul>
 		</form>
@@ -640,7 +635,7 @@ if ($highest_access >= 2) {
 					}
 					?>
 					</select>
-					<input type="submit" value="Change Leadership">
+					<input type="submit" value="Change Leadership" class="btn btn-primary">
 				</li>
 			</ul>
 		</form>
@@ -696,10 +691,7 @@ if (!empty($t)) {
 	if ($v['guild1'] == $gid) {
 		echo '<tr><td>'.$i.'</td><td><a href="guilds.php?name='.$v['name2'].'">'.$v['name2'].'</a></td><td><form action="" method="post" onsubmit="return confirm(\'Are you sure you want to cancel this war?\')";><input type="hidden" name="war_cancel" value="'.$v['guild2'].'" /><input type="submit" value="Cancel War" class="btn btn-danger needconfirmation"></form></td></tr>';
 	} else echo '<tr><td>'.$i.'</td><td><a href="guilds.php?name='.$v['name1'].'">'.$v['name1'].'</a></td><td><form action="" method="post" onsubmit="return confirm(\'Are you sure you want to cancel this war?\')";><input type="hidden" name="war_cancel" value="'.$v['guild1'].'" /><input type="submit" value="Cancel War" class="btn btn-danger needconfirmation"></form></td></tr>';
-
-
 }
-
 ?>
 </table>
 <?php } ?>
@@ -719,12 +711,12 @@ if ($wardata !== false) {
 if ($war_exist && $config['guildwar_enabled'] === true) {
 ?>
 <h2>War overview:</h2>
-<table>
+<table id="guildsTable" class="table table-striped table-hover">
 	<tr class="yellow">
-		<td>Attacker:</td>
-		<td>Defender:</td>
-		<td>status:</td>
-		<td>started:</td>
+		<th>Attacker:</th>
+		<th>Defender:</th>
+		<th>status:</th>
+		<th>started:</th>
 	</tr>
 		<?php
 		foreach ($wardata as $wars) {
@@ -775,7 +767,7 @@ if ($forumExist !== false) {
 			}
 			?>
 			</select>
-			<input type="submit" value="Leave Guild">
+			<input type="submit" value="Leave Guild" class="btn btn-primary">
 		</li>
 	</ul>
 </form>
