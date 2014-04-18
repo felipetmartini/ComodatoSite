@@ -352,6 +352,53 @@ if ($highest_access >= 2) {
 		} else echo '<font color="red" size="4">That character name does not exist.</font>';
 	}
 	
+	
+	if (!empty($_POST['war_invite'])) {
+		$n = get_guild_id($_POST['war_invite']);
+		if (user_guild_exist($n)) {
+			$wars = mysql_select_multi("SELECT `id`, `guild1`, `guild2`, `status` FROM `guild_wars` WHERE (`guild1` = ".$gid." OR `guild1` = ".$n.") AND (`guild2` = ".get_guild_id($_GET['name'])." OR `guild2` = ".$n.") AND (`status` = 0 OR `status` = 1);");		
+			$status = false; $t = guild_war_invite_check($_GET['name']); $v = get_guild_name($gid);
+			if ($t !== false) { 
+				foreach ($t as $x) { 
+					if ($x['id'] == $n) $status = true;
+				} 
+			}
+			
+			foreach ($v as $k) { 
+				if ($k['name'] == $_POST['war_invite']) $status = true;
+			}
+						
+			if ($wars == false && $status == false) {
+				mysql_insert("INSERT INTO `guild_wars` (`guild1`, `guild2`, `name1`, `name2`, `status`, `started`, `ended`) VALUES ('".$gid."', '".$n."', '".$_GET['name']."', '".$_POST['war_invite']."', '0', '".time()."', '0');");
+				echo 'You have invited <a href="guilds.php?name='.$_POST['war_invite'].'">' .$_POST['war_invite'].'</a> to war.';
+			} else echo '<font color="red" size="4">This guild has already been invited to war(or you\'re trying to invite your own guild).</FONT>';
+		} else echo '<font color="red" size="4">That guild name does not exist.</font>';
+	}
+	
+	if (!empty($_POST['war_rdeclaration'])) {
+		guild_war_rdeclaration($_POST['war_rdeclaration'], $gid);
+		header('Location: guilds.php?name='. $_GET['name']);
+		exit();
+	}
+	
+	if (!empty($_POST['war_reject'])) {
+		guild_war_reject($_POST['war_reject'], $gid);
+		header('Location: guilds.php?name='. $_GET['name']);
+		exit();
+	}
+	
+	if (!empty($_POST['war_accept'])) {
+		guild_war_accept($_POST['war_accept'], $gid);
+		header('Location: guilds.php?name='. $_GET['name']);
+		exit();
+	}
+	
+	if (!empty($_POST['war_cancel'])) {
+		guild_war_cancel($_POST['war_cancel'], $gid);
+		header('Location: guilds.php?name='. $_GET['name']);
+		exit();
+	}
+		
 	if (!empty($_POST['disband'])) {
 		// 
 		$gidd = (int)$_POST['disband'];
@@ -594,12 +641,68 @@ if ($highest_access >= 2) {
 				</li>
 			</ul>
 		</form>
-		<?php }} ?>
-		<?php
+		<?php } ?>
+<?php if ($config['guildwar_enabled'] === true) { ?>
+			<h2>Guild War Management:</h2>
+		<!-- Invite guild to war -->
+		<form action="" method="post">
+			<ul>
+				<li>Invite guild to war:<br>
+					<input type="text" name="war_invite" placeholder="Guild name">
+					<input type="submit" value="Invite Guild" class="btn btn-primary">
+				</li>
+			</ul>
+		</form>
+		
+<!-- cancel war declaration -->
+<?php 
+$t = mysql_select_multi("SELECT `id`, `guild1`, `guild2`, `name1`, `name2`, `status`, `started`, `ended` FROM `guild_wars` WHERE `guild1` = '".$gid."' AND `status` = 0 ORDER BY `started` DESC");
+if (!empty($t)) {
+	echo '<h3>War declarations</h3><table id="guildsTable" class="table table-striped table-hover"><tr class="yellow"><th>#</th><th>Guild Name:</th><th>Remove Invitation</th></tr>';
+	$i = 0;
+		foreach($t as $v) {
+	$i++;
+		echo '<tr><td>'.$i.'</td><td><a href="guilds.php?name='.$v['name2'].'">'.$v['name2'].'</a></td><td><form action="" method="post" onsubmit="return confirm(\'Are you sure you want to cancel your invitation?\')";><input type="hidden" name="war_rdeclaration" value="'.$v['guild2'].'" /><input type="submit" value="Remove Invitation" class="btn btn-danger needconfirmation"></form></td></tr>';
 	}
-}
 ?>
+</table>
+<?php } ?>
+
+<!-- accept/reject invitation -->
+		<?php
+$t = mysql_select_multi("SELECT `id`, `guild1`, `guild2`, `name1`, `name2`, `status`, `started`, `ended` FROM `guild_wars` WHERE `guild2` = '".$gid."' AND `status` = 0 ORDER BY `started` DESC");
+if (!empty($t)) {
+	echo '<h3>Pending invitations</h3><table id="guildsTable" class="table table-striped table-hover"><tr class="yellow"><th>#</th><th>Guild Name:</th><th>Accept Invitation</th><th>Reject Invitation</th></tr>';
+	$i = 0;
+		foreach($t as $v) {
+	$i++;
+		echo '<tr><td>'.$i.'</td><td><a href="guilds.php?name='.$v['name1'].'">'.$v['name1'].'</a></td><td><form action="" method="post"><input type="hidden" name="war_accept" value="'.$v['guild1'].'" /><input type="submit" value="Accept Invitation" class="btn btn-primary"></form></td><td><form action="" method="post" onsubmit="return confirm(\'Are you sure you want to reject this invitation?\')";><input type="hidden" name="war_reject" value="'.$v['guild1'].'" /><input type="submit" value="Reject Invitation" class="btn"></form></td></tr>';
+	}
+?>
+</table>
+<?php } ?>
+
+<!-- end war -->
+<?php 
+$t = mysql_select_multi("SELECT `id`, `guild1`, `guild2`, `name1`, `name2`, `status`, `started`, `ended` FROM `guild_wars` WHERE (`guild1` = ".$gid." OR `guild2` = ".$gid.") AND `status` = 1 ORDER BY `started` DESC");
+if (!empty($t)) {
+	echo '<h3>Active Guild Wars</h3><table id="guildsTable" class="table table-striped table-hover"><tr class="yellow"><th>#</th><th>Guild Name:</th><th>Cancel War</th></tr>';
+	$i = 0;
+		foreach($t as $v) {
+	$i++;
+	if ($v['guild1'] == $gid) {
+		echo '<tr><td>'.$i.'</td><td><a href="guilds.php?name='.$v['name2'].'">'.$v['name2'].'</a></td><td><form action="" method="post" onsubmit="return confirm(\'Are you sure you want to cancel this war?\')";><input type="hidden" name="war_cancel" value="'.$v['guild2'].'" /><input type="submit" value="Cancel War" class="btn btn-danger needconfirmation"></form></td></tr>';
+	} else echo '<tr><td>'.$i.'</td><td><a href="guilds.php?name='.$v['name1'].'">'.$v['name1'].'</a></td><td><form action="" method="post" onsubmit="return confirm(\'Are you sure you want to cancel this war?\')";><input type="hidden" name="war_cancel" value="'.$v['guild1'].'" /><input type="submit" value="Cancel War" class="btn btn-danger needconfirmation"></form></td></tr>';
+
+
+}
+
+?>
+</table>
+<?php } ?>
+<?php } } } ?>
 <!-- end leader-->
+<?php } ?>
 <?php
 if ($config['TFSVersion'] == 'TFS_02' || $config['TFSVersion'] == 'TFS_10') $wardata = get_guild_wars();
 else if ($config['TFSVersion'] == 'TFS_03') $wardata = get_guild_wars03();
