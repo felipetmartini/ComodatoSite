@@ -383,6 +383,43 @@ function guild_remove_invitation($cid, $gid) {
 	mysql_delete("DELETE FROM `guild_invites` WHERE `player_id`='$cid' AND `guild_id`='$gid';");
 }
 
+// simple invite/accept/end etc guild war system 
+function guild_war_invite_check($name) {
+	$name = sanitize($name);
+	return mysql_select_multi("SELECT `id` FROM `guilds` WHERE `name`='$name';");
+}
+
+function guild_war_invite_check2($gid) {
+	$gid = (int)$gid;
+	return mysql_select_multi("SELECT `name` FROM `guilds` WHERE `id`='$gid';");
+}
+
+function guild_war_rdeclaration($cid, $gid) {
+	$cid = (int)$cid;
+	$gid = (int)$gid;
+	mysql_delete("DELETE FROM `guild_wars` WHERE `guild2`='$cid' AND `guild1`='$gid';");
+}
+
+function guild_war_reject($cid, $gid) {
+	$cid = (int)$cid;
+	$gid = (int)$gid;
+	mysql_delete("DELETE FROM `guild_wars` WHERE `guild1`='$cid' AND `guild2`='$gid';");
+}
+
+function guild_war_accept($cid, $gid) {
+	$cid = (int)$cid;
+	$gid = (int)$gid;
+	mysql_update("UPDATE `guild_wars` SET `status` = 1 WHERE `guild1`='$cid' AND `guild2`='$gid' AND `status` = 0;");
+}
+
+function guild_war_cancel($cid, $gid) {
+	$cid = (int)$cid;
+	$gid = (int)$gid;
+	$time = time();
+	mysql_update("UPDATE `guild_wars` SET `status` = 5, `ended` = '$time' WHERE (`guild1`='$cid' OR `guild2`='$cid') AND (`guild2`='$gid' OR `guild1`='$gid') AND `status` = 1;");
+}
+// END of simple guild war system
+
 // Invite character to guild
 function guild_invite_player($cid, $gid) {
 	$cid = (int)$cid;
@@ -573,6 +610,14 @@ function get_war_kills($war_id) {
 function get_war_kills03($war_id) {
 	$war_id = (int)$war_id;// Sanitize - verify its an integer.
 	return mysql_select_multi("SELECT `id`, `guild_id`, `war_id`, `death_id` FROM `guild_kills` WHERE `war_id`=$war_id ORDER BY `id` DESC LIMIT 0, 30");
+}
+
+function get_death_data($did) {
+	$did = (int)$did; // Sanitizing the parameter id
+	$query = mysql_query("SELECT `id`, `guild_id`, `enemy_id`, `status`, `begin`, `end` FROM `guild_wars` ORDER BY `begin` DESC LIMIT 0, 30");
+	$row = mysql_fetch_assoc($query);
+	
+	return !empty($row) ? $row : false;
 }
 
 // Gesior compatibility port TFS .3
@@ -1294,6 +1339,14 @@ function user_name($id) { //USERNAME FROM PLAYER ID
     if ($name !== false) return $name['name'];
     else return false;
 }
+// checks if guild name exist
+function user_guild_exist($id) {
+    $id = (int)$id; 
+    $name = mysql_select_single("SELECT `name` FROM `guilds` WHERE `id`='$id';");
+    if ($name !== false) return $name['name'];
+    else return false;
+}
+
 
 // Checks that character name exist
 function user_character_exist($username) {
