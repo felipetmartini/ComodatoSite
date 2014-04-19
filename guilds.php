@@ -361,9 +361,7 @@ if ($highest_access >= 2) {
 				} 
 			}
 			
-			foreach ($v as $k) { 
-				if ($k['name'] == $_POST['war_invite']) $status = true;
-			}
+
 						
 			if ($wars == false && $status == false) {
 				mysql_insert("INSERT INTO `guild_wars` (`guild1`, `guild2`, `name1`, `name2`, `status`, `started`, `ended`) VALUES ('".$gid."', '".$n."', '".$_GET['name']."', '".$_POST['war_invite']."', '0', '".time()."', '0');");
