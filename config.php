@@ -14,10 +14,10 @@
 	// ------------------------ \\
 	
 	// phpmyadmin username for OT server: (DONT USE "root" if ur hosting to public.).
-	$config['sqlUser'] = 'root';
+	$config['sqlUser'] = 'comodato';
 	
 	// phpmyadmin password for OT server:
-	$config['sqlPassword'] = 'hhhhhh';
+	$config['sqlPassword'] = 'hhhhhhhhhhhhh';
 	
 	// The database name to connect to. (This is usually same as username).
 	$config['sqlDatabase'] = 'comodato';
@@ -62,14 +62,14 @@
 	// Town ids and names: (In RME map editor, open map, click CTRL + T to view towns, their names and their IDs. 
 	// townID => 'townName' etc: ['3'=>'Thais']
 	$config['towns'] = array(
-		3 => 'Thais',
-		2 => 'Venore',
+		2 => 'Thais',
+		1 => 'Venore',
 		4 => 'Carlin',
 	);
 
 	// - TFS 1.0 ONLY -- HOUSE AUCTION SYSTEM!
 	$config['houseConfig'] = array(
-		'HouseListDefaultTown' => 3, // Default town id to display when visting house list page page.
+		'HouseListDefaultTown' => 2, // Default town id to display when visting house list page page.
 		'minimumBidSQM' => 100, // minimum bid cost on auction (per SQM)
 		'auctionPeriod' => 24 * 60 * 60, // 24 hours auction time.
 		'housesPerPlayer' => 1,
@@ -120,7 +120,7 @@
 	$config['available_vocations'] = array(1, 2, 3, 4);
 	
 	// Available towns (specify town ids, etc: (0, 1, 2); to display 3 town options (town id 0, 1 and 2).
-	$config['available_towns'] = array(2, 3, 4);
+	$config['available_towns'] = array(1, 2, 4);
 	
 	$config['level'] = 8;
 	$config['health'] = 185;
