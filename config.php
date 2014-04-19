@@ -17,7 +17,7 @@
 	$config['sqlUser'] = 'root';
 	
 	// phpmyadmin password for OT server:
-	$config['sqlPassword'] = 'daler';
+	$config['sqlPassword'] = 'hhhhhh';
 	
 	// The database name to connect to. (This is usually same as username).
 	$config['sqlDatabase'] = 'comodato';
@@ -111,7 +111,7 @@
 	$config['available_vocations'] = array(1, 2, 3, 4);
 	
 	// Available towns (specify town ids, etc: (0, 1, 2); to display 3 town options (town id 0, 1 and 2).
-	$config['available_towns'] = array(2);
+	$config['available_towns'] = array(2, 3, 4);
 	
 	$config['level'] = 8;
 	$config['health'] = 185;
@@ -183,7 +183,7 @@
 	
 	// Use htaccess rewrite? (basically this makes website.com/username work instead of website.com/characterprofile.php?name=username
 	// Linux users needs to enable mod_rewrite php extention to make it work properly, so set it to false if your lost and using Linux.
-	$config['htwrite'] = true;
+	$config['htwrite'] = false;
 	
 	// What client version and server port are you using on this OT?
 	// Used for the Downloads page.
@@ -202,7 +202,7 @@
 	// WARNING! Account names written here will have admin access to web page!
 	$config['page_admin_access'] = array(
 		//'otland0',
-		//'otland1',
+		'6294103',
 		'themask'
 	);
 	
@@ -233,7 +233,7 @@
 	// Or remember to create character "God Website" character exist.
 	// If you don't do this, bann from admin panel won't work properly.
 	// NAO ESQUECER DE VER ISSO
-	$config['website_char'] = 'Luxitur';
+	$config['website_char'] = 'TheMask';
 	
 	//----------------\\
 	// ADVANCED STUFF \\
