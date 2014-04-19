@@ -168,7 +168,7 @@ if (!empty($_GET['warid'])) {
 					$url = url("guildwar.php?warid=". $wars['id']);
 					echo '<tr class="special" onclick="javascript:window.location.href=\'' . $url . '\'">';
 					echo '<td>'. $wars['name1'] .'</td>';
-                                        echo '<td>'. $g1c) .' - '. $g1c .'</td>';
+                    echo '<td>'. $g1c .' - '. $g2c .'</td>';
 					echo '<td>'. $wars['name2'] .'</td>';
 					echo '</tr>';
 				}
