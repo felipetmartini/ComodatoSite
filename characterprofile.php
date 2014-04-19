@@ -638,11 +638,11 @@ if ($playerData['mana']['percent'] > 100) $playerData['mana']['percent'] = 100;
 				<!-- END CHARACTER LIST -->
 				<li><font class="profile_font" name="profile_font_share_url">Address: <a href="<?php 
 					if ($config['htwrite']) echo "http://".$_SERVER['HTTP_HOST']."/". $profile_data['name'];
-					else echo "http://".$_SERVER['HTTP_HOST']."/characterprofile.php?name=". $profile_data['name'];
+					else echo "http://".$_SERVER['HTTP_HOST']."/comodatosite/characterprofile.php?name=". $profile_data['name'];
 					
 				?>"><?php
 					if ($config['htwrite']) echo "http://".$_SERVER['HTTP_HOST']."/". $profile_data['name'];
-					else echo "http://".$_SERVER['HTTP_HOST']."/characterprofile.php?name=". $profile_data['name'];
+					else echo "http://".$_SERVER['HTTP_HOST']."/comodatosite/characterprofile.php?name=". $profile_data['name'];
 				?></a></font></li>
 			</ul>
 		<!-- END PROFILE MARKUP HERE-->
