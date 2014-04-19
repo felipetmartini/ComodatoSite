@@ -99,6 +99,15 @@
 		this sub page functionality for that.
 	*/
 	$config['allowSubPages'] = true;
+
+
+	// ---------------- \\
+	// Create Account \\
+	// ---------------- \\
+	
+	// Max characters on each account:
+	$config['premmydays'] = 30;
+	
 	
 	// ---------------- \\
 	// Create Character \\
