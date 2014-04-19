@@ -32,7 +32,7 @@ if (!empty($_GET['warid'])) {
 		$g2c = 0; // kill count
 		
 		if ($config['TFSVersion'] == 'TFS_02' || $config['TFSVersion'] == 'TFS_10') {
-			foreach ($kills as $kill) {
+			foreach (($kills ? $kills : array()) as $kill) {
 				if ($kill[killerguild] == $guild1) ++$g1c;
 				if ($kill[killerguild] == $guild2) ++$g2c;
 			}
@@ -73,7 +73,7 @@ if (!empty($_GET['warid'])) {
 					<th>Time:</th>
 				</tr>
 					<?php
-					foreach ($kills as $kill) {
+					foreach (($kills ? $kills : array()) as $kill) {
 						echo '<tr>';
 						//echo '<td>'. get_guild_name($kill['killerguild']) .'</td>';
 						echo '<td><a href="guilds.php?name='. get_guild_name($kill['killerguild']) .'">'. get_guild_name($kill['killerguild']) .'</a></td>';
@@ -151,7 +151,7 @@ if (!empty($_GET['warid'])) {
 	
 	// kills data
 	$killsdata = array(); // killsdata[guildid] => array(warid) => array info about the selected war entry
-	foreach ($wardata as $wars) {
+	foreach (($wardata ? $wardata : array()) as $wars) {
 		if ($config['TFSVersion'] == 'TFS_02' || $config['TFSVersion'] == 'TFS_10') $killsdata[$wars['id']] = get_war_kills($wars['id']);
 		else if ($config['TFSVersion'] == 'TFS_03') $killsdata[$wars['id']] = get_war_kills03($wars['id']);
 	} 
@@ -164,11 +164,14 @@ if (!empty($_GET['warid'])) {
 				<th>Defending Guild:</th>
 			</tr>
 				<?php
-				foreach ($wardata as $wars) {
+				foreach (($wardata ? $wardata : array()) as $wars) {
 					$url = url("guildwar.php?warid=". $wars['id']);
 					echo '<tr class="special" onclick="javascript:window.location.href=\'' . $url . '\'">';
 					echo '<td>'. $wars['name1'] .'</td>';
-                                        echo '<td>'. count($killsdata[$wars['id']]) .' - '. count($killsdata[$wars['id']]) .'</td>';
+                    if (($killsdata[$wars['id']]) == 0)
+					echo '<td>'. 0 .' - '. 0 .'</td>';
+					else
+					echo '<td>'. count($killsdata[$wars['id']]) .' - '. count($killsdata[$wars['id']]) .'</td>';
 					echo '<td>'. $wars['name2'] .'</td>';
 					echo '</tr>';
 				}
