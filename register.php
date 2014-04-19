@@ -92,6 +92,7 @@ if (isset($_GET['success']) && empty($_GET['success'])) {
 		$register_data = array(
 			'name'	=>	$_POST['username'],
 			'password'	=>	$_POST['password'],
+			'premdays'	=>	30,
 			'email'		=>	$_POST['email'],
 			'ip'	=>	ip2long(getIP()),
 			'created'	=>	time()
