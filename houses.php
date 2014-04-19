@@ -165,7 +165,7 @@ if (empty($_POST) === false && $config['TFSVersion'] === 'TFS_03') {
 		$cache = new Cache('engine/cache/houses');
 		$houses = array();
 		if ($cache->hasExpired()) {
-			$houses = mysql_select_multi("SELECT `id`, `owner`, `paid`, `warnings`, `name`, `rent`, `town_id`, `size`, `beds`, `bid`, `bid_end`, `last_bid`, `highest_bidder` FROM `houses`;");
+			$houses = mysql_select_multi("SELECT `id`, `owner`, `paid`, `warnings`, `name`, `rent`, `town_id`, `size`, `beds`, `bid`, `bid_end`, `last_bid`, `highest_bidder` FROM `houses` ORDER BY `name` ASC;");
 
 			if ($houses !== false) {
 				// Fetch player names
