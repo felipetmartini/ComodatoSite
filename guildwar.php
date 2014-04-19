@@ -156,7 +156,7 @@ if (!empty($_GET['warid'])) {
 	
 	// kills data
 	$killsdata = array(); // killsdata[guildid] => array(warid) => array info about the selected war entry
-	foreach (($wardata ? $wardata : array()) as $wars) {
+	foreach ($wardata as $wars) {
 		if ($config['TFSVersion'] == 'TFS_02' || $config['TFSVersion'] == 'TFS_10') $killsdata[$wars['id']] = get_war_kills($wars['id']);
 		else if ($config['TFSVersion'] == 'TFS_03') $killsdata[$wars['id']] = get_war_kills03($wars['id']);
 	} 
