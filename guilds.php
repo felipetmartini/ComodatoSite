@@ -275,7 +275,6 @@ if (user_logged_in() === true) {
 		header('Location: guilds.php?name='. $_GET['name']);
 		exit();
 	}
-	
 	if (!empty($_POST['joinguild'])) {
 		// 
 		foreach ($inv_data as $inv) {
