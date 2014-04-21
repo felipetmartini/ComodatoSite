@@ -6,7 +6,7 @@ if ($config['log_ip'])
 	znote_visitor_insert_detailed_data(3);
 
 if (empty($_POST) === false && $config['TFSVersion'] === 'TFS_03') {
-	
+
 	/* Token used for cross site scripting security */
 	if (isset($_POST['token']) && Token::isValid($_POST['token'])) {
 		
@@ -175,7 +175,7 @@ if (empty($_POST) === false && $config['TFSVersion'] === 'TFS_03') {
 			foreach($type_allowed as $t)
 				echo '<option value="' . $t . '"' . ($t != $type ?: ' selected') . '>' . ($t == 'desc' ? 'Descending' : 'Ascending') .'</option>';
 			?>
-			</select> 
+			</select>
 			<input type="submit" value="Fetch houses" style="margin-left: 8px;"/>
 		</form>
 		<?php
@@ -184,7 +184,7 @@ if (empty($_POST) === false && $config['TFSVersion'] === 'TFS_03') {
 
 		if(!in_array($type, $type_allowed))
 			$type = 'desc';
-		
+
 		// Create or fetch data from cache
 		$cache = new Cache('engine/cache/houses/houses-' . $order . '-' . $type);
 		$houses = array();
@@ -199,7 +199,7 @@ if (empty($_POST) === false && $config['TFSVersion'] === 'TFS_03') {
 						$playerlist[] = $h['owner'];
 
 				if (!empty($playerlist)) {
-					$ids = join(',',$playerlist);
+					$ids = join(',', $playerlist);
 					$tmpPlayers = mysql_select_multi("SELECT `id`, `name` FROM players WHERE `id` IN ($ids);");
 
 					// Sort $tmpPlayers by player id
