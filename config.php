@@ -155,7 +155,7 @@
 	// Highscore configuration
 	$config['highscore'] = array(
 			'rows' => 100,
-			'rowsPerPage' => 30,
+			'rowsPerPage' => 20,
 			'ignoreGroupId' => 2, // Ignore group id higher than this (staff)
 		);
 
