@@ -14,9 +14,9 @@ if ($house !== false && $config['TFSVersion'] === 'TFS_10') {
 
 	//////////////////////
 	// Bid on house logic
-	$bid_char = getValue($_POST['char']);
-	$bid_amount = getValue($_POST['amount']);
-	if ($bid_amount !== false && $bid_char !== false) {
+	$bid_char = &$_POST['char'];
+	$bid_amount = &$_POST['amount'];
+	if ($bid_amount && $bid_char) {
 		$bid_char = (int)$bid_char;
 		$bid_amount = (int)$bid_amount;
 		$player = mysql_select_single("SELECT `id`, `account_id`, `name`, `level`, `balance` FROM `players` WHERE `id`='$bid_char' LIMIT 1;");
