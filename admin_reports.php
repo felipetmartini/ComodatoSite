@@ -101,7 +101,6 @@ if (!empty($_POST)) {
 } elseif (!empty($_GET)) {
     // Fetch GET data
     $action = getValue($_GET['action']);
-    $playerName = getValue($_GET['playerName']);
     $reportId = getValue($_GET['id']);
 
     // Fetch the report we intend to modify

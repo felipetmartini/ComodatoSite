@@ -3,7 +3,7 @@
 <h1>Downloads</h1>
 <p>In order to play, you need an compatible IP changer and a Tibia client.</p>
 
-<p>Download otland IP changer <a href="http://static0.otland.net/ipchanger.exe">HERE</a>.</p>
+
 	<p> 
 	<a href="http://otservlist.org/ipc/122746">Download Tibia Loader!</a>
 	</p>
@@ -17,9 +17,7 @@
 	<li> 
 	<a href="http://otservlist.org/ipc/122746">Download Tibia Loader!</a>
 	</li>
-	<li>
-		<a href="http://static0.otland.net/ipchanger.exe">Download</a> and run the IP changer.
-	</li>
+
 	<li>
 		In the IP changer, write this in the IP field: <?php echo $_SERVER['SERVER_NAME']; ?>
 	</li>
