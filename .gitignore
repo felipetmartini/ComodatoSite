@@ -1,2 +1,3 @@
 *.cache.php
 engine/cache/*
+engine/cache/highscores.cache.php
