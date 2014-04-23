@@ -1,1 +1,1 @@
-[{"name":"Test Warrior","level":"13","experience":"23200"},{"name":"Test Character","level":"12","experience":"17600"},{"name":"Znote","level":"15","experience":"4200"},{"name":"Testing Character","level":"8","experience":"4200"}]
+[{"name":"Alkoz","level":"169","experience":"77993989"},{"name":"King Infernal","level":"162","experience":"68448838"},{"name":"Sorc Infernal","level":"156","experience":"60984312"},{"name":"Druid Shotter","level":"153","experience":"58157988"},{"name":"Sorcrezx","level":"152","experience":"57045525"}]

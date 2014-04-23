@@ -1,1 +1,1 @@
-[{"name":"Znote","Deaths":"1"},{"name":"Testing","Deaths":"1"}]
+[{"name":"Sorc Infernal","Deaths":"5"},{"name":"King Infernal","Deaths":"5"},{"name":"Sadia","Deaths":"5"},{"name":"Sodnifoj","Deaths":"5"},{"name":"Alkoz","Deaths":"4"},{"name":"Maskarado","Deaths":"3"},{"name":"Sorcerer Estrella","Deaths":"3"},{"name":"Madrugadao","Deaths":"3"},{"name":"Boberi Jakisi","Deaths":"3"},{"name":"Paladin Shotter","Deaths":"2"}]
