@@ -9,8 +9,28 @@ switch ($_GET['page'])
 		include 'layout/sub/houses.php';
 	break;
 	
-	case 'bomberman':
-		include 'layout/sub/bomberman.php';
+	case 'news':
+		include 'layout/sub/index.php';
+	break;
+	
+	case 'login':
+		include "layout/sub/". $_GET['page'] .".php";
+	break;
+	
+	case 'recover':
+		include "layout/sub/". $_GET['page'] .".php";
+	break;
+	
+	case 'charactersearch':
+		include "layout/sub/". $_GET['page'] .".php";
+	break;
+	
+	case 'highscore':
+		include "layout/sub/". $_GET['page'] .".php";
+	break;
+	
+	case 'loggedin':
+		include "layout/sub/". $_GET['page'] .".php";
 	break;
 	
 	default:
