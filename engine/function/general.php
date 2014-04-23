@@ -407,4 +407,20 @@ function sanitize($data) {
 function output_errors($errors) {
 	return '<ul><li>'. implode('</li><li>', $errors) .'</li></ul>';
 }
+
+function online_list() {
+    $count = user_count_online();
+    $query = mysql_query("SELECT `name`, `level`, `vocation`, `looktype`, `lookaddons`, `lookhead`, `lookbody`, `looklegs`, `lookfeet` FROM `players` WHERE `online`='1' ORDER BY `name` DESC;");
+    for ($i = 0; $i < $count; $i++) {
+        $row = mysql_fetch_row($query);
+        $array[] = $row;
+    }
+   
+    if (isset($array)) {
+        return $array;
+    } else {
+        return false;
+    }
+}
+
 ?>
