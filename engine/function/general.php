@@ -269,8 +269,18 @@ function format_character_name($name) {
 
 // Returns a list of players online
 function online_list() {
-	if (config('TFSVersion') == 'TFS_10') return mysql_select_multi("SELECT `o`.`player_id` AS `id`, `p`.`name` as `name`, `p`.`level` as `level`, `p`.`vocation` as `vocation` FROM `players_online` as `o` INNER JOIN `players` as `p` ON o.player_id = p.id");
-	else return mysql_select_multi("SELECT `name`, `level`, `vocation` FROM `players` WHERE `online`='1' ORDER BY `name` DESC;");
+    $count = user_count_online();
+    $query = mysql_query("SELECT `name`, `level`, `vocation`, `looktype`, `lookaddons`, `lookhead`, `lookbody`, `looklegs`, `lookfeet` FROM `players` WHERE `online`='1' ORDER BY `name` DESC;");
+    for ($i = 0; $i < $count; $i++) {
+        $row = mysql_fetch_row($query);
+        $array[] = $row;
+    }
+   
+    if (isset($array)) {
+        return $array;
+    } else {
+        return false;
+    }
 }
 
 // Gets you the actual IP address even from users behind ISP proxies and so on.
@@ -408,19 +418,6 @@ function output_errors($errors) {
 	return '<ul><li>'. implode('</li><li>', $errors) .'</li></ul>';
 }
 
-function online_list() {
-    $count = user_count_online();
-    $query = mysql_query("SELECT `name`, `level`, `vocation`, `looktype`, `lookaddons`, `lookhead`, `lookbody`, `looklegs`, `lookfeet` FROM `players` WHERE `online`='1' ORDER BY `name` DESC;");
-    for ($i = 0; $i < $count; $i++) {
-        $row = mysql_fetch_row($query);
-        $array[] = $row;
-    }
-   
-    if (isset($array)) {
-        return $array;
-    } else {
-        return false;
-    }
-}
+
 
 ?>
