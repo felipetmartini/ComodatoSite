@@ -33,7 +33,7 @@ if ($news) {
 	echo '<div id="newz">';
 	foreach ($news as $n) {
 		?>
-		<div class="BorderTitleText" style="background-image:url(layout/images/global/content/newsheadline_background.gif); color: white;"><?php echo '<font size="2">'. date($config['date'], $n['date']) .' by <a href="characterprofile.php?name='. $n['name'] .'">'. $n['name'] .'</a></font><font size="4" color="white"> - '. TransformToBBCode($n['title']) .'</font>'; ?></div>
+		<div class="BorderTitleText" style="background-image:url(layout/images/global/content/newsheadline_background.gif); color: white;"><?php echo '<font size="2">'. getClock(false, true) .' by <a href="characterprofile.php?name='. $n['name'] .'">'. $n['name'] .'</a></font><font size="4" color="white"> - '. TransformToBBCode($n['title']) .'</font>'; ?></div>
 		<p><?php echo TransformToBBCode(nl2br($n['text'])); ?></p>
 		<?php
 	}

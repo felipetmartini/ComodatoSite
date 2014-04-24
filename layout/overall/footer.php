@@ -22,7 +22,7 @@
 								$time = $time[1] + $time[0];
 								$finish = $time;
 								$total_time = round(($finish - $start), 4);
-								echo 'Server date and clock is: '. date($config['date'],time()) .' Page generated in '. $total_time .' seconds.';
+								echo 'Server date and clock is: '. getClock(false, true) .' Page generated in '. $total_time .' seconds.';
 							?>
 							<br /> Layout by CipSoft GmbH. Engine: <a href="credits.php">Znote AAC</a>
 						</div>

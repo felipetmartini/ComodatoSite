@@ -39,6 +39,12 @@
 		<li>
 			<a href='admin_gallery.php'>Admin Gallery</a>
 		</li>
+		<li>
+			<a href='admin_skills.php'>Admin Skills</a>
+		</li>
+		<li>
+			<a href='admin_reports.php'>Admin Reports</a>
+		</li>
 		<br>
 		<?php
 		}
