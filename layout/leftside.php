@@ -236,7 +236,7 @@
 					<div id='submenu_topguilds' class='Submenuitem' onMouseOver='MouseOverSubmenuItem(this)' onMouseOut='MouseOutSubmenuItem(this)'>
 						<div class='LeftChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
 						<div id='ActiveSubmenuItemIcon_guilds' class='ActiveSubmenuItemIcon' style='background-image:url(layout/images/global/menu/icon-activesubmenu.gif);'></div>
-						<div id='ActiveSubmenuItemLabel_guilds' class='SubmenuitemLabel'>Top Guild</div>
+						<div id='ActiveSubmenuItemLabel_guilds' class='SubmenuitemLabel'>Top Guilds</div>
 						<div class='RightChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
 					</div>
 				</a>
