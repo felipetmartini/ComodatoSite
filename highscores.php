@@ -78,6 +78,7 @@ if ($scores) {
 	</form>
 	<table id="highscoresTable" class="table table-striped table-hover">
 		<tr class="yellow">
+			<td>Outfit:</td>
 			<td>Rank</td>
 			<td>Name</td>
 			<td>Vocation</td>
@@ -90,6 +91,7 @@ if ($scores) {
 				?>
 				<tr>
 					<td><?php echo $i+1; ?></td>
+					<td><div style="position:relative; left:-32px; top:-48px;"><div style="background-image: url(outfitter.php?a='.$value['looktype'].'&b='.$value['lookaddons'].'&c='.$value['lookhead'].'&d='.$value['lookbody'].'&e='.$value['looklegs'].'&f='.$value['lookfeet'].'&g=0&h=3&i=1);width:64px;height:64px;position:absolute;background-repeat:no-repeat;background-position:right bottom;"></div></div></td>
 					<td><a href="characterprofile.php?name=<?php echo $scores[$type][$i]['name']; ?>"><?php echo $scores[$type][$i]['name']; ?></a></td>
 					<td><?php echo vocation_id_to_name($scores[$type][$i]['vocation']); ?></td>
 					<td><?php echo $scores[$type][$i]['value']; ?></td>
