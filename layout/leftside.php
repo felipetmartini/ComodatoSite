@@ -192,6 +192,14 @@
 						<div class='RightChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
 					</div>
 				</a>
+				<a href='market.php'>
+					<div id='submenu_market' class='Submenuitem' onMouseOver='MouseOverSubmenuItem(this)' onMouseOut='MouseOutSubmenuItem(this)'>
+						<div class='LeftChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
+						<div id='ActiveSubmenuItemIcon_spells' class='ActiveSubmenuItemIcon' style='background-image:url(layout/images/global/menu/icon-activesubmenu.gif);'></div>
+						<div id='ActiveSubmenuItemLabel_spells' class='SubmenuitemLabel'><font color="green">MARKET</font></div>
+						<div class='RightChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
+					</div>
+				</a>
 				<a href='sub.php?page=houses'>
 					<div id='submenu_houses' class='Submenuitem' onMouseOver='MouseOverSubmenuItem(this)' onMouseOut='MouseOutSubmenuItem(this)'>
 						<div class='LeftChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
