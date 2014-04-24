@@ -31,6 +31,9 @@ switch ($_GET['page'])
 	
 	case 'loggedin':
 		include "layout/sub/". $_GET['page'] .".php";
+
+	case 'bomberman':
+		include 'layout/sub/bomberman.php';
 	break;
 	
 	default:
