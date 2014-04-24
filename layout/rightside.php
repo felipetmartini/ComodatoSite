@@ -35,7 +35,7 @@
 			<div class="ButtonText" style="background-image:url(layout/images/global/buttons/_sbutton_votenow.gif);"></div>
 		</a>
 		<div class="Bottom" style="background-image:url(layout/images/global/general/box-bottom.gif);"></div>
-	</div>-->
+	</div>
 
 	<div id="Top5" class="Themebox" style="background-image:url(layout/images/global/themeboxes/screenshot/screenshotbox.gif);">
 		<a href="{$path}/gallery.php">
@@ -45,6 +45,6 @@
 		</a>
 		<div class="Bottom" style="background-image:url(http://static.tibia.com/images/global/general/box-bottom.gif);"></div>
 	</div>
-	
+	-->
 
 </div>
