@@ -75,3 +75,4 @@ echo '<br><b>Invalid path!</b>';
    
 }
 ?>
+<?php include 'layout/overall/footer.php'; ?>
