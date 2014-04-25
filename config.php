@@ -65,6 +65,18 @@
 		2 => 'Thais',
 		1 => 'Venore',
 		4 => 'Carlin',
+		3 => 'Kazordoon',
+		5 => 'Ab Dendriel',
+		7 => 'Liberty Bay',
+		8 => 'Port Hope',
+		9 => 'Ankrahmun',
+		10 => 'Darashia',
+		11 => 'Edron',
+		12 => 'Svargrond',
+		13 => 'Yalahar',
+		14 => 'Farmine',
+		28 => 'Gray Beach',
+		29 => 'Roshamuul',
 	);
 
 	// - TFS 1.0 ONLY -- HOUSE AUCTION SYSTEM!
@@ -120,7 +132,7 @@
 	$config['available_vocations'] = array(1, 2, 3, 4);
 	
 	// Available towns (specify town ids, etc: (0, 1, 2); to display 3 town options (town id 0, 1 and 2).
-	$config['available_towns'] = array(1, 2, 4);
+	$config['available_towns'] = array(1, 2, 4, 8);
 	
 	$config['level'] = 8;
 	$config['health'] = 185;
@@ -210,6 +222,13 @@
 	
 	// WARNING! Account names written here will have admin access to web page!
 	$config['page_admin_access'] = array(
+		//'otland0',
+		//'6294103',
+		'themask'
+	);
+	
+	// WARNING! Account names written here will have mask access to web page!
+	$config['page_mask_access'] = array(
 		//'otland0',
 		//'6294103',
 		'themask'
