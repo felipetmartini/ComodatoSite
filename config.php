@@ -17,7 +17,7 @@
 	$config['sqlUser'] = 'comodato';
 	
 	// phpmyadmin password for OT server:
-	$config['sqlPassword'] = 'kyjsnsnysdynsmykdsjksymayna';
+	$config['sqlPassword'] = 'gjhgkhk;hoiuo;niuoiuoinuoi;';
 	
 	// The database name to connect to. (This is usually same as username).
 	$config['sqlDatabase'] = 'comodato';
@@ -74,9 +74,9 @@
 		11 => 'Edron',
 		12 => 'Svargrond',
 		13 => 'Yalahar',
-		14 => 'Farmine',
-		28 => 'Gray Beach',
-		29 => 'Roshamuul',
+		//14 => 'Farmine',
+		//28 => 'Gray Beach',
+		//29 => 'Roshamuul',
 	);
 
 	// - TFS 1.0 ONLY -- HOUSE AUCTION SYSTEM!
