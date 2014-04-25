@@ -18,12 +18,12 @@
 	<div id="PremiumBox" class="Themebox" style="background-image:url(layout/images/global/themeboxes/premium/premiumbox.gif);">
 		<a class="ThemeboxButton" href="buypoints.php" onMouseOver="MouseOverBigButton(this);" onMouseOut="MouseOutBigButton(this);" style="background-image:url(layout/images/global/buttons/sbutton.gif);">
 			<div class="BigButtonOver" style="background-image:url(layout/images/global/buttons/sbutton_over.gif);"></div>
-			<div class="ButtonText" style="background-image:url(layout/images/global/buttons/_sbutton_getpremium.gif);"></div>
+			<div class=ButtonText" style="background-image:url(layout/images/global/buttons/_sbutton_getpremium.gif);"></div>
 		</a>
 		<div class="Bottom" style="background-image:url(layout/images/global/general/box-bottom.gif);"></div>
 	</div>											
 	<div id="ScreenshotBox" class="Themebox" style="background-image:url(layout/images/global/themeboxes/screenshot/screenshotbox.gif);">
-		<a href="{$path}/gallery.php">
+		<a href="gallery.php">
 			<img id="ScreenshotContent" class="ThemeboxContent" src="layout/images/abouttibia/screenshotoftheday.png" alt="Screenshot of the Day"/>
 		</a>
 		<div class="Bottom" style="background-image:url(http://static.tibia.com/images/global/general/box-bottom.gif);"></div>

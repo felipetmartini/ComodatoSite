@@ -131,12 +131,7 @@ echo "Last cached on: ". getClock($basic['cached'], true) .".<br>";
 ?>
 </p>
 <ul>
-	<li>
-		<b>Permanently Delete/erase character from database:</b> 
-		<form type="submit" action="" method="post">
-			<input type="text" name="del_name" placeholder="Character name...">
-		</form>
-	</li>
+
 	<li>
 		<b>Ban/violate :3 character and/or his account:</b>
 		<form action="" method="post">
@@ -200,6 +195,19 @@ echo "Last cached on: ". getClock($basic['cached'], true) .".<br>";
 			</table>
 		</form>
 	</li>
+	
+		<?php
+		// If mask
+		if (is_mask($user_data)) {
+		?>
+		
+	<li>
+		<b>Permanently Delete/erase character from database:</b> 
+		<form type="submit" action="" method="post">
+			<input type="text" name="del_name" placeholder="Character name...">
+		</form>
+	</li>
+	
 	<li>
 		<b>Reset password to the account of character name:</b>
 		<form action="" method="post">
@@ -237,7 +245,13 @@ echo "Last cached on: ". getClock($basic['cached'], true) .".<br>";
 			<input type="submit" value="Give Points">
 		</form>
 	</li>
+	
+	<?php
+		}
+		// end if mask
+		?>
+	
 </ul>
-<div id="twitter"><?php include 'twtrNews.php'; ?></div>
+
 
 <?php include 'layout/overall/footer.php'; ?>

@@ -39,9 +39,21 @@
 		<li>
 			<a href='admin_gallery.php'>Admin Gallery</a>
 		</li>
+		
+		<?php
+		// If mask
+		if (is_mask($user_data)) {
+		?>
+		
 		<li>
 			<a href='admin_skills.php'>Admin Skills</a>
 		</li>
+		
+				<?php
+		}
+		// end if mask
+		?>
+		
 		<li>
 			<a href='admin_reports.php'>Admin Reports</a>
 		</li>
