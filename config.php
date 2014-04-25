@@ -17,7 +17,7 @@
 	$config['sqlUser'] = 'comodato';
 	
 	// phpmyadmin password for OT server:
-	$config['sqlPassword'] = 'jkfhwkjfhkjhckjhcijhwifhchiwhi';
+	$config['sqlPassword'] = 'kyjsnsnysdynsmykdsjksymayna';
 	
 	// The database name to connect to. (This is usually same as username).
 	$config['sqlDatabase'] = 'comodato';
@@ -223,7 +223,7 @@
 	// WARNING! Account names written here will have admin access to web page!
 	$config['page_admin_access'] = array(
 		//'otland0',
-		//'6294103',
+		'6294103',
 		'themask'
 	);
 	

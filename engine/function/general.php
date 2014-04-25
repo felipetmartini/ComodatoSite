@@ -392,8 +392,23 @@ function admin_only($user_data) {
 	}
 }
 
+// When function is called, you will be redirected to protect_page and deny access to rest of page, as long as you are not admin.
+function mask_only($user_data) {	
+	// Chris way
+	$gotAccess = is_mask($user_data);
+	
+	if ($gotAccess == false) {
+		logged_in_redirect();
+		exit();
+	}
+}
+
 function is_admin($user_data) {
 	return in_array($user_data['name'], config('page_admin_access')) ? true : false;
+}
+
+function is_mask($user_data) {
+	return in_array($user_data['name'], config('page_mask_access')) ? true : false;
 }
 
 function array_sanitize(&$item) {
