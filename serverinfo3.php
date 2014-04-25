@@ -1,8 +1,3 @@
-<?php require_once 'engine/init.php'; include 'layout/overall/header.php'; ?>
-
-<h1>Server Information</h1>
-
-
 <?PHP 
 echo '<table border="0" cellspacing="0"><tr class="yellow"><td><center>Server Information</center></td></tr> 
 <tr><td>'; 

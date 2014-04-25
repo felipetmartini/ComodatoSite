@@ -57,3 +57,5 @@
 									<div class="Border_2">
 										<div class="Border_3">
 											<div class="BoxContent" style="background-image:url(layout/images/global/content/scroll.gif);">
+																<?php include 'serverinfo3.php'; ?>
+											

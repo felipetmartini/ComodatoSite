@@ -10,11 +10,14 @@ if (is_dir($path)) {
    
     $xml1 = simplexml_load_file($path."\data\xml\stages.xml");
     foreach ($xml1 as $stage1) {
-        if ($stage1['maxlevel'] == '' && $stage1['minlevel'] > '1') {
-        $stage1['maxlevel'] = 'Infinite';   
-        }
-        echo '<tr><td><center>'.$stage1['minlevel'].'</center></td><td><center>'.$stage1['maxlevel'].'</center></td><td><center>'.$stage1['multiplier'].'</center></td></tr>';   
-        }
+		
+			if ($stage1['maxlevel'] == '' && $stage1['minlevel'] > '1') {
+			$stage1['maxlevel'] = 'Infinite';   
+			}
+			if ($stage1['multiplier'] > '0') {
+			echo '<tr><td><center>'.$stage1['minlevel'].'</center></td><td><center>'.$stage1['maxlevel'].'</center></td><td><center>'.$stage1['multiplier'].'</center></td></tr>';   
+		}
+	}	
     $word = 'a'; 
     $loadconfig = file($path.'\config.lua');
     $key = 'rateMagic';
@@ -60,7 +63,7 @@ if ($found) {
     $talkactions = simplexml_load_file($path.'/data/talkactions/talkactions.xml');
     echo '<table cellpadding="0"><tr class="yellow"><td><center>Player commands</center></td></center></tr>';
     foreach ($talkactions as $commands) {
-        if (empty($commands['access'])) {
+        if ($commands['access'] == '0') {
     echo '<center><tr><td><center>'.$commands['words'].'</center></td></tr></center>';
         }
     }
