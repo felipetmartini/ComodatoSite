@@ -78,18 +78,18 @@
 					</div>
 				</a>
 				<a href='changelog.php'>
-					<div id='submenu_latestnews' class='Submenuitem' onMouseOver='MouseOverSubmenuItem(this)' onMouseOut='MouseOutSubmenuItem(this)'>
+					<div id='submenu_latestchangelog' class='Submenuitem' onMouseOver='MouseOverSubmenuItem(this)' onMouseOut='MouseOutSubmenuItem(this)'>
 						<div class='LeftChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
-						<div id='ActiveSubmenuItemIcon_latestnews' class='ActiveSubmenuItemIcon' style='background-image:url(layout/images/global/menu/icon-activesubmenu.gif);'></div>
-						<div id='ActiveSubmenuItemLabel_latestnews' class='SubmenuitemLabel'>Bugs Changelog</div>
+						<div id='ActiveSubmenuItemIcon_latestchangelog' class='ActiveSubmenuItemIcon' style='background-image:url(layout/images/global/menu/icon-activesubmenu.gif);'></div>
+						<div id='ActiveSubmenuItemLabel_latestchangelog' class='SubmenuitemLabel'>Bugs Changelog</div>
 						<div class='RightChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
 					</div>
 				</a>
 				<a href='serverinfo2.php'>
-					<div id='submenu_latestnews' class='Submenuitem' onMouseOver='MouseOverSubmenuItem(this)' onMouseOut='MouseOutSubmenuItem(this)'>
+					<div id='serverinfo' class='Submenuitem' onMouseOver='MouseOverSubmenuItem(this)' onMouseOut='MouseOutSubmenuItem(this)'>
 						<div class='LeftChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
-						<div id='ActiveSubmenuItemIcon_latestnews' class='ActiveSubmenuItemIcon' style='background-image:url(layout/images/global/menu/icon-activesubmenu.gif);'></div>
-						<div id='ActiveSubmenuItemLabel_latestnews' class='SubmenuitemLabel'>Server Info</div>
+						<div id='ActiveSubmenuItemIcon_latestserverinfo' class='ActiveSubmenuItemIcon' style='background-image:url(layout/images/global/menu/icon-activesubmenu.gif);'></div>
+						<div id='ActiveSubmenuItemLabel_latestserverinfo' class='SubmenuitemLabel'>Server Info</div>
 						<div class='RightChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
 					</div>
 				</a>
