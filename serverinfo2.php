@@ -3,14 +3,14 @@
 <h1>Server Information</h1>
 <?php
 
-$path = '/root/evodera';
+$path = 'C:\Users\Felipe\Documents\GitHub\ComodatoGLOBAL';
 echo '<table cellpadding="0"><tr class="yellow"><td><center>From level</center></td><td><center>To level</center></td><td><center>Rate</center></td></tr>';
 if (is_dir($path)) {
 
    
     $xml1 = simplexml_load_file($path."\data\xml\stages.xml");
-    foreach ($xml1->world->children() as $stage1) {
-        if ($stage1['maxlevel'] == '') {
+    foreach ($xml1 as $stage1) {
+        if ($stage1['maxlevel'] == '' && $stage1['minlevel'] > '1') {
         $stage1['maxlevel'] = 'Infinite';   
         }
         echo '<tr><td><center>'.$stage1['minlevel'].'</center></td><td><center>'.$stage1['maxlevel'].'</center></td><td><center>'.$stage1['multiplier'].'</center></td></tr>';   
@@ -47,12 +47,10 @@ if ($found) {
   echo '<tr><td><center>'.$loadconfig[$lineNumber].'</center></td><td><center>'.$loadconfig[$lineNumberrr].'</center></td><td><center>'.$loadconfig[$lineNumberr].'</center></td></tr>';
 }
    
-    $getallplayers = mysql_query("SELECT COUNT(*) as MAX FROM players");
-    $parseallplayers = mysql_fetch_assoc($getallplayers);
-    $getallaccounts = mysql_query("SELECT COUNT(*) as MEX FROM accounts");
-    $parseallaccounts = mysql_fetch_assoc($getallaccounts);
-    $getallguilds = mysql_query("SELECT COUNT(*) as MOX FROM guilds");
-    $parseallguilds = mysql_fetch_assoc($getallguilds);
+    $parseallplayers = mysql_select_single("SELECT COUNT(*) as MAX FROM players");
+    $parseallaccounts = mysql_select_single("SELECT COUNT(*) as MEX FROM accounts");
+    $parseallguilds = mysql_select_single("SELECT COUNT(*) as MOX FROM guilds");
+
    
     echo '</table></tr>';
     echo '<table cellpadding="0"><tr class="yellow"><td><center>Total accounts</center></td><td><center>Total players</center></td><td><center>Total guilds</center></td></tr>';

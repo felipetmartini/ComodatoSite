@@ -1,1 +1,1 @@
-[{"victim":"King Infernal","killed_by":"Madrugadao","time":"1398120915"},{"victim":"Sodnifoj","killed_by":"Ma Ni","time":"1398122641"},{"victim":"King Infernal","killed_by":"Ma Ni","time":"1398123697"},{"victim":"Sadia","killed_by":"Ma Ni","time":"1398127491"}]
+[{"victim":"King Infernal","killed_by":"Madrugadao","time":"1398120915"},{"victim":"King Infernal","killed_by":"Ma Ni","time":"1398123697"},{"victim":"Sadia","killed_by":"Ma Ni","time":"1398127491"}]
