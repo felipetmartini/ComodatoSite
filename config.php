@@ -17,7 +17,7 @@
 	$config['sqlUser'] = 'comodato';
 	
 	// phpmyadmin password for OT server:
-	$config['sqlPassword'] = 'gjhgkhk;hoiuo;niuoiuoinuoi;';
+	$config['sqlPassword'] = 'jhdkjfhskjfvhdsjvhjs;hvkjahkjh';
 	
 	// The database name to connect to. (This is usually same as username).
 	$config['sqlDatabase'] = 'comodato';
@@ -261,7 +261,7 @@
 	// Or remember to create character "God Website" character exist.
 	// If you don't do this, bann from admin panel won't work properly.
 	// NAO ESQUECER DE VER ISSO
-	$config['website_char'] = 'TheMask';
+	$config['website_char'] = 'ZnoteBan';
 	
 	//----------------\\
 	// ADVANCED STUFF \\
@@ -277,8 +277,7 @@
 		2 => 'Tutor',
 		3 => 'Senior Tutor',
 		4 => 'Gamemaster',
-		5 => 'Community Manager',
-		6 => 'God',
+		5 => 'God',
 	);
 	
 	// Enable OS advanced feautures? false = no, true = yes
