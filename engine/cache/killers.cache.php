@@ -1,1 +1,1 @@
-[{"killed_by":"Ma Ni","kills":"2"},{"killed_by":"Madrugadao","kills":"1"},{"killed_by":"Mateus","kills":"1"}]
+[{"killed_by":"Matrix","kills":"5"},{"killed_by":"Only","kills":"4"},{"killed_by":"Ma Ni","kills":"4"},{"killed_by":"Astronix","kills":"3"},{"killed_by":"Poseidon Druidinha","kills":"2"},{"killed_by":"Sorc Infernal","kills":"2"},{"killed_by":"Matopkas Sunset","kills":"2"},{"killed_by":"Megadeth","kills":"1"},{"killed_by":"Timber","kills":"1"},{"killed_by":"Vine Housedown","kills":"1"}]

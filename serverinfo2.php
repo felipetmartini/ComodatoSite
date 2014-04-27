@@ -1,6 +1,9 @@
 <?php require_once 'engine/init.php'; include 'layout/overall/header.php'; ?>
 
 <h1>Server Information</h1>
+<br>
+<h1>WAR SERVER WITH INFINE RUNES/AMMUNITION/POTES</h1>
+
 <?php
 
 $path = 'C:\Users\Felipe\Documents\GitHub\ComodatoGLOBAL';
@@ -23,6 +26,10 @@ if (is_dir($path)) {
     $key = 'rateMagic';
     $key2 = 'rateLoot';
     $key3 = 'rateSkill';
+	$key4 = 'removeChargesFromRunes';
+	$key5 = 'removeAmmoWhenUsingDistanceWeapon';
+	$key6 = 'experienceByKillingPlayers';
+	
     $found = false;
     foreach ($loadconfig as $lineNumber => $e) {
     if (strpos($e,$key) !== false) {
@@ -45,20 +52,32 @@ if (is_dir($path)) {
     }
 }
 
+    foreach ($loadconfig as $lineNumberrrr => $eeee) {
+    if (strpos($eeee,$key4) !== false) {
+      $found = true;
+      break;
+    }
+}	
+    foreach ($loadconfig as $lineNumberrrrr => $eeeee) {
+    if (strpos($eeeee,$key5) !== false) {
+      $found = true;
+      break;
+    }
+}
+	foreach ($loadconfig as $lineNumberrrrrr => $eeeeee) {
+    if (strpos($eeeeee,$key6) !== false) {
+      $found = true;
+      break;
+    }
+}
 if ($found) {
   echo '<table cellpadding="0"><tr class="yellow"><td><center>Magic rate</center></td><td><center>Skills rate</center></td><td><center>Loot rate</center></td></tr>';
   echo '<tr><td><center>'.$loadconfig[$lineNumber].'</center></td><td><center>'.$loadconfig[$lineNumberrr].'</center></td><td><center>'.$loadconfig[$lineNumberr].'</center></td></tr>';
+  echo '<table cellpadding="0"><tr class="yellow"><td><center>Infinite Runes</center></td><td><center>Infinite Ammunition</center></td><td><center>Experience Kill Players</center></td></tr>';
+  echo '<tr><td><center>'.$loadconfig[$lineNumberrrr].'</center></td><td><center>'.$loadconfig[$lineNumberrrrr].'</center></td><td><center>'.$loadconfig[$lineNumberrrrrr].'</center></td></tr>';
+
 }
    
-    $parseallplayers = mysql_select_single("SELECT COUNT(*) as MAX FROM players");
-    $parseallaccounts = mysql_select_single("SELECT COUNT(*) as MEX FROM accounts");
-    $parseallguilds = mysql_select_single("SELECT COUNT(*) as MOX FROM guilds");
-
-   
-    echo '</table></tr>';
-    echo '<table cellpadding="0"><tr class="yellow"><td><center>Total accounts</center></td><td><center>Total players</center></td><td><center>Total guilds</center></td></tr>';
-    echo '<tr><td><center>'.$parseallplayers['MAX'].'</center></td><td><center>'.$parseallaccounts['MEX'].'</center></td><td><center>'.$parseallguilds['MOX'].'</center></td></tr>';
-    echo '</table></tr>';
    
     $talkactions = simplexml_load_file($path.'/data/talkactions/talkactions.xml');
     echo '<table cellpadding="0"><tr class="yellow"><td><center>Player commands</center></td></center></tr>';

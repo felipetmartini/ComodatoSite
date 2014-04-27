@@ -57,7 +57,7 @@ function coloured_value($valuein)
 	$value2 = $valuein;
 	while(strlen($value2) > 3)
 	{
-		$value .= '.'.substr($value2, -3, 3);
+		$value = '.'.substr($value2, -3, 3);
 		$value2 = substr($value2, 0, strlen($value2)-3);
 	}
 	@$value = $value2.$value;

@@ -184,6 +184,14 @@
 						<div class='RightChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
 					</div>
 				</a>
+				<a href='powergamers.php'>
+					<div id='submenu_powergamers' class='Submenuitem' onMouseOver='MouseOverSubmenuItem(this)' onMouseOut='MouseOutSubmenuItem(this)'>
+						<div class='LeftChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
+						<div id='ActiveSubmenuItemIcon_powergamers' class='ActiveSubmenuItemIcon' style='background-image:url(layout/images/global/menu/icon-activesubmenu.gif);'></div>
+						<div id='ActiveSubmenuItemLabel_powergamers' class='SubmenuitemLabel'>PowerGamers</div>
+						<div class='RightChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
+					</div>
+				</a>				
 				<a href='forum.php'>
 					<div id='submenu_forums' class='Submenuitem' onMouseOver='MouseOverSubmenuItem(this)' onMouseOut='MouseOutSubmenuItem(this)'>
 						<div class='LeftChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
