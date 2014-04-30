@@ -125,6 +125,12 @@ if (!empty($_POST)) {
                     echo ($sid != $report['status']) ? "<option value='$sid'>$sname</option>" : "<option value='$sid' selected>$sname</option>";
                 ?>
             </select><br>
+			
+			<?php
+				// If mask
+				if (is_mask($user_data)) {
+			?>
+			
             Give user points:
             <select name="price">
                 <option value='0'>0</option>
@@ -133,6 +139,12 @@ if (!empty($_POST)) {
                     echo "<option value='$price'>$price</option>";
                 ?>
             </select> + <input name="customPoints" type="text" style="width: 50px;" placeholder="0"><br>
+			
+			<?php
+				}
+				// end if mask
+			?>
+			
             <?php
             if (in_array($report['status'], $statusChangeLog)) {
                 ?>
