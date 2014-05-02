@@ -581,7 +581,7 @@ if ($playerData['mana']['percent'] > 100) $playerData['mana']['percent'] = 100;
 				
 				
 				
-	<!-- 				
+	<!-- 		QUESTS SHOWER 		 -->
 				                <table id="questTable">
     <?php
     $completed = '<font color="green">[Completed]</font>';
@@ -638,7 +638,7 @@ if ($playerData['mana']['percent'] > 100) $playerData['mana']['percent'] = 100;
     ?>
 </table>
 				
--->				
+			<!-- 		QUESTS SHOWER ENDS		 -->
 				
 				
 				
