@@ -17,7 +17,7 @@
 	$config['sqlUser'] = 'comodato';
 	
 	// phpmyadmin password for OT server:
-	$config['sqlPassword'] = 'jhgjhgjgjhgjgjgjgjgj';
+	$config['sqlPassword'] = 'hvbhjgjhgjhgjhgjhgjh';
 	
 	// The database name to connect to. (This is usually same as username).
 	$config['sqlDatabase'] = 'comodato';
@@ -36,7 +36,7 @@
 		if ($time === false) $time = time();
 		// Date string representation
 		$date = "d F Y (H:i)"; // 15 July 2013 (13:50)
-		if ($adjust) $adjust = (1 * 3600); // Adjust to fit your timezone.
+		if ($adjust) $adjust = (-5 * 3600); // Adjust to fit your timezone.
 		else $adjust = 0;
 		if ($format) return date($date, $time+$adjust);
 		else return $time+$adjust;
@@ -264,7 +264,6 @@
 	// IMPORTANT! Write a character name(that exist) that will represent website bans!
 	// Or remember to create character "God Website" character exist.
 	// If you don't do this, bann from admin panel won't work properly.
-	// NAO ESQUECER DE VER ISSO
 	$config['website_char'] = 'ZnoteBan';
 	
 	//----------------\\
