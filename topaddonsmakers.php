@@ -3,7 +3,7 @@
     // Cache the results
     $cache = new Cache('engine/cache/topAddonMakers');
     if ($cache->hasExpired()) {
-        $addons = mysql_select_multi("SELECT `p`.`name` AS `name`, `p`.`level` AS `level`, `p`.`group_id` AS `group_id`, SUM(`ps`.`value` & 255) AS `sum` FROM `player_storage` ps LEFT JOIN `players` p ON `ps`.`player_id` = `p`.`id` WHERE `ps`.`key` BETWEEN 22001 AND 22041 AND level >= 8 AND group_id < 4 GROUP BY `name` ORDER BY `sum` DESC, `level` DESC LIMIT 50;");
+        $addons = mysql_select_multi("SELECT `p`.`name` AS `name`, `p`.`level` AS `level`, `p`.`group_id` AS `group_id`, SUM(`ps`.`value` & 255) AS `sum` FROM `player_storage` ps LEFT JOIN `players` p ON `ps`.`player_id` = `p`.`id` WHERE `ps`.`key` BETWEEN 10031 AND 10048 AND level >= 8 AND group_id < 4 GROUP BY `name` ORDER BY `sum` DESC, `level` DESC LIMIT 50;");
        
         $cache->setContent($addons);
         $cache->save();
