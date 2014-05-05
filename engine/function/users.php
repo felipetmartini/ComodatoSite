@@ -892,25 +892,25 @@ function fetchAllScores($rows, $tfs, $g) {
 	// Return scores ordered by type
 	$data = array();
 	if ($tfs == 'TFS_10') {
-		$data[1] = mysql_select_multi("SELECT `id`, `name`, `vocation`, `skill_club` AS `value` FROM `players` WHERE `group_id` <= $g ORDER BY `skill_club` DESC LIMIT 0, $rows;");
-		$data[2] = mysql_select_multi("SELECT `id`, `name`, `vocation`, `skill_sword` AS `value` FROM `players` WHERE `group_id` <= $g ORDER BY `skill_sword` DESC LIMIT 0, $rows;");
-		$data[3] = mysql_select_multi("SELECT `id`, `name`, `vocation`, `skill_axe` AS `value` FROM `players` WHERE `group_id` <= $g ORDER BY `skill_axe` DESC LIMIT 0, $rows;");
-		$data[4] = mysql_select_multi("SELECT `id`, `name`, `vocation`, `skill_dist` AS `value` FROM `players` WHERE `group_id` <= $g ORDER BY `skill_dist` DESC LIMIT 0, $rows;");
-		$data[5] = mysql_select_multi("SELECT `id`, `name`, `vocation`, `skill_shielding` AS `value` FROM `players` WHERE `group_id` <= $g ORDER BY `skill_shielding` DESC LIMIT 0, $rows;");
-		$data[6] = mysql_select_multi("SELECT `id`, `name`, `vocation`, `skill_fishing` AS `value` FROM `players` WHERE `group_id` <= $g ORDER BY `skill_fishing` DESC LIMIT 0, $rows;");
-		$data[7] = mysql_select_multi("SELECT `id`, `name`, `vocation`, `experience`, `level` AS `value` FROM `players` WHERE `group_id` <= $g ORDER BY `experience` DESC LIMIT 0, $rows;");
-		$data[8] = mysql_select_multi("SELECT `id`, `name`, `vocation`, `maglevel` AS `value` FROM `players` WHERE `group_id` <= $g ORDER BY `maglevel` DESC LIMIT 0, $rows;");
-		$data[9] = mysql_select_multi("SELECT `id`, `name`, `vocation`, `skill_fist` AS `value` FROM `players` WHERE `group_id` <= $g ORDER BY `skill_fist` DESC LIMIT 0, $rows;");
+		$data[1] = mysql_select_multi("SELECT `id`, `name`, `vocation`, `skill_club` AS `value` FROM `players` WHERE `group_id` < $g ORDER BY `skill_club` DESC LIMIT 0, $rows;");
+		$data[2] = mysql_select_multi("SELECT `id`, `name`, `vocation`, `skill_sword` AS `value` FROM `players` WHERE `group_id` < $g ORDER BY `skill_sword` DESC LIMIT 0, $rows;");
+		$data[3] = mysql_select_multi("SELECT `id`, `name`, `vocation`, `skill_axe` AS `value` FROM `players` WHERE `group_id` < $g ORDER BY `skill_axe` DESC LIMIT 0, $rows;");
+		$data[4] = mysql_select_multi("SELECT `id`, `name`, `vocation`, `skill_dist` AS `value` FROM `players` WHERE `group_id` < $g ORDER BY `skill_dist` DESC LIMIT 0, $rows;");
+		$data[5] = mysql_select_multi("SELECT `id`, `name`, `vocation`, `skill_shielding` AS `value` FROM `players` WHERE `group_id` < $g ORDER BY `skill_shielding` DESC LIMIT 0, $rows;");
+		$data[6] = mysql_select_multi("SELECT `id`, `name`, `vocation`, `skill_fishing` AS `value` FROM `players` WHERE `group_id` < $g ORDER BY `skill_fishing` DESC LIMIT 0, $rows;");
+		$data[7] = mysql_select_multi("SELECT `id`, `name`, `vocation`, `experience`, `level` AS `value` FROM `players` WHERE `group_id` < $g ORDER BY `experience` DESC LIMIT 0, $rows;");
+		$data[8] = mysql_select_multi("SELECT `id`, `name`, `vocation`, `maglevel` AS `value` FROM `players` WHERE `group_id` < $g ORDER BY `maglevel` DESC LIMIT 0, $rows;");
+		$data[9] = mysql_select_multi("SELECT `id`, `name`, `vocation`, `skill_fist` AS `value` FROM `players` WHERE `group_id` < $g ORDER BY `skill_fist` DESC LIMIT 0, $rows;");
 	} else {
-		$data[9] = mysql_select_multi("SELECT `s`.`player_id` AS `id`, `s`.`value` AS `value`, `p`.`name` AS `name`, `p`.`vocation` AS `vocation` FROM `player_skills` AS `s` LEFT JOIN `players` AS `p` ON `s`.`player_id`=`p`.`id` WHERE `s`.`skillid` = 0 AND `p`.`group_id` <= $g ORDER BY `s`.`value` DESC LIMIT 0, $rows;");
-		$data[1] = mysql_select_multi("SELECT `s`.`player_id` AS `id`, `s`.`value` AS `value`, `p`.`name` AS `name`, `p`.`vocation` AS `vocation` FROM `player_skills` AS `s` LEFT JOIN `players` AS `p` ON `s`.`player_id`=`p`.`id` WHERE `s`.`skillid` = 1 AND `p`.`group_id` <= $g ORDER BY `s`.`value` DESC LIMIT 0, $rows;");
-		$data[2] = mysql_select_multi("SELECT `s`.`player_id` AS `id`, `s`.`value` AS `value`, `p`.`name` AS `name`, `p`.`vocation` AS `vocation` FROM `player_skills` AS `s` LEFT JOIN `players` AS `p` ON `s`.`player_id`=`p`.`id` WHERE `s`.`skillid` = 2 AND `p`.`group_id` <= $g ORDER BY `s`.`value` DESC LIMIT 0, $rows;");
-		$data[3] = mysql_select_multi("SELECT `s`.`player_id` AS `id`, `s`.`value` AS `value`, `p`.`name` AS `name`, `p`.`vocation` AS `vocation` FROM `player_skills` AS `s` LEFT JOIN `players` AS `p` ON `s`.`player_id`=`p`.`id` WHERE `s`.`skillid` = 3 AND `p`.`group_id` <= $g ORDER BY `s`.`value` DESC LIMIT 0, $rows;");
-		$data[4] = mysql_select_multi("SELECT `s`.`player_id` AS `id`, `s`.`value` AS `value`, `p`.`name` AS `name`, `p`.`vocation` AS `vocation` FROM `player_skills` AS `s` LEFT JOIN `players` AS `p` ON `s`.`player_id`=`p`.`id` WHERE `s`.`skillid` = 4 AND `p`.`group_id` <= $g ORDER BY `s`.`value` DESC LIMIT 0, $rows;");
-		$data[5] = mysql_select_multi("SELECT `s`.`player_id` AS `id`, `s`.`value` AS `value`, `p`.`name` AS `name`, `p`.`vocation` AS `vocation` FROM `player_skills` AS `s` LEFT JOIN `players` AS `p` ON `s`.`player_id`=`p`.`id` WHERE `s`.`skillid` = 5 AND `p`.`group_id` <= $g ORDER BY `s`.`value` DESC LIMIT 0, $rows;");
-		$data[6] = mysql_select_multi("SELECT `s`.`player_id` AS `id`, `s`.`value` AS `value`, `p`.`name` AS `name`, `p`.`vocation` AS `vocation` FROM `player_skills` AS `s` LEFT JOIN `players` AS `p` ON `s`.`player_id`=`p`.`id` WHERE `s`.`skillid` = 6 AND `p`.`group_id` <= $g ORDER BY `s`.`value` DESC LIMIT 0, $rows;");
-		$data[7] = mysql_select_multi("SELECT `id`, `name`, `vocation`, `experience`, `level` AS `value` FROM `players` WHERE `group_id` <= $g ORDER BY `experience` DESC limit 0, $rows;");
-		$data[8] = mysql_select_multi("SELECT `id`, `name`, `vocation`, `maglevel` AS `value` FROM `players` WHERE `group_id` <= $g ORDER BY `maglevel` DESC limit 0, $rows;");
+		$data[9] = mysql_select_multi("SELECT `s`.`player_id` AS `id`, `s`.`value` AS `value`, `p`.`name` AS `name`, `p`.`vocation` AS `vocation` FROM `player_skills` AS `s` LEFT JOIN `players` AS `p` ON `s`.`player_id`=`p`.`id` WHERE `s`.`skillid` = 0 AND `p`.`group_id` < $g ORDER BY `s`.`value` DESC LIMIT 0, $rows;");
+		$data[1] = mysql_select_multi("SELECT `s`.`player_id` AS `id`, `s`.`value` AS `value`, `p`.`name` AS `name`, `p`.`vocation` AS `vocation` FROM `player_skills` AS `s` LEFT JOIN `players` AS `p` ON `s`.`player_id`=`p`.`id` WHERE `s`.`skillid` = 1 AND `p`.`group_id` < $g ORDER BY `s`.`value` DESC LIMIT 0, $rows;");
+		$data[2] = mysql_select_multi("SELECT `s`.`player_id` AS `id`, `s`.`value` AS `value`, `p`.`name` AS `name`, `p`.`vocation` AS `vocation` FROM `player_skills` AS `s` LEFT JOIN `players` AS `p` ON `s`.`player_id`=`p`.`id` WHERE `s`.`skillid` = 2 AND `p`.`group_id` < $g ORDER BY `s`.`value` DESC LIMIT 0, $rows;");
+		$data[3] = mysql_select_multi("SELECT `s`.`player_id` AS `id`, `s`.`value` AS `value`, `p`.`name` AS `name`, `p`.`vocation` AS `vocation` FROM `player_skills` AS `s` LEFT JOIN `players` AS `p` ON `s`.`player_id`=`p`.`id` WHERE `s`.`skillid` = 3 AND `p`.`group_id` < $g ORDER BY `s`.`value` DESC LIMIT 0, $rows;");
+		$data[4] = mysql_select_multi("SELECT `s`.`player_id` AS `id`, `s`.`value` AS `value`, `p`.`name` AS `name`, `p`.`vocation` AS `vocation` FROM `player_skills` AS `s` LEFT JOIN `players` AS `p` ON `s`.`player_id`=`p`.`id` WHERE `s`.`skillid` = 4 AND `p`.`group_id` < $g ORDER BY `s`.`value` DESC LIMIT 0, $rows;");
+		$data[5] = mysql_select_multi("SELECT `s`.`player_id` AS `id`, `s`.`value` AS `value`, `p`.`name` AS `name`, `p`.`vocation` AS `vocation` FROM `player_skills` AS `s` LEFT JOIN `players` AS `p` ON `s`.`player_id`=`p`.`id` WHERE `s`.`skillid` = 5 AND `p`.`group_id` < $g ORDER BY `s`.`value` DESC LIMIT 0, $rows;");
+		$data[6] = mysql_select_multi("SELECT `s`.`player_id` AS `id`, `s`.`value` AS `value`, `p`.`name` AS `name`, `p`.`vocation` AS `vocation` FROM `player_skills` AS `s` LEFT JOIN `players` AS `p` ON `s`.`player_id`=`p`.`id` WHERE `s`.`skillid` = 6 AND `p`.`group_id` < $g ORDER BY `s`.`value` DESC LIMIT 0, $rows;");
+		$data[7] = mysql_select_multi("SELECT `id`, `name`, `vocation`, `experience`, `level` AS `value` FROM `players` WHERE `group_id` < $g ORDER BY `experience` DESC limit 0, $rows;");
+		$data[8] = mysql_select_multi("SELECT `id`, `name`, `vocation`, `maglevel` AS `value` FROM `players` WHERE `group_id` < $g ORDER BY `maglevel` DESC limit 0, $rows;");
 	}
 	return $data;
 }
@@ -1491,4 +1491,34 @@ function user_login_03($username, $password) {
 function user_logged_in() {
 	return (isset($_SESSION['user_id'])) ? true : false;
 }
+
+function guild_war_invitation($cid, $gid) {
+	$cid = (int)$cid;
+	$gid = (int)$gid;
+	$gname = get_guild_name($cid);
+	$ename = get_guild_name($gid);
+	$time = time();
+	mysql_insert("INSERT INTO `guild_wars` (`guild1`, `guild2`, `name1`, `name2`, `status`, `started`, `ended`) VALUES ('$cid', '$gid', '$gname', '$ename', '0', '$time', '0');");
+}
+
+function accept_war_invitation($cid, $gid) {
+	$cid = (int)$cid;
+	$gid = (int)$gid;
+	mysql_update("UPDATE `guild_wars` SET `status` = 1 WHERE `guild1` = '$cid' AND `guild2` = '$gid' AND `status` = 0;");
+}
+
+function reject_war_invitation($cid, $gid) {
+	$cid = (int)$cid;
+	$gid = (int)$gid;
+	$time = time();
+	mysql_update("UPDATE `guild_wars` SET `status` = 2, `ended` = '$time' WHERE `guild1` = '$cid' AND `guild2` = '$gid';");
+}
+
+function cancel_war_invitation($cid, $gid) {
+	$cid = (int)$cid;
+	$gid = (int)$gid;
+	$time = time();
+	mysql_update("UPDATE `guild_wars` SET `status` = 3, `ended` = '$time' WHERE `guild2` = '$cid' AND `guild1` = '$gid';");
+}
+
 ?>

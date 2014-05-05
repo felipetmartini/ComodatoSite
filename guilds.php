@@ -14,6 +14,8 @@ if (user_logged_in() === true) {
 			$characters[] = $value['name'];
 		}
 	}
+} else {
+	$char_count = 0;
 }
 
 if (empty($_GET['name'])) {
@@ -144,10 +146,10 @@ if (user_logged_in() === true) {
 	}
 	
 	// calculate visitor access
+	$highest_access = 0;
 	if (user_logged_in() === true) {
 		// Get visitor access in this guild
-		$highest_access = 0;
-
+		
 		foreach ($players as $player) {
 			$rid = $player['rank_id'];
 			
@@ -349,50 +351,6 @@ if ($highest_access >= 2) {
 		} else echo '<font color="red" size="4">That character name does not exist.</font>';
 	}
 	
-	if (!empty($_POST['war_invite'])) {
-		$n = get_guild_id($_POST['war_invite']);
-		if (user_guild_exist($n)) {
-			$wars = mysql_select_multi("SELECT `id`, `guild1`, `guild2`, `status` FROM `guild_wars` WHERE (`guild1` = ".$gid." OR `guild1` = ".$n.") AND (`guild2` = ".get_guild_id($_GET['name'])." OR `guild2` = ".$n.") AND (`status` = 0 OR `status` = 1);");		
-			$status = false; $t = guild_war_invite_check($_GET['name']); $v = get_guild_name($gid);
-			if ($t !== false) { 
-				foreach ($t as $x) { 
-					if ($x['id'] == $n) $status = true;
-				} 
-			}
-			
-
-						
-			if ($wars == false && $status == false) {
-				mysql_insert("INSERT INTO `guild_wars` (`guild1`, `guild2`, `name1`, `name2`, `status`, `started`, `ended`) VALUES ('".$gid."', '".$n."', '".$_GET['name']."', '".$_POST['war_invite']."', '0', '".time()."', '0');");
-				echo 'You have invited <a href="guilds.php?name='.$_POST['war_invite'].'">' .$_POST['war_invite'].'</a> to war.';
-			} else echo '<font color="red" size="4">This guild has already been invited to war(or you\'re trying to invite your own guild).</FONT>';
-		} else echo '<font color="red" size="4">That guild name does not exist.</font>';
-	}
-	
-	if (!empty($_POST['war_rdeclaration'])) {
-		guild_war_rdeclaration($_POST['war_rdeclaration'], $gid);
-		header('Location: guilds.php?name='. $_GET['name']);
-		exit();
-	}
-	
-	if (!empty($_POST['war_reject'])) {
-		guild_war_reject($_POST['war_reject'], $gid);
-		header('Location: guilds.php?name='. $_GET['name']);
-		exit();
-	}
-	
-	if (!empty($_POST['war_accept'])) {
-		guild_war_accept($_POST['war_accept'], $gid);
-		header('Location: guilds.php?name='. $_GET['name']);
-		exit();
-	}
-	
-	if (!empty($_POST['war_cancel'])) {
-		guild_war_cancel($_POST['war_cancel'], $gid);
-		header('Location: guilds.php?name='. $_GET['name']);
-		exit();
-	}
-		
 	if (!empty($_POST['disband'])) {
 		// 
 		$gidd = (int)$_POST['disband'];
@@ -494,6 +452,51 @@ if ($highest_access >= 2) {
 			
 		} else {
 			echo '<h1>Error: Guild board system is disabled.</h1>';
+		}
+	}
+	
+	if ($config['TFSVersion'] == 'TFS_02' || $config['TFSVersion'] == 'TFS_10' && $config['guildwar_enabled'] === true) {
+		if (!empty($_POST['warinvite'])) {
+			if (get_guild_id($_POST['warinvite'])) {
+				$status = false;
+				$war_invite = mysql_select_single("SELECT `id` FROM `guilds` WHERE `id` = '$gid';");
+				$targetGuild = get_guild_id($_POST['warinvite']);
+				if ($war_invite !== false) {
+					foreach ($war_invite as $inv) {
+						if ($inv['id'] == $targetGuild) $status = true;
+					}
+				}
+				
+				$check_guild = get_guild_name($gid);
+				foreach ($check_guild as $guild) {
+					if ($guild['name'] == $_POST['warinvite']) $status = true;
+				}
+				
+				$wars = mysql_select_multi("SELECT `id`, `guild1`, `guild2`, `status` FROM `guild_wars` WHERE (`guild1` = '$gid' OR `guild1` = '$targetGuild') AND (`guild2` = '$gid' OR `guild2` = '$targetGuild') AND `status` IN (0, 1);");
+				if ($status == false && $wars == false) {
+					guild_war_invitation($gid, $targetGuild);
+					header('Location: guilds.php?name='. $_GET['name']);
+					exit();
+				} else echo '<font color="red" size="4">This guild has already been invited to war(or you\'re trying to invite your own).</FONT>';
+			} else echo '<font color="red" size="4">That guild name does not exist.</font>';
+		}
+	
+		if (!empty($_POST['cancel_war_invite'])) {
+			cancel_war_invitation($_POST['cancel_war_invite'], $gid);
+			header('Location: guilds.php?name='. $_GET['name']);
+			exit();
+		}
+	
+		if (!empty($_POST['reject_war_invite'])) {
+			reject_war_invitation($_POST['reject_war_invite'], $gid);
+			header('Location: guilds.php?name='. $_GET['name']);
+			exit();
+		}
+	
+		if (!empty($_POST['accept_war_invite'])) {
+			accept_war_invitation($_POST['accept_war_invite'], $gid);
+			header('Location: guilds.php?name='. $_GET['name']);
+			exit();
 		}
 	}
 	
@@ -637,64 +640,46 @@ if ($highest_access >= 2) {
 			</ul>
 		</form>
 		<?php } ?>
-<?php if ($config['guildwar_enabled'] === true) { ?>
-			<h2>Guild War Management:</h2>
-		<!-- Invite guild to war -->
+		<?php if ($config['TFSVersion'] == 'TFS_02' || $config['TFSVersion'] == 'TFS_10' && $config['guildwar_enabled'] === true) { ?>
+		<h2>Guild War Management:</h2>
 		<form action="" method="post">
 			<ul>
 				<li>Invite guild to war:<br>
-					<input type="text" name="war_invite" placeholder="Guild name">
-					<input type="submit" value="Invite Guild" class="btn btn-primary">
+					<input type="text" name="warinvite" placeholder="Guild name">
+					<input type="submit" value="Invite Guild">
 				</li>
 			</ul>
 		</form>
-		
-<!-- cancel war declaration -->
-<?php 
-$t = mysql_select_multi("SELECT `id`, `guild1`, `guild2`, `name1`, `name2`, `status`, `started`, `ended` FROM `guild_wars` WHERE `guild1` = '".$gid."' AND `status` = 0 ORDER BY `started` DESC");
-if (!empty($t)) {
-	echo '<h3>War declarations</h3><table id="guildsTable" class="table table-striped table-hover"><tr class="yellow"><th>#</th><th>Guild Name:</th><th>Remove Invitation</th></tr>';
-	$i = 0;
-		foreach($t as $v) {
-	$i++;
-		echo '<tr><td>'.$i.'</td><td><a href="guilds.php?name='.$v['name2'].'">'.$v['name2'].'</a></td><td><form action="" method="post" onsubmit="return confirm(\'Are you sure you want to cancel your invitation?\')";><input type="hidden" name="war_rdeclaration" value="'.$v['guild2'].'" /><input type="submit" value="Remove Invitation" class="btn btn-danger needconfirmation"></form></td></tr>';
-	}
-?>
-</table>
-<?php } ?>
-
-<!-- accept/reject invitation -->
+		<style type="text/css">
+			form {display: inline;}
+			#btnspace{margin-left:100px;}
+		</style>
+		<table id="guildsTable" class="table table-striped table-hover"><tr class="yellow"><th>Aggressor</th><th>Information</th><th>Enemy</th></tr>
 		<?php
-$t = mysql_select_multi("SELECT `id`, `guild1`, `guild2`, `name1`, `name2`, `status`, `started`, `ended` FROM `guild_wars` WHERE `guild2` = '".$gid."' AND `status` = 0 ORDER BY `started` DESC");
-if (!empty($t)) {
-	echo '<h3>Pending invitations</h3><table id="guildsTable" class="table table-striped table-hover"><tr class="yellow"><th>#</th><th>Guild Name:</th><th>Accept Invitation</th><th>Reject Invitation</th></tr>';
-	$i = 0;
-		foreach($t as $v) {
-	$i++;
-		echo '<tr><td>'.$i.'</td><td><a href="guilds.php?name='.$v['name1'].'">'.$v['name1'].'</a></td><td><form action="" method="post"><input type="hidden" name="war_accept" value="'.$v['guild1'].'" /><input type="submit" value="Accept Invitation" class="btn btn-primary"></form></td><td><form action="" method="post" onsubmit="return confirm(\'Are you sure you want to reject this invitation?\')";><input type="hidden" name="war_reject" value="'.$v['guild1'].'" /><input type="submit" value="Reject Invitation" class="btn"></form></td></tr>';
+		$i = 0;
+		foreach(mysql_select_multi("SELECT `guild_wars`.`id`, `guild_wars`.`guild1`, `guild_wars`.`guild2`, `guild_wars`.`name1`, `guild_wars`.`name2`, `guild_wars`.`status`, `guild_wars`.`started`, `guild_wars`.`ended` FROM `guild_wars` WHERE (`guild1` = '$gid' OR `guild2` = '$gid') AND `status` = 0 ORDER BY `started` DESC") as $war)
+		{
+			$i++;
+			echo '<tr><td><a href="guilds.php?name='.$war['name1'].'">'.$war['name1'].'</a></td><td>';
+			echo '<center><b>Pending invitation</b><br />Invited on ' . getClock($war['started'], true) . '.<br />';
+			if ($war['guild1'] == $gid) {
+				echo '<br /><form action="" method="post" onsubmit="return confirm(\'Are you sure you want to CANCEL this invitation?\')";><input type="hidden" name="cancel_war_invite" value="'.$war['guild2'].'" /><input type="submit" value="Cancel Invitation"></form>';
+			} else if ($war['guild2'] == $gid) {
+				echo '<br><form action="" method="post"><input type="hidden" name="accept_war_invite" value="'.$war['guild1'].'" /><input type="submit" value="Accept Invitation"></form>';
+				echo '<form action="" method="post"><input type="hidden" name="reject_war_invite" value="'.$war['guild1'].'" /><input type="submit" ID="btnspace" value="Reject Invitation"></form>';
+			}
+			echo '</center></td><td><a href="guilds.php?name='.$war['name2'].'">'.$war['name2'].'</a></td></tr>';
+		}
+	
+			if ($i == 0)
+				echo '<tr><td colspan="3"><center>Currently there are no pending invitations.</center></td></tr>';
+				echo '</table>';
+		} } ?>
+		<?php
 	}
-?>
-</table>
-<?php } ?>
-
-<!-- end war -->
-<?php 
-$t = mysql_select_multi("SELECT `id`, `guild1`, `guild2`, `name1`, `name2`, `status`, `started`, `ended` FROM `guild_wars` WHERE (`guild1` = ".$gid." OR `guild2` = ".$gid.") AND `status` = 1 ORDER BY `started` DESC");
-if (!empty($t)) {
-	echo '<h3>Active Guild Wars</h3><table id="guildsTable" class="table table-striped table-hover"><tr class="yellow"><th>#</th><th>Guild Name:</th><th>Cancel War</th></tr>';
-	$i = 0;
-		foreach($t as $v) {
-	$i++;
-	if ($v['guild1'] == $gid) {
-		echo '<tr><td>'.$i.'</td><td><a href="guilds.php?name='.$v['name2'].'">'.$v['name2'].'</a></td><td><form action="" method="post" onsubmit="return confirm(\'Are you sure you want to cancel this war?\')";><input type="hidden" name="war_cancel" value="'.$v['guild2'].'" /><input type="submit" value="Cancel War" class="btn btn-danger needconfirmation"></form></td></tr>';
-	} else echo '<tr><td>'.$i.'</td><td><a href="guilds.php?name='.$v['name1'].'">'.$v['name1'].'</a></td><td><form action="" method="post" onsubmit="return confirm(\'Are you sure you want to cancel this war?\')";><input type="hidden" name="war_cancel" value="'.$v['guild1'].'" /><input type="submit" value="Cancel War" class="btn btn-danger needconfirmation"></form></td></tr>';
 }
 ?>
-</table>
-<?php } ?>
-<?php } } } ?>
 <!-- end leader-->
-<?php } ?>
 <?php
 if ($config['TFSVersion'] == 'TFS_02' || $config['TFSVersion'] == 'TFS_10') $wardata = get_guild_wars();
 else if ($config['TFSVersion'] == 'TFS_03') $wardata = get_guild_wars03();
