@@ -2,3 +2,4 @@
 engine/cache/*
 engine/cache/highscores.cache.php
 engine/cache/support.cache.php
+*.db
