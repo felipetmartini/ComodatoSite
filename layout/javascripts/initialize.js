@@ -9,6 +9,18 @@ function InitializePage() {
   LoadMenu();
 }
 
+// remove the deactivation container from the website
+function ActivateWebsiteFrame()
+{
+  g_Deactivated = false;
+  if (document.getElementById('DeactivationContainer') != null) {
+    document.getElementById('DeactivationContainer').style.display = "none";
+  }
+  if (document.getElementById('DeactivationContainerThemebox') != null) {
+    document.getElementById('DeactivationContainerThemebox').style.display = "none";
+  }
+}
+
 // functions for mouse-over and click events of non-content-buttons
 function MouseOverBigButton(source)
 {
