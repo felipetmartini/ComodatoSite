@@ -1,10 +1,52 @@
+<<<<<<< HEAD
 <?php require_once 'engine/init.php'; include 'layout/overall/header.php'; ?>
+
+<?php require_once 'engine/init.php'; include 'layout/overall/header.php';
+	if ($config['allowSubPages'] && file_exists("layout/sub/index.php")) include 'layout/sub/index.php';
+	else {
+		if ($config['UseChangelogTicker']) {
+			//////////////////////
+			// Changelog ticker //
+			// Load from cache
+			$changelogCache = new Cache('engine/cache/changelog');
+			$changelogs = $changelogCache->load();
+
+			if (isset($changelogs) && !empty($changelogs) && $changelogs !== false) {
+				?>
+				<table id="changelogTable">
+					<tr class="yellow">
+						<td colspan="2">Latest Changelog Updates (<a href="changelog.php">Click here to see full changelog</a>)</td>
+					</tr>
+					<?php
+					for ($i = 0; $i < count($changelogs) && $i < 5; $i++) {
+						?>
+						<tr>
+							<td><?php echo getClock($changelogs[$i]['time'], true, true); ?></td>
+							<td><?php echo $changelogs[$i]['text']; ?></td>
+						</tr>
+						<?php
+					}
+					?>
+				</table>
+				<?php
+			} else echo "No changelogs submitted.";
+		}
+		
+		$cache = new Cache('engine/cache/news');
+		if ($cache->hasExpired()) {
+			$news = fetchAllNews();
+			
+			$cache->setContent($news);
+			$cache->save();
+		} else {
+			$news = $cache->load();
+		}
 
 <h1>Server Information</h1>
 <br>
-<h1>WAR SERVER WITH INFINE RUNES/AMMUNITION/POTES</h1>
 
-<?php
+
+
 
 $path = 'C:\Users\Felipe\Documents\GitHub\ComodatoGLOBAL';
 echo '<table cellpadding="0"><tr class="yellow"><td><center>From level</center></td><td><center>To level</center></td><td><center>Rate</center></td></tr>';
@@ -13,6 +55,7 @@ if (is_dir($path)) {
    
     $xml1 = simplexml_load_file($path."\data\xml\stages.xml");
     foreach ($xml1 as $stage1) {
+
 		
 			if ($stage1['maxlevel'] == '' && $stage1['minlevel'] > '1') {
 			$stage1['maxlevel'] = 'Infinite';   
