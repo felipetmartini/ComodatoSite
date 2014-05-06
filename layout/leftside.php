@@ -68,7 +68,7 @@
 					</div>
 				</div>
 			</span>
-			<div id='news_Submenu' class='Submenu'>
+			<div style="visibility: hidden; display: none;" id='news_Submenu' class='Submenu'>
 				<a href='sub.php?page=news'>
 					<div id='submenu_latestnews' class='Submenuitem' onMouseOver='MouseOverSubmenuItem(this)' onMouseOut='MouseOutSubmenuItem(this)'>
 						<div class='LeftChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
@@ -117,7 +117,7 @@
 					</div>
 				</div>
 			</span>
-			<div id='account_Submenu' class='Submenu'>
+			<div style="visibility: hidden; display: none;" id='account_Submenu' class='Submenu'>
 				<a href='myaccount.php'>
 					<div id='submenu_accountmanagement' class='Submenuitem' onMouseOver='MouseOverSubmenuItem(this)' onMouseOut='MouseOutSubmenuItem(this)'>
 						<div class='LeftChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
@@ -167,7 +167,7 @@
 					</div>
 				</div>
 			</span>
-			<div id='community_Submenu' class='Submenu'>
+			<div style="visibility: hidden; display: none;" id='community_Submenu' class='Submenu'>
 				<a href='sub.php?page=charactersearch'>
 					<div id='submenu_characters' class='Submenuitem' onMouseOver='MouseOverSubmenuItem(this)' onMouseOut='MouseOutSubmenuItem(this)'>
 						<div class='LeftChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
@@ -281,7 +281,7 @@
 					</div>
 				</div>
 			</span>
-			<div id='library_Submenu' class='Submenu'>
+			<div style="visibility: hidden; display: none;" id='library_Submenu' class='Submenu'>
 				<a href='gallery.php'>
 					<div id='submenu_worldquests' class='Submenuitem' onMouseOver='MouseOverSubmenuItem(this)' onMouseOut='MouseOutSubmenuItem(this)'>
 						<div class='LeftChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
@@ -307,7 +307,7 @@
 					</div>
 				</div>
 			</span>
-			<div id='shops_Submenu' class='Submenu'>
+			<div id="shops_Submenu" class="Submenu">
 				<a href='buypoints.php'>
 					<div id='submenu_cafepress' class='Submenuitem' onMouseOver='MouseOverSubmenuItem(this)' onMouseOut='MouseOutSubmenuItem(this)'>
 						<div class='LeftChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
