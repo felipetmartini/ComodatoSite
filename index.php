@@ -42,9 +42,6 @@
 			$news = $cache->load();
 		}
 
-<h1>Server Information</h1>
-<br>
-
 
 
 
