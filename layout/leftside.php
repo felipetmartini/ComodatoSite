@@ -192,14 +192,6 @@
 						<div class='RightChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
 					</div>
 				</a>				
-				<a href='forum.php'>
-					<div id='submenu_forums' class='Submenuitem' onMouseOver='MouseOverSubmenuItem(this)' onMouseOut='MouseOutSubmenuItem(this)'>
-						<div class='LeftChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
-						<div id='ActiveSubmenuItemIcon_forums' class='ActiveSubmenuItemIcon' style='background-image:url(layout/images/global/menu/icon-activesubmenu.gif);'></div>
-						<div id='ActiveSubmenuItemLabel_forums' class='SubmenuitemLabel'><font color="green">Forum Boards</font></div>
-						<div class='RightChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
-					</div>
-				</a>
 				<a href='deaths.php'>
 					<div id='submenu_creatures' class='Submenuitem' onMouseOver='MouseOverSubmenuItem(this)' onMouseOut='MouseOutSubmenuItem(this)'>
 						<div class='LeftChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
@@ -229,14 +221,6 @@
 						<div class='LeftChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
 						<div id='ActiveSubmenuItemIcon_houses' class='ActiveSubmenuItemIcon' style='background-image:url(layout/images/global/menu/icon-activesubmenu.gif);'></div>
 						<div id='ActiveSubmenuItemLabel_houses' class='SubmenuitemLabel'>Houses</div>
-						<div class='RightChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
-					</div>
-				</a>
-				<a href='support.php'>
-					<div id='submenu_downloadclient' class='Submenuitem' onMouseOver='MouseOverSubmenuItem(this)' onMouseOut='MouseOutSubmenuItem(this)'>
-						<div class='LeftChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
-						<div id='ActiveSubmenuItemIcon_downloadclient' class='ActiveSubmenuItemIcon' style='background-image:url(layout/images/global/menu/icon-activesubmenu.gif);'></div>
-						<div id='ActiveSubmenuItemLabel_downloadclient' class='SubmenuitemLabel'>Support</div>
 						<div class='RightChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
 					</div>
 				</a>
@@ -292,40 +276,66 @@
 				</a>
 			</div>
 		</div>
+		<div id="forum" class="menuitem">
+			<span onClick="MenuItemAction('forum')">
+				<div class="MenuButton" style="background-image:url(layout/images/global/menu/button-background.gif);">
+					<div onMouseOver="MouseOverMenuItem(this);" onMouseOut="MouseOutMenuItem(this);"><div class="Button" style="background-image:url(layout/images/global/menu/button-background-over.gif);"></div>
+						<span style="visibility: visible;" id="forum_Lights" class="Lights">
+							<div class="light_lu" style="background-image:url(layout/images/global/menu/green-light.gif);"></div>
+							<div class="light_ld" style="background-image:url(layout/images/global/menu/green-light.gif);"></div>
+							<div class="light_ru" style="background-image:url(layout/images/global/menu/green-light.gif);"></div>
+						</span>
+						<div id="forum_Icon" class="Icon" style="background-image:url(layout/images/global/menu/icon-forum.gif);"></div>
+						<div id="forum_Label" class="Label" style="background-image:url(layout/images/global/menu/label-forum.gif);"></div>
+						<div id="forum_Extend" class="Extend" style="background-image:url(layout/images/global/menu/plus.gif);"></div>
+					</div>
+				</div>
+			</span>
+			<div style="visibility: hidden; display: none;" id="forum_Submenu" class="Submenu">
+				<a href="forum.php">
+					<div id="submenu_communityboards" class="Submenuitem" onMouseOver="MouseOverSubmenuItem(this)" onMouseOut="MouseOutSubmenuItem(this)">
+						<div class="LeftChain" style="background-image:url(layout/images/global/menu/chain.gif);"></div>
+						<div id="ActiveSubmenuItemIcon_communityboards" class="ActiveSubmenuItemIcon" style="background-image:url(layout/images/global/menu/icon-activesubmenu.gif);"></div>
+						<div id="ActiveSubmenuItemLabel_communityboards" class="SubmenuitemLabel">Community Boards</div>
+						<div class="RightChain" style="background-image:url(layout/images/global/menu/chain.gif);"></div>
+					</div>
+				</a>
+			</div>
+		</div>
 		<div id="support" class="menuitem">
 			<span onClick="MenuItemAction('support')">
 				<div class="MenuButton" style="background-image:url(layout/images/global/menu/button-background.gif);">
-				<div onMouseOver="MouseOverMenuItem(this);" onMouseOut="MouseOutMenuItem(this);"><div class="Button" style="background-image:url(layout/images/global/menu/button-background-over.gif);"></div>
-			<span style="visibility: visible;" id="support_Lights" class="Lights">
-				<div class="light_lu" style="background-image:url(layout/images/global/menu/green-light.gif);"></div>
-				<div class="light_ld" style="background-image:url(layout/images/global/menu/green-light.gif);"></div>
-				<div class="light_ru" style="background-image:url(layout/images/global/menu/green-light.gif);"></div>
+					<div onMouseOver="MouseOverMenuItem(this);" onMouseOut="MouseOutMenuItem(this);"><div class="Button" style="background-image:url(layout/images/global/menu/button-background-over.gif);"></div>
+						<span style="visibility: visible;" id="support_Lights" class="Lights">
+							<div class="light_lu" style="background-image:url(layout/images/global/menu/green-light.gif);"></div>
+							<div class="light_ld" style="background-image:url(layout/images/global/menu/green-light.gif);"></div>
+							<div class="light_ru" style="background-image:url(layout/images/global/menu/green-light.gif);"></div>
+						</span>
+						<div id="support_Icon" class="Icon" style="background-image:url(layout/images/global/menu/icon-support.gif);"></div>
+						<div id="support_Label" class="Label" style="background-image:url(layout/images/global/menu/label-support.gif);"></div>
+						<div id="support_Extend" class="Extend" style="background-image:url(layout/images/global/menu/plus.gif);"></div>
+					</div>
+				</div>
 			</span>
-				<div id="support_Icon" class="Icon" style="background-image:url(layout/images/global/menu/icon-support.gif);"></div>
-				<div id="support_Label" class="Label" style="background-image:url(layout/images/global/menu/label-support.gif);"></div>
-				<div id="support_Extend" class="Extend" style="background-image:url(layout/images/global/menu/plus.gif);"></div>
+			<div style="visibility: hidden; display: none;" id="support_Submenu" class="Submenu">
+				<a href="serverinfo.php">
+					<div id="submenu_faq" class="Submenuitem" onMouseOver="MouseOverSubmenuItem(this)" onMouseOut="MouseOutSubmenuItem(this)">
+						<div class="LeftChain" style="background-image:url(layout/images/global/menu/chain.gif);"></div>
+						<div id="ActiveSubmenuItemIcon_faq" class="ActiveSubmenuItemIcon" style="background-image:url(layout/images/global/menu/icon-activesubmenu.gif);"></div>
+						<div id="ActiveSubmenuItemLabel_faq" class="SubmenuitemLabel">Server Info</div>
+						<div class="RightChain" style="background-image:url(layout/images/global/menu/chain.gif);"></div>
+					</div>
+				</a>
+				<a href="support.php">
+					<div id="submenu_faq" class="Submenuitem" onMouseOver="MouseOverSubmenuItem(this)" onMouseOut="MouseOutSubmenuItem(this)">
+						<div class="LeftChain" style="background-image:url(layout/images/global/menu/chain.gif);"></div>
+						<div id="ActiveSubmenuItemIcon_faq" class="ActiveSubmenuItemIcon" style="background-image:url(layout/images/global/menu/icon-activesubmenu.gif);"></div>
+						<div id="ActiveSubmenuItemLabel_faq" class="SubmenuitemLabel">Support Team</div>
+						<div class="RightChain" style="background-image:url(layout/images/global/menu/chain.gif);"></div>
+					</div>
+				</a>
+			</div>
 		</div>
-		</div>
-			</span>
-		<div style="visibility: hidden; display: none;" id="support_Submenu" class="Submenu">
-<a href="serverinfo.php">
-  <div id="submenu_faq" class="Submenuitem" onMouseOver="MouseOverSubmenuItem(this)" onMouseOut="MouseOutSubmenuItem(this)">
-    <div class="LeftChain" style="background-image:url(layout/images/global/menu/chain.gif);"></div>
-    <div id="ActiveSubmenuItemIcon_faq" class="ActiveSubmenuItemIcon" style="background-image:url(layout/images/global/menu/icon-activesubmenu.gif);"></div>
-    <div id="ActiveSubmenuItemLabel_faq" class="SubmenuitemLabel">Server Info</div>
-    <div class="RightChain" style="background-image:url(layout/images/global/menu/chain.gif);"></div>
-  </div>
-</a>
-<a href="support.php">
-  <div id="submenu_faq" class="Submenuitem" onMouseOver="MouseOverSubmenuItem(this)" onMouseOut="MouseOutSubmenuItem(this)">
-    <div class="LeftChain" style="background-image:url(layout/images/global/menu/chain.gif);"></div>
-    <div id="ActiveSubmenuItemIcon_faq" class="ActiveSubmenuItemIcon" style="background-image:url(layout/images/global/menu/icon-activesubmenu.gif);"></div>
-    <div id="ActiveSubmenuItemLabel_faq" class="SubmenuitemLabel">Support Team</div>
-    <div class="RightChain" style="background-image:url(layout/images/global/menu/chain.gif);"></div>
-  </div>
-</a>
-</div>
-</div>
 		<div id='shops' class='menuitem'>
 			<span onClick="MenuItemAction('shops')">
 				<div class='MenuButton' style='background-image:url(layout/images/global/menu/button-background.gif);'>
