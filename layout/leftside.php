@@ -292,6 +292,40 @@
 				</a>
 			</div>
 		</div>
+		<div id="support" class="menuitem">
+			<span onClick="MenuItemAction('support')">
+				<div class="MenuButton" style="background-image:url(layout/images/global/menu/button-background.gif);">
+				<div onMouseOver="MouseOverMenuItem(this);" onMouseOut="MouseOutMenuItem(this);"><div class="Button" style="background-image:url(layout/images/global/menu/button-background-over.gif);"></div>
+			<span style="visibility: visible;" id="support_Lights" class="Lights">
+				<div class="light_lu" style="background-image:url(layout/images/global/menu/green-light.gif);"></div>
+				<div class="light_ld" style="background-image:url(layout/images/global/menu/green-light.gif);"></div>
+				<div class="light_ru" style="background-image:url(layout/images/global/menu/green-light.gif);"></div>
+			</span>
+				<div id="support_Icon" class="Icon" style="background-image:url(layout/images/global/menu/icon-support.gif);"></div>
+				<div id="support_Label" class="Label" style="background-image:url(layout/images/global/menu/label-support.gif);"></div>
+				<div id="support_Extend" class="Extend" style="background-image:url(layout/images/global/menu/plus.gif);"></div>
+		</div>
+		</div>
+			</span>
+		<div style="visibility: hidden; display: none;" id="support_Submenu" class="Submenu">
+<a href="serverinfo.php">
+  <div id="submenu_faq" class="Submenuitem" onMouseOver="MouseOverSubmenuItem(this)" onMouseOut="MouseOutSubmenuItem(this)">
+    <div class="LeftChain" style="background-image:url(layout/images/global/menu/chain.gif);"></div>
+    <div id="ActiveSubmenuItemIcon_faq" class="ActiveSubmenuItemIcon" style="background-image:url(layout/images/global/menu/icon-activesubmenu.gif);"></div>
+    <div id="ActiveSubmenuItemLabel_faq" class="SubmenuitemLabel">Server Info</div>
+    <div class="RightChain" style="background-image:url(layout/images/global/menu/chain.gif);"></div>
+  </div>
+</a>
+<a href="support.php">
+  <div id="submenu_faq" class="Submenuitem" onMouseOver="MouseOverSubmenuItem(this)" onMouseOut="MouseOutSubmenuItem(this)">
+    <div class="LeftChain" style="background-image:url(layout/images/global/menu/chain.gif);"></div>
+    <div id="ActiveSubmenuItemIcon_faq" class="ActiveSubmenuItemIcon" style="background-image:url(layout/images/global/menu/icon-activesubmenu.gif);"></div>
+    <div id="ActiveSubmenuItemLabel_faq" class="SubmenuitemLabel">Support Team</div>
+    <div class="RightChain" style="background-image:url(layout/images/global/menu/chain.gif);"></div>
+  </div>
+</a>
+</div>
+</div>
 		<div id='shops' class='menuitem'>
 			<span onClick="MenuItemAction('shops')">
 				<div class='MenuButton' style='background-image:url(layout/images/global/menu/button-background.gif);'>
