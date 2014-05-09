@@ -152,6 +152,44 @@
 				</a>
 			</div>
 		</div>
+		
+		<div id='gameguides' class='menuitem'>
+			<span onClick="MenuItemAction('gameguides')">
+				<div class='MenuButton' style='background-image:url(layout/images/global/menu/button-background.gif);'>
+					<div onMouseOver='MouseOverMenuItem(this);' onMouseOut='MouseOutMenuItem(this);'><div class='Button' style='background-image:url(layout/images/global/menu/button-background-over.gif);'></div>
+						<span id='gameguides_Lights' class='Lights'>
+							<div class='light_lu' style='background-image:url(layout/images/global/menu/green-light.gif);'></div>
+							<div class='light_ld' style='background-image:url(layout/images/global/menu/green-light.gif);'></div>
+							<div class='light_ru' style='background-image:url(layout/images/global/menu/green-light.gif);'></div>
+						</span>
+						<div id='gameguides_Icon' class='Icon' style='background-image:url(layout/images/global/menu/icon-gameguides.gif);'></div>
+						<div id='gameguides_Label' class='Label' style='background-image:url(layout/images/global/menu/label-gameguides.gif);'></div>
+						<div id='gameguides_Extend' class='Extend' style='background-image:url(layout/images/global/general/plus.gif);'></div>
+					</div>
+				</div>
+			</span>
+			<div style="visibility: hidden; display: none;" id='gameguides_Submenu' class='Submenu'>
+<!--
+				<a href='gallery.php'>
+					<div id='submenu_quickstart' class='Submenuitem' onMouseOver='MouseOverSubmenuItem(this)' onMouseOut='MouseOutSubmenuItem(this)'>
+						<div class='LeftChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
+						<div id='ActiveSubmenuItemIcon_quickstart' class='ActiveSubmenuItemIcon' style='background-image:url(layout/images/global/menu/icon-activesubmenu.gif);'></div>
+						<div id='ActiveSubmenuItemLabel_quickstart' class='SubmenuitemLabel'>QuickStart</div>
+						<div class='RightChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
+					</div>
+				</a>
+-->				
+				<a href='spells.php'>
+					<div id='submenu_spells' class='Submenuitem' onMouseOver='MouseOverSubmenuItem(this)' onMouseOut='MouseOutSubmenuItem(this)'>
+						<div class='LeftChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
+						<div id='ActiveSubmenuItemIcon_spells' class='ActiveSubmenuItemIcon' style='background-image:url(layout/images/global/menu/icon-activesubmenu.gif);'></div>
+						<div id='ActiveSubmenuItemLabel_spells' class='SubmenuitemLabel'>Spells</div>
+						<div class='RightChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
+					</div>
+				</a>
+			</div>
+		</div>		
+		
 		<div id='community' class='menuitem'>
 			<span onClick="MenuItemAction('community')">
 				<div class='MenuButton' style='background-image:url(layout/images/global/menu/button-background.gif);'>

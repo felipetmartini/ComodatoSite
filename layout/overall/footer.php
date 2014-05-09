@@ -9,9 +9,7 @@
 										<div class="Corner-br" style="background-image:url(layout/images/global/content/corner-br.gif);"></div>
 									</div>
 								</div>
-								<div id="ThemeboxesColumn" >
-									<?php include 'layout/rightside.php'; ?>
-								</div>
+
 							</div>
 						</div>
 						<div id="Footer">

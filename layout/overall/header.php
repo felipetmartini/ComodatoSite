@@ -46,6 +46,17 @@
 				<div id="ContentRow">
 					<?php include 'layout/leftside.php'; ?>
 					<div id="ContentColumn">
+
+																<?php include 'serverinfo3.php'; ?>
+																
+
+									<div id="ThemeboxesColumn" >
+										<?php include 'layout/rightside.php'; ?>
+									</div>									
+								</div>
+							</div>
+						</div>
+
 						<div id="Content" class="Content">
 							<div id="ContentHelper">
 								<div id="news" class="Box">
@@ -53,9 +64,8 @@
 									<div class="Corner-tr" style="background-image:url(layout/images/global/content/corner-tr.gif);"></div>
 									<div class="Border_1" style="background-image:url(layout/images/global/content/border-1.gif);"></div>
 									<div class="BorderTitleText" style="background-image:url(layout/images/global/content/title-background-green.gif);"></div>
-									<!-- <img id="ContentBoxHeadline" class="Title" src="layout/images/global/strings/headline-news.gif" alt="Contentbox headline" /> -->
+									<!-- <img id="ContentBoxHeadline" class="Title" src="layout/images/global/strings/headline-news.gif" alt="Contentbox headline" /> -->						
 									<div class="Border_2">
 										<div class="Border_3">
 											<div class="BoxContent" style="background-image:url(layout/images/global/content/scroll.gif);">
-																<?php include 'serverinfo3.php'; ?>
 											
