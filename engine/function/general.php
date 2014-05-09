@@ -422,4 +422,112 @@ function sanitize($data) {
 function output_errors($errors) {
 	return '<ul><li>'. implode('</li><li>', $errors) .'</li></ul>';
 }
+
+function build_spells($xml, $display_groups) {
+    $t_count = 0;
+    $rune = array();
+    $string = '<?php'."\n".'#Generated spells file from admin panel'."\n".'#Edit at your own risk!';
+    $string .= "\n".'$show_spells_groups = '.($display_groups ? 'true' : 'false').';'."\n".'$spells = array(';
+    foreach($xml as $key => $value)
+    {        
+        if($value['lvl'])
+        {
+            if($key == 'rune')
+            {
+                if($display_groups)
+                {
+                    if($value['group'] == NULL)
+                    {
+                        echo '<span style="color:orange;font-weight:bold">WARNING: Group not found at spell "'.$value['name'].'", set to "Attack".</span><br>';
+                    }
+                    $rune[(string)$value['name']] = ($value['group'] == NULL) ? 'Attack' : $value['group'];
+                }
+                continue;
+            }
+
+            $t_count++;
+            $string .= "\n\t".'array(';
+            
+            if($display_groups)
+            {
+                $string .= "\n\t\t".'"group" => ';
+                {
+                    if($value['conjureId'] !== NULL)
+                    {
+                        $string .= '\''.ucfirst($rune[(string)$value['name']]).'\'';
+                    }
+                    else
+                    {
+                        if($value['group'] == NULL)
+                        {
+                            echo '<span style="color:orange;font-weight:bold">WARNING: Group not found at spell "'.$value['name'].'", set to "Attack".</span><br>';
+                        }
+                        $string .= '\''.ucfirst(($value['group'] == NULL) ? 'Attack' : $value['group']).'\'';
+                    }
+                }
+                $string .= ',';
+            }
+
+            $string .= "\n\t\t".'"type" => ';
+            if(config('TFSVersion') == 'TFS_02')
+            {
+                $string .= (($value['function'] == 'conjure') ? '\'Rune\'' : '\'Instant\'');
+            }
+            if(config('TFSVersion') == 'TFS_10')
+            {
+                $string .= (($value['conjureId'] == NULL) ? '\'Instant\'' : '\'Rune\'');
+            }
+            $string .= ',';
+            $string .= "\n\t\t".'"name" => "'.$value['name'].'",';
+            $string .= "\n\t\t".'"words" => \''.$value['words'].'\',';
+            $string .= "\n\t\t".'"level" => '.$value['lvl'].',';
+            $string .= "\n\t\t".'"mana" => ';
+            $string .= (($value['mana'] == NULL) or ($value['mana'] == '')) ? '\'Var.\'' : $value['mana'];
+            $string .= ',';
+            $string .= "\n\t\t".'"premium" => ';
+            if($value['prem'])
+            {
+                $string .= ($value['prem'] == 1) ? '\'yes\'' : '\'no\'';
+            }
+            else
+            {
+                $string .= '\'no\'';
+            }
+            $string .= ',';
+            $vocs = array();
+            $string .= "\n\t\t".'"vocation" => array(';
+            foreach($value->vocation as $vocation)
+            {
+                if(config('TFSVersion') == 'TFS_02')
+                {
+                    $vocs[] = '\''.$vocation[0]['name'].'\'';
+                }
+                elseif(config('TFSVersion') == 'TFS_03')
+                {
+                    if(strpos($vocation[0]['id'], ';') !== FALSE)
+                    {
+                        $array = explode(';', $vocation[0]['id']);
+                        foreach($array as $voc)
+                        {
+                            $vocs[] = '\''.vocation_id_to_name($voc).'\'';
+                        }
+                    }
+                    else
+                    {
+                        $vocs[] = '\''.vocation_id_to_name((int)$vocation[0]['id']).'\'';
+                    }
+                }
+            }
+            if(count($vocs) < 1) foreach(config('vocations') as $id => $name) if($id > 0) $vocs[] = '\''.$name.'\'';
+            $string .= implode(', ',$vocs).')'."\n\t".'),';
+        } 
+    }    
+    $string .= "\n".'); ?>';
+    echo('Loaded '. $t_count .' spells!<br>');
+    echo 'File "spell.php" '.(file_exists('spell.php') ? 'updated' : 'created').'!<br>';
+    $file = fopen('spell.php', 'w');
+    fwrite($file, $string);
+    fclose($file);
+}
+
 ?>
