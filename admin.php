@@ -246,6 +246,46 @@ echo "Last cached on: ". getClock($basic['cached'], true) .".<br>";
 		</form>
 	</li>
 	
+	    <li>
+        <b>Update spells from file:</b><br>
+        <?php
+            if (!isset($_POST['action'])) 
+            {            
+                $_POST['action'] = 'undefine'; 
+            }
+            
+            if ($_POST['action'] == 'upload')
+            {
+                $xml = $_FILES['file'];
+                $_POST['action'] = 'undefine';
+                if($xml['tmp_name'])
+                {
+                    if($xml['name'] == 'spells.xml')
+                    {
+                        $groups = (isset($_POST['show_groups']) && $_POST['show_groups'] == 'yes') ? true : false;
+                        echo 'Successfully fetched spells.xml!<br>';
+                        echo 'Using temporal file: '. $_FILES['file']['tmp_name'] .'<br>';
+                        build_spells(simplexml_load_file($xml['tmp_name']), $groups);
+                    }
+                    else
+                    {
+                        echo '<span style="color:red;font-weight:bold">ERROR: File "spells.xml" not found.</span>';
+                    }
+                }
+                else
+                {
+                    echo '<span style="color:red;font-weight:bold">ERROR: Upload failed.</span>';
+                }
+            }
+        ?>
+        <form enctype='multipart/form-data' method='POST'>
+            <input type='checkbox' name='show_groups' value='yes'> Show spells groups (Only for TFS 0.2.9+)<br>
+            <input type='hidden' name='action' value='upload' />
+            <input type='file' name='file' />
+            <input type='submit' value='Submit' />
+        </form>
+    </li>
+	
 	<?php
 		}
 		// end if mask

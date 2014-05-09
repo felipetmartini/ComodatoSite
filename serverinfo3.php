@@ -1,3 +1,13 @@
+						<div id="Content" class="Content">
+							<div id="ContentHelper">
+								<div id="news" class="Box">
+									<div class="Corner-tl" style="background-image:url(layout/images/global/content/corner-tl.gif);"></div>
+									<div class="Corner-tr" style="background-image:url(layout/images/global/content/corner-tr.gif);"></div>
+									<div class="Border_1" style="background-image:url(layout/images/global/content/border-1.gif);"></div>
+									<div class="Border_2">
+										<div class="Border_3">
+											<div class="BoxContent" style="background-image:url(layout/images/global/content/scroll.gif);">
+
 <?PHP 
 echo '<table border="0" cellspacing="0"><tr class="yellow"><td><center>Server Information</center></td></tr> 
 <tr><td>'; 
@@ -14,3 +24,14 @@ echo '<tr><td><center>The best player is: <a href="characterprofile.php?name='.$
 echo '<tr><td><center>We have <b>'.$fetchshit3['shiter'].'</b> accounts in our database, <b>'.$fetchshit['shit'].'</b> players, and <b>'.$fetchshit4['yea'].' </b>guilds </center></td></tr>'; 
 echo '</table>'; 
 ?>
+																
+											</div>
+										</div>
+									</div>																
+									<div class="Border_1" style="background-image:url(layout/images/global/content/border-1.gif);"></div>
+									<div class="CornerWrapper-b">
+										<div class="Corner-bl" style="background-image:url(layout/images/global/content/corner-bl.gif);"></div>
+									</div>
+									<div class="CornerWrapper-b">
+										<div class="Corner-br" style="background-image:url(layout/images/global/content/corner-br.gif);"></div>
+									</div>
