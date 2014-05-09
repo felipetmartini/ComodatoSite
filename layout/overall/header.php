@@ -46,17 +46,11 @@
 				<div id="ContentRow">
 					<?php include 'layout/leftside.php'; ?>
 					<div id="ContentColumn">
-
-																<?php include 'serverinfo3.php'; ?>
-																
-
-									<div id="ThemeboxesColumn" >
-										<?php include 'layout/rightside.php'; ?>
-									</div>									
-								</div>
-							</div>
-						</div>
-
+							<?php include 'serverinfo3.php'; ?>
+						<div id="ThemeboxesColumn" >
+							<?php include 'layout/rightside.php'; ?>
+						</div>									
+					</div>
 						<div id="Content" class="Content">
 							<div id="ContentHelper">
 								<div id="news" class="Box">
@@ -68,4 +62,3 @@
 									<div class="Border_2">
 										<div class="Border_3">
 											<div class="BoxContent" style="background-image:url(layout/images/global/content/scroll.gif);">
-											
