@@ -1801,3 +1801,7 @@ label {
 .updateTable tr td input {
   width: 500px;
 }
+
+#changelogTable {
+  width: 735px;
+}
