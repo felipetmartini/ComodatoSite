@@ -12,7 +12,8 @@
 <h2>How to connect and play:</h2>
 <ol>
 	<li>
-		<a href="http://tibia.sx/res/clients/exe/tibia<?php echo ($config['client']); ?>.exe">Download</a>, install and start the tibia client if you havent already.
+		<a href="<?php echo $config['client_download']; ?>">Download</a> and install the tibia client if you havent already.
+
 	</li>
 	<li> 
 	<a href="http://otservlist.org/ipc/122746">Download Tibia Loader!</a>
@@ -22,10 +23,16 @@
 		In the IP changer, write this in the IP field: <?php echo $_SERVER['SERVER_NAME']; ?>
 	</li>
 	<li>
-		In the IP changer, write this in the Port field: <?php echo $config['port']; ?>
+		In the IP changer, click on <strong>Settings</strong> and then <strong>Add new Tibia client.</strong>
 	</li>
 	<li>
-		Now you can successfully login on the tibia client and play. <br>
+		In the IP changer, in the Version field, write your desired version.
+	</li>
+	<li>
+		In the IP changer, click on <strong>Browse</strong>, navigate to your desired Tibia version folder, select Tibia.exe and click <strong>Add</strong>. Then click <strong>Close</strong>
+	</li>
+	<li>
+		Now you can successfully login on the tibia client and play clicking on <strong>Apply</strong> every time you want.<br>
 		If you do not have an account to login with, you need to register an account <a href="register.php">HERE</a>.
 	</li>
 </ol>
