@@ -4,7 +4,7 @@ include 'layout/overall/header.php';
 
 // Import from config:
 $shop = $config['shop'];
-$shop_list = $config['shop_offers'];
+$shop_list = mysql_select_multi("SELECT `id`, `type`, `itemid`, `count`, `describtion`, `points` FROM `znote_shop` WHERE 1;");
 
 if (!empty($_POST['buy'])) {
 	$time = time();
@@ -92,8 +92,12 @@ if ($config['shop_auction']['characterAuction']) {
 		<td>Points:</td>
 		<td>Action:</td>
 	</tr>
+	
 		<?php
-		foreach ($shop_list as $key => $offers) {
+		if (!empty($shop_list) || $shop_list !== false) {
+    //
+
+		foreach ($shop_list as $offers) {
 		echo '<tr class="special">';
 		echo '<td>'. $offers['describtion'] .'</td>';
 		if ($config['shop']['showImage']) echo '<td><img src="http://'. $config['shop']['imageServer'] .'/'. $offers['itemid'] .'.'. $config['shop']['imageType'] .'" alt="img"></td>';
@@ -104,12 +108,13 @@ if ($config['shop_auction']['characterAuction']) {
 		echo '<td>';
 		?>
 		<form action="" method="POST">
-			<input type="hidden" name="buy" value="<?php echo (int)$key; ?>">
+			<input type="hidden" name="buy" value="<?php echo (int)$offers; ?>">
 			<input type="submit" value="  PURCHASE  "  class="needconfirmation" data-item-name="<?php echo $offers['describtion']; ?>" data-item-cost="<?php echo $offers['points']; ?>">
 		</form>
 		<?php
 		echo '</td>';
 		echo '</tr>';
+		}
 		}
 		?>
 </table>

@@ -2,7 +2,7 @@
     // Cache the results
     $cache = new Cache('engine/cache/topQuestMakers');
     if ($cache->hasExpired()) {
-        $quests = mysql_select_multi("SELECT `p`.`name` AS `name`, `p`.`level` AS `level`, `p`.`group_id` AS `group_id`, COUNT(`ps`.`value`) AS `count` FROM `player_storage` ps LEFT JOIN `players` p ON `p`.`id` = `ps`.`player_id` WHERE `level` >= 8 AND `group_id` < 4 GROUP BY `name` ORDER BY `count` DESC, `level` DESC LIMIT 10;");
+        $quests = mysql_select_multi("SELECT `p`.`name` AS `name`, `p`.`level` AS `level`, `p`.`group_id` AS `group_id`, COUNT(`ps`.`value`) AS `count` FROM `player_storage` ps LEFT JOIN `players` p ON `p`.`id` = `ps`.`player_id` WHERE `key` IN (954) AND `level` >= 8 AND `group_id` < 4 GROUP BY `name` ORDER BY `count` DESC, `level` DESC LIMIT 10;");
        
         $cache->setContent($quests);
         $cache->save();
