@@ -17,7 +17,7 @@
 	$config['sqlUser'] = 'comodato';
 	
 	// phpmyadmin password for OT server:
-	$config['sqlPassword'] = 'hvbhjgjhgjhgjhgjhgjh';
+	$config['sqlPassword'] = 'jkhdsfjdskjhdskjfvkdshfvkjhkj';
 	
 	// The database name to connect to. (This is usually same as username).
 	$config['sqlDatabase'] = 'comodato';
@@ -107,8 +107,8 @@
                 array(12034,2,'The Ice Islands Quest',0),
                 array(12035,2,'The Ice Islands Quest',0),
                 array(12036,6,'The Ice Islands Quest',1),
-
-	
+				);
+				
 	// Vocation ids and names.
 	$config['vocations'] = array(
 		0 => 'No vocation',
