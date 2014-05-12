@@ -649,7 +649,7 @@ if ($playerData['mana']['percent'] > 100) $playerData['mana']['percent'] = 100;
                                 $firstrun = 1;
                                 if ($config['TFSVersion'] == 'TFS_10' && $config['EnableQuests'] == true)
                                 {
-                                        foreach ($config['quests'] as $cquest)
+                                        foreach ($config['Quests'] as $cquest)
                                         {
                                                 $sqlquests =  mysql_select_single("SELECT `player_id`, `key`, `value` FROM player_storage WHERE `player_id` = $user_id AND `key` = $cquest[0]");
                                                 $totalquests = $totalquests + 1;
