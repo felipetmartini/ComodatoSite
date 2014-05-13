@@ -589,6 +589,8 @@ if ($playerData['mana']['percent'] > 100) $playerData['mana']['percent'] = 100;
 
                                 <!-- QUEST PROGRESSION -->
                                 <?php
+                                $totalquests = 0;
+                                $completedquests = 0;
                                 $firstrun = 1;
                                 if ($config['TFSVersion'] == 'TFS_10' && $config['EnableQuests'] == true)
                                 {
