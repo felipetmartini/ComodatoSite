@@ -594,7 +594,10 @@ if ($playerData['mana']['percent'] > 100) $playerData['mana']['percent'] = 100;
                                 if ($config['TFSVersion'] == 'TFS_10' && $config['EnableQuests'] == true)
                                 {
                                         $sqlquests =  mysql_select_multi("SELECT `player_id`, `key`, `value` FROM player_storage WHERE `player_id` = $user_id");
-                                        foreach ($config['Quests'] as $cquest)
+									if (!$sqlquests) echo '<b><font color="green">This player has no big quests yet.</font></b>';
+									else
+									{
+									   foreach ($config['Quests'] as $cquest)
                                         {
                                                 $totalquests = $totalquests + 1;
                                                 foreach ($sqlquests as $dbquest)
@@ -629,6 +632,7 @@ if ($playerData['mana']['percent'] > 100) $playerData['mana']['percent'] = 100;
                                                         $totalquests = 0;
                                                 }
                                         }
+									}
                                 }
                                 if ($firstrun == 0)
                                 {
