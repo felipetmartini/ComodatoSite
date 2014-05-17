@@ -644,18 +644,23 @@ if ($playerData['mana']['percent'] > 100) $playerData['mana']['percent'] = 100;
 				
 				<!-- END DEATH LIST -->
 
-                                <!-- QUEST PROGRESSION -->
+				<!-- QUEST PROGRESSION -->
                                 <?php
+                                $totalquests = 0;
+                                $completedquests = 0;
                                 $firstrun = 1;
                                 if ($config['TFSVersion'] == 'TFS_10' && $config['EnableQuests'] == true)
                                 {
+                                        $sqlquests =  mysql_select_multi("SELECT `player_id`, `key`, `value` FROM player_storage WHERE `player_id` = $user_id");
                                         foreach ($config['quests'] as $cquest)
                                         {
-                                                $sqlquests =  mysql_select_single("SELECT `player_id`, `key`, `value` FROM player_storage WHERE `player_id` = $user_id AND `key` = $cquest[0]");
                                                 $totalquests = $totalquests + 1;
-                                                if ($cquest[0] == $sqlquests['key'] && $cquest[1] == $sqlquests['value'])
+                                                foreach ($sqlquests as $dbquest)
                                                 {
-                                                        $completedquests = $completedquests + 1;
+                                                        if ($cquest[0] == $dbquest['key'] && $cquest[1] == $dbquest['value'])
+                                                        {
+                                                                $completedquests = $completedquests + 1;
+                                                        }
                                                 }
                                                 if ($cquest[3] == 1)
                                                 {
@@ -691,7 +696,8 @@ if ($playerData['mana']['percent'] > 100) $playerData['mana']['percent'] = 100;
                                 ?>
                                 <!-- END QUEST PROGRESSION -->
 
-								<!-- CHARACTER LIST -->
+				<!-- CHARACTER LIST -->
+
 				<?php
 				if (user_character_hide($profile_data['name']) != 1 && user_character_list_count(user_character_account_id($name)) > 1) {
 				?>

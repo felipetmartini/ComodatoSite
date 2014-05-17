@@ -9,6 +9,10 @@
 	$config['site_title'] = 'World of Comodato';
 	$config['site_title_context'] = 'Global 100% Full SERVER DEDICADO 24h';
 	
+	// Path to server folder without / Example: C:\Users\Alvaro\Documents\GitHub\forgottenserver
+	$config['server_path'] = 'C:\Users\Felipe\Documents\GitHub\ComodatoGLOBAL'; 
+	
+	
 	// ------------------------ \\
 	// MYSQL CONNECTION DETAILS \\
 	// ------------------------ \\
@@ -45,11 +49,11 @@
 	// ------------------- \\
 	// CUSTOM SERVER STUFF \\
 	// ------------------- \\
-		
-		// Enable / disable Questlog function (true false) 
+
+	// Enable / disable Questlog function (true / false) 
 	        $config['EnableQuests'] = true;
 
-		// array for filling questlog (Questid, max value, name, end of the quest fill 1 for the last part 0 for all others)
+	// array for filling questlog (Questid, max value, name, end of the quest fill 1 for the last part 0 for all others)
 	        $config['Quests'] = array(
                 array(1501,100,'Killing in the Name of',0),
                 array(1502,150,'Killing in the Name of',0),
@@ -108,7 +112,9 @@
                 array(12035,2,'The Ice Islands Quest',0),
                 array(12036,6,'The Ice Islands Quest',1),
 
-	
+                );
+
+
 	// Vocation ids and names.
 	$config['vocations'] = array(
 		0 => 'No vocation',
