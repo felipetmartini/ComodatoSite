@@ -111,7 +111,6 @@
                 array(12034,2,'The Ice Islands Quest',0),
                 array(12035,2,'The Ice Islands Quest',0),
                 array(12036,6,'The Ice Islands Quest',1),
-
 				);
 				
 	// Vocation ids and names.
@@ -288,7 +287,6 @@
 	// -------------- \\
 	// Enable or disable changelog ticker in news page.
 	$config['UseChangelogTicker'] = true;
-	
 	// Highscore configuration
 	$config['highscore'] = array(
 			'rows' => 100,
@@ -338,7 +336,8 @@
 	 // Download link to client. Recommended:
 	 // Select download link from remere map editor website!
 	 // See list of clients: http://remeresmapeditor.com/marklar.php?clients
-	$config['client_download'] = 'http://tibia.sx/res/clients/exe/tibia'. $config['client'] .'.exe';
+	$config['client_download'] = 'http://clients.tibiaking.com/client/windows/'. $config['client'] .'';
+	$config['client_download_linux'] = 'http://clients.tibiaking.com/client/linux/'. $config['client'] .'';
 	
 	$config['port'] = 7171; // Port number to connect to your OT.
 	

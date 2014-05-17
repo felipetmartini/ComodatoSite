@@ -3,22 +3,18 @@
 <h1>Downloads</h1>
 <p>In order to play, you need an compatible IP changer and a Tibia client.</p>
 
-
-	<p> 
-	<a href="http://otservlist.org/ipc/122746">Download Tibia Loader!</a>
-	</p>
-<p>Download Tibia client <?php echo ($config['client'] / 100); ?> <a href="<?php echo $config['client_download']; ?>">HERE</a>.</p>
+<p>Download otland IP changer <a href="http://static0.otland.net/ipchanger.exe">HERE</a>.</p>
+<p>Download Tibia client <?php echo ($config['client'] / 100); ?> for windows <a href="<?php echo $config['client_download']; ?>">HERE</a>.</p>
+<p>Download Tibia client <?php echo ($config['client'] / 100); ?> for linux <a href="<?php echo $config['client_download_linux']; ?>">HERE</a>.</p>
 
 <h2>How to connect and play:</h2>
 <ol>
 	<li>
 		<a href="<?php echo $config['client_download']; ?>">Download</a> and install the tibia client if you havent already.
-
 	</li>
 	<li> 
 	<a href="http://otservlist.org/ipc/122746">Download Tibia Loader!</a>
 	</li>
-
 	<li>
 		In the IP changer, write this in the IP field: <?php echo $_SERVER['SERVER_NAME']; ?>
 	</li>

@@ -1,24 +1,8 @@
 <?php require_once 'engine/init.php'; include 'layout/overall/header.php'; ?>
 
-<<<<<<< HEAD
-
-
-<h1>World of Comodato</h1>
-
-<h1>NOVO LANÇAMENTO SERVIDOR DEDICADO 100% GLOBAL, STAGES E VOCAÇÕES BALANCEADAS, VENHA CONFERERIR, COMODATO UM OT PENSANDO EM VOCÊ.</h1>
-<p>
--ATUALIZAÇÕES FREQUENTES
--UPDATES
-- PREMMY ACCOUNT, VARIAS VANTAGENS. 
-- STAGES BALANCEADAS
--PROMOÇÕES
-OQUE ESTÁ ESPERANDO, ENTREM JÁ,  VENHAM CONFERIR O MELHOR SERVIDOR GLOBAL 10.37 ATUALIZADO SEM BUGS, O SERVIDOR SEMPRE ATUALIZANDO COM O DECORRER DO UPDATE.
-</p>
-=======
 <h1>Server Information</h1>
 Here you will find all basic information about <?php echo '<b>'.$config['site_title'].'</b>'; ?>
 <?php
->>>>>>> 309c17eca34470dd5f762ad3c437fe6394d734d1
 
 // Check if server stages are enabled
 $stages_path = simplexml_load_file($config['server_path'].'/data/xml/stages.xml');

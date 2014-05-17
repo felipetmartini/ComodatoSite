@@ -586,7 +586,6 @@ if ($playerData['mana']['percent'] > 100) $playerData['mana']['percent'] = 100;
 				</li>
 				
 				<!-- END DEATH LIST -->
-
 				<!-- QUEST PROGRESSION -->
                                 <?php
                                 $totalquests = 0;
@@ -594,6 +593,7 @@ if ($playerData['mana']['percent'] > 100) $playerData['mana']['percent'] = 100;
                                 $firstrun = 1;
                                 if ($config['TFSVersion'] == 'TFS_10' && $config['EnableQuests'] == true)
                                 {
+                                        $sqlquests =  mysql_select_multi("SELECT `player_id`, `key`, `value` FROM player_storage WHERE `player_id` = $user_id");
                                         foreach ($config['Quests'] as $cquest)
                                         {
                                                 $totalquests = $totalquests + 1;
@@ -637,9 +637,7 @@ if ($playerData['mana']['percent'] > 100) $playerData['mana']['percent'] = 100;
                                 }
                                 ?>
                                 <!-- END QUEST PROGRESSION -->
-
 				<!-- CHARACTER LIST -->
-
 				<?php
 				if (user_character_hide($profile_data['name']) != 1 && user_character_list_count(user_character_account_id($name)) > 1) {
 				?>

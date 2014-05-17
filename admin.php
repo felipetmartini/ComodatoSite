@@ -131,7 +131,12 @@ echo "Last cached on: ". getClock($basic['cached'], true) .".<br>";
 ?>
 </p>
 <ul>
-
+	<li>
+		<b>Permanently Delete/erase character from database:</b> 
+		<form type="submit" action="" method="post">
+			<input type="text" name="del_name" placeholder="Character name...">
+		</form>
+	</li>
 	<li>
 		<b>Ban/violate :3 character and/or his account:</b>
 		<form action="" method="post">
