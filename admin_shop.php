@@ -2,7 +2,7 @@
 require_once 'engine/init.php';
 include 'layout/overall/header.php'; 
 protect_page();
-admin_only($user_data);
+mask_only($user_data);
 $orders_ammount = isset($_GET['orders_ammount']) && $_GET['orders_ammount'] > 0 && $_GET['orders_ammount'] <= 200 ? (int)$_GET['orders_ammount'] : 50; 
 $orders = mysql_select_multi('SELECT * FROM `znote_shop_orders` ORDER BY `id` DESC LIMIT ' . $orders_ammount);
 $order_types = array(1 => 'Item', 2 => 'Premium Days', 3 => 'Sex Change', 4 => 'Custom');

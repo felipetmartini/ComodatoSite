@@ -48,6 +48,10 @@
 		<li>
 			<a href='admin_skills.php'>Admin Skills</a>
 		</li>
+		<li>
+			<a href='admin_shop.php'>Admin Shop</a>
+		</li>
+
 		
 				<?php
 		}
