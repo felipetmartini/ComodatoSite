@@ -486,64 +486,7 @@ if ($playerData['mana']['percent'] > 100) $playerData['mana']['percent'] = 100;
 </table>
 <!-- END detailed character info -->
 
-	<!-- 		QUESTS SHOWER 		 -->
-				                <table id="questTable">
-    <?php
-    $completed = '<font color="green">[Completed]</font>';
-    $notstarted = '<font color="red">[Not started]</font>';
-    function Progress($min, $max, $design = '<font color="orange">[x%]</font>') {
-        $design = explode("x%",$design);
-        $percent = ($min / $max) * 100;
-        return $design[0] . $percent . $design[1];
-    }
-    $quests = array(
-        // Simple quests
-        'Annihilator' => 30015,
-        'Inquestion' => 200,
-       
 
-        // Advanced quest with progress par:
-        'Svargrond Arena' => array(
-            42381,
-            3,
-        ),
-    );
-    ?>
-    <tr class="yellow">
-        <td>Quest</td>
-        <td>Status</td>
-    </tr>
-    <?php
-    // Rolling through quests
-    foreach ($quests as $key => $quest) {
-
-        // Is quest NOT an array (advanced quest?)
-        if (!is_array($quest)) {
-            // Query to find quest results
-            $query = mysql_select_single("SELECT `value` FROM `player_storage` WHERE `key`='$quest' AND `player_id`='$user_id' AND `value`='1' LIMIT 1;");
-
-            if ($query !== false) $quest = $completed;
-            else $quest = $notstarted;
-
-        } else {
-            $query = mysql_select_single("SELECT `value` FROM `player_storage` WHERE `key`='".$quest[0]."' AND `player_id`='$user_id' AND `value`>'0' LIMIT 1;");
-            if (!$query) $quest = $notstarted;
-            else {
-                if ($query['value'] >= $quest[1]) $quest = $completed;
-                else $quest = Progress($query['value'], $quest[1]);
-            }
-        }
-        ?>
-        <tr>
-            <td><?php echo $key; ?></td>
-            <td><?php echo $quest; ?></td>
-        </tr>
-        <?php
-    }
-    ?>
-</table>
-				
-			<!-- 		QUESTS SHOWER ENDS		 -->
 				
 				<li><font class="profile_font" name="profile_font_comment">Comment:</font> <br><textarea name="profile_comment_textarea" cols="70" rows="10" readonly="readonly" class="span12"><?php echo $profile_znote_data['comment']; ?></textarea></li>
 				<!-- DEATH LIST -->
@@ -651,8 +594,7 @@ if ($playerData['mana']['percent'] > 100) $playerData['mana']['percent'] = 100;
                                 $firstrun = 1;
                                 if ($config['TFSVersion'] == 'TFS_10' && $config['EnableQuests'] == true)
                                 {
-                                        $sqlquests =  mysql_select_multi("SELECT `player_id`, `key`, `value` FROM player_storage WHERE `player_id` = $user_id");
-                                        foreach ($config['quests'] as $cquest)
+                                        foreach ($config['Quests'] as $cquest)
                                         {
                                                 $totalquests = $totalquests + 1;
                                                 foreach ($sqlquests as $dbquest)
