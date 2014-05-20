@@ -626,7 +626,6 @@ function logo_exists($guild) {
 
 		echo'engine/guildimg/default@logo.gif';
 	}
-
 }
 
 ?>

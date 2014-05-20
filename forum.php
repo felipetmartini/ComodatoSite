@@ -3,10 +3,6 @@
 //echo '<img src="http://1.imgland.net/4c6aoz.png">'
 protect_page();
 error_reporting(E_ALL ^ E_NOTICE);
-				
-						
-					
-
 if (!$config['forum']['enabled']) admin_only($user_data);
 /*  -------------------------------
 	---		Znote AAC forum 	---

@@ -68,7 +68,8 @@
 					$code = preg_replace('/placeholder([0-9]+)/', '(.*?)', preg_quote(preg_replace('/\{\$([0-9]+)\}/', 'placeholder$1', $tag), '/'));
 					$string = preg_replace('/'.$code.'/i', $value, $string);
 			}
-
+				return $string;
+			}
 			for ($i = $current; $i < $current + $config['news_per_page']; $i++) {
 				if (isset($news[$i])) {
 					?>
