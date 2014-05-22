@@ -226,7 +226,7 @@
 		Some custom layouts/templates have custom pages, they can use
 		this sub page functionality for that.
 	*/
-	$config['allowSubPages'] = true;
+	$config['allowSubPages'] = false;
 
 
 	// ---------------- \\
