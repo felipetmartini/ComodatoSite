@@ -69,7 +69,7 @@
 				</div>
 			</span>
 			<div style="visibility: hidden; display: none;" id='news_Submenu' class='Submenu'>
-				<a href='sub.php?page=news'>
+				<a href='index.php'>
 					<div id='submenu_latestnews' class='Submenuitem' onMouseOver='MouseOverSubmenuItem(this)' onMouseOut='MouseOutSubmenuItem(this)'>
 						<div class='LeftChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
 						<div id='ActiveSubmenuItemIcon_latestnews' class='ActiveSubmenuItemIcon' style='background-image:url(layout/images/global/menu/icon-activesubmenu.gif);'></div>
