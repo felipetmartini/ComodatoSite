@@ -10,7 +10,7 @@
 	$config['site_title_context'] = 'Global 100% Full SERVER DEDICADO 24h';
 
 	// Path to server folder without / Example: C:\Users\Alvaro\Documents\GitHub\forgottenserver
-	$config['server_path'] = 'C:\Users\Felipe\Documents\GitHub\ComodatoGLOBAL'; 
+	$config['server_path'] = '/home/themask/Desktop/ComodatoGLOBAL'; 
 
 	// ------------------------ \\
 	// MYSQL CONNECTION DETAILS \\
@@ -226,7 +226,7 @@
 		Some custom layouts/templates have custom pages, they can use
 		this sub page functionality for that.
 	*/
-	$config['allowSubPages'] = false;
+	$config['allowSubPages'] = true;
 
 
 	// ---------------- \\
