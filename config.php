@@ -110,6 +110,81 @@
                 array(12034,2,'The Ice Islands Quest',0),
                 array(12035,2,'The Ice Islands Quest',0),
                 array(12036,6,'The Ice Islands Quest',1),
+
+
+                array(30,4,'In Service of Yalahar',0),
+                array(12011,2,'In Service of Yalahar',0),
+                array(12012,6,'In Service of Yalahar',0),
+                array(12013,8,'In Service of Yalahar',0),
+                array(12014,6,'In Service of Yalahar',0),
+                array(12015,6,'In Service of Yalahar',0),
+                array(12016,8,'In Service of Yalahar',0),
+                array(12017,5,'In Service of Yalahar',0),
+                array(12018,5,'In Service of Yalahar',0),
+                array(12019,4,'In Service of Yalahar',0),
+                array(12020,2,'In Service of Yalahar',0),
+                array(12021,5,'In Service of Yalahar',1),
+
+				
+                array(101,2,'The Travelling Trader Quest',0),
+                array(102,5,'The Travelling Trader Quest',0),
+                array(103,3,'The Travelling Trader Quest',0),
+                array(104,3,'The Travelling Trader Quest',0),
+                array(105,3,'The Travelling Trader Quest',0),
+                array(106,2,'The Travelling Trader Quest',0),
+				array(107,1,'The Travelling Trader Quest',1),
+
+
+                array(110,2,'Factions',0),				
+                array(121,1,'Factions',0),					
+                array(122,4,'Factions',0),					
+                array(123,3,'Factions',0),					
+                array(124,4,'Factions',0),	
+                array(111,1,'Factions',0),	
+                array(112,3,'Factions',0),	
+                array(113,3,'Factions',0),	
+                array(114,4,'Factions',1),					
+
+				
+				
+				
+                array(50013,1,'The Queen of the Banshees',0),	
+                array(50014,1,'The Queen of the Banshees',0),					
+                array(50015,1,'The Queen of the Banshees',0),	
+                array(50016,1,'The Queen of the Banshees',0),					
+                array(50018,1,'The Queen of the Banshees',0),	
+                array(50019,1,'The Queen of the Banshees',0),	
+                array(50021,1,'The Queen of the Banshees',1),	
+
+
+
+                array(1015,1,'The New Frontier',0),				
+                array(12131,3,'The New Frontier',0),
+                array(12132,6,'The New Frontier',0),
+                array(12133,3,'The New Frontier',0),
+                array(12134,2,'The New Frontier',0),
+                array(12135,3,'The New Frontier',0),
+                array(12136,3,'The New Frontier',0),
+                array(12137,3,'The New Frontier',0),
+                array(12138,3,'The New Frontier',0),
+                array(12139,3,'The New Frontier',0),
+                array(12140,3,'The New Frontier',1),
+				
+				
+                array(12055,5,'Hunter Outfit Quest',1),				
+                array(1004,10,'Druid Outfit Quest',1),
+                array(12060,6,'Knight Outfit Quest',1),
+                array(12061,6,'Mage & Summoner Outfit Quest (Wand)',1),
+                array(12064,2,'Mage & Summoner Outfit Quest (Fluid Belt)',1),
+                array(12062,2,'Citizen Outfit Quest (Feather Hat)',1),
+                array(12063,2,'Citizen Outfit Quest (Backpack)',1),
+                array(12037,3,'Norseman Outfit Quest',1),
+                array(1003,5,'Wizard Outfits Quest',1),
+                array(50002,5,'Pirate Outfit Quest (Sabre)',1),
+
+
+
+				
 				);
 				
 	// Vocation ids and names.
