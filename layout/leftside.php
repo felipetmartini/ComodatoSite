@@ -372,6 +372,14 @@
 						<div class="RightChain" style="background-image:url(layout/images/global/menu/chain.gif);"></div>
 					</div>
 				</a>
+				<a href="teamspeak.php">
+					<div id="submenu_faq" class="Submenuitem" onMouseOver="MouseOverSubmenuItem(this)" onMouseOut="MouseOutSubmenuItem(this)">
+						<div class="LeftChain" style="background-image:url(layout/images/global/menu/chain.gif);"></div>
+						<div id="ActiveSubmenuItemIcon_faq" class="ActiveSubmenuItemIcon" style="background-image:url(layout/images/global/menu/icon-activesubmenu.gif);"></div>
+						<div id="ActiveSubmenuItemLabel_faq" class="SubmenuitemLabel">TeamSpeak Server</div>
+						<div class="RightChain" style="background-image:url(layout/images/global/menu/chain.gif);"></div>
+					</div>
+				</a>
 			</div>
 		</div>
 		<div id='shops' class='menuitem'>
