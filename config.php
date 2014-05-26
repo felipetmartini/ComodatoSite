@@ -644,7 +644,7 @@
 	Se você ainda não é cadastrado no PagSeguro, utilize o link abaixo para se cadastrar:
 	https://pagseguro.uol.com.br/?ind=528005
 	*/
-	$config['pagueseguro'] = array(
+	$config['pagseguro'] = array(
 		'enabled' => true,
 		'token' => '0D60BC4F992D42948A112054B5E653F8', // Token gerado pelo PagSeguro
 		'email' => 'felipemartini@brturbo.com.br', // Local da base de dados MySql

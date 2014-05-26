@@ -1,10 +1,16 @@
 ﻿<?php
 // Arquivo de configuracao do ZnoteAAC
-include('config.php');
+	require 'config.php';
+	require 'engine/database/connect.php';
 // Aqui vai seu Token
 define('TOKEN', $config['pagseguro']['token']);
 // Incluindo o arquivo da biblioteca
-include('retorno.php');
+	require 'retorno.php';
+	
+	// Fetch pagueseguro configurations
+	$pagseguro = $config['pagseguro'];
+	$prices = $config['paypal_prices'];
+
 // Função que captura os dados do retorno
 function retorno_automatico ( $VendedorEmail, $TransacaoID, $Referencia, $TipoFrete, $ValorFrete, $Anotacao, $DataTransacao, $TipoPagamento, $StatusTransacao, $CliNome, $CliEmail, $CliEndereco, $CliNumero, $CliComplemento, $CliBairro, $CliCidade, $CliEstado, $CliCEP, $CliTelefone, $produtos, $NumItens) {
 	global $config;
