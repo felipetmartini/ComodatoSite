@@ -641,20 +641,13 @@
 
 	/*
 	Retorno PagSeguro 2.0 - PHP e MySQL
-	por Diogo Dourado - www.dourado.net
-	Última Atualização: 09/06/2011
- 
 	Se você ainda não é cadastrado no PagSeguro, utilize o link abaixo para se cadastrar:
 	https://pagseguro.uol.com.br/?ind=528005
 	*/
 	$config['pagueseguro'] = array(
 		'enabled' => true,
-		'retorno_site' => "http://".$_SERVER['HTTP_HOST']."/success.php",  // Site para onde o usuário vai ser redirecionado ao termino do pagamento
-		'retorno_token' => 'PREENCHA'; // Token gerado pelo PagSeguro
-		'retorno_host' => 'localhost'; // Local da base de dados MySql
-		'retorno_database' => 'PREENCHA'; // Nome da base de dados MySql
-		'retorno_usuario' => 'PREENCHA'; // Usuario com acesso a base de dados MySql
-		'retorno_senha' => 'PREENCHA';  // Senha de acesso a base de dados MySql
+		'token' => '0D60BC4F992D42948A112054B5E653F8', // Token gerado pelo PagSeguro
+		'email' => 'felipemartini@brturbo.com.br', // Local da base de dados MySql
 	);
 	
 	
