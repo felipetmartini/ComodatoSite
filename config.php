@@ -645,7 +645,7 @@
 	https://pagseguro.uol.com.br/?ind=528005
 	*/
 	$config['pagseguro'] = array(
-		'enabled' => true,
+		'enabled' => false,
 		'token' => '0D60BC4F992D42948A112054B5E653F8', // Token gerado pelo PagSeguro
 		'email' => 'felipemartini@brturbo.com.br', // Local da base de dados MySql
 	);
