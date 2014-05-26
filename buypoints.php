@@ -55,7 +55,7 @@ if ($paypal['enabled']) {
 <?php } ?>
 
 <?php
-if ($config['pagueseguro']['enabled'] == true) {
+if ($config['pagseguro']['enabled'] == true) {
 ?>
 
 <?php
