@@ -1,113 +1,46 @@
 ﻿<?php
-/*
-
- Retorno PagSeguro 2.0 - PHP e MySQL
- por Diogo Dourado - www.dourado.net
- Última Atualização: 09/06/2011
- 
- Se você ainda não é cadastrado no PagSeguro, utilize o link abaixo para se cadastrar:
- https://pagseguro.uol.com.br/?ind=528005
-
-*/
-
-
-header('Content-Type: text/html; charset=ISO-8859-1');
-
-/* Edite este arquivo e insira suas configurações */
-
-include 'PagSeguroRetornoConfig.php'; 
-
-/* Não é necessário alterar nada desta linha para baixo */
-
-include 'PagSeguroRetornoFuncoes.php';
-define('TOKEN', $retorno_token);
-
-
-if (count($_POST) > 0) {
-	
-	$npi = new PagSeguroNpi();
-	$result = $npi->notificationPost();
-	
-	$transacaoID = isset($_POST['TransacaoID']) ? $_POST['TransacaoID'] : '';
-	
-	if ($result == "VERIFICADO") {
-	
-		// Recebendo Dados
-		$VendedorEmail  = $_POST['VendedorEmail'];
-		$TransacaoID = $_POST['TransacaoID'];
-		$Referencia = $_POST['Referencia'];
-		$Extras = MoedaBR($_POST['Extras']);
-		$TipoFrete = $_POST['TipoFrete'];
-		$ValorFrete = MoedaBR($_POST['ValorFrete']);
-		$DataTransacao = ConverterData($_POST['DataTransacao']);
-		$Anotacao = $_POST['Anotacao'];
-		$TipoPagamento = $_POST['TipoPagamento'];
-		$StatusTransacao = $_POST['StatusTransacao'];
-
-		$CliNome = $_POST['CliNome'];
-		$CliEmail = $_POST['CliEmail'];
-		$CliEndereco = $_POST['CliEndereco'];
-		$CliNumero = $_POST['CliNumero'];
-		$CliComplemento = $_POST['CliComplemento'];
-		$CliBairro = $_POST['CliBairro'];
-		$CliCidade = $_POST['CliCidade'];
-		$CliEstado = $_POST['CliEstado'];
-		$CliCEP = $_POST['CliCEP'];
-		$CliTelefone = $_POST['CliTelefone'];
-
-		$NumItens = $_POST['NumItens'];
-		
-		// Gravando Dados
-		mysql_query("INSERT into PagSeguroTransacoes SET
-		VendedorEmail='$VendedorEmail',	
-		TransacaoID='$TransacaoID',	
-		Referencia='$Referencia',	
-		Extras='$Extras',	
-		TipoFrete='$TipoFrete',	
-		ValorFrete='$ValorFrete',	
-		DataTransacao='$DataTransacao',	
-		Anotacao='$Anotacao',	
-		TipoPagamento='$TipoPagamento',	
-		StatusTransacao='$StatusTransacao',	
-		CliNome='$CliNome',	
-		CliEmail='$CliEmail',	
-		CliEndereco='$CliEndereco',	
-		CliNumero='$CliNumero',	
-		CliComplemento='$CliComplemento',	
-		CliBairro='$CliBairro',	
-		CliCidade='$CliCidade',	
-		CliEstado='$CliEstado',	
-		CliCEP='$CliCEP',	
-		CliTelefone='$CliTelefone',	
-		NumItens='$NumItens',	
-		Data=now();");
-
-		// Recebendo e gravando produtos
-		$Processo = mysql_query("SELECT VendedorEmail FROM PagSeguroProdutos WHERE VendedorEmail='$VendedorEmail' AND TransacaoID='$TransacaoID'");
-		if (mysql_num_rows($Processo)==0) {
-			for($i=1;$i<=$NumItens;$i++) {
-				
-				$ProdID = $_POST["ProdID_{$i}"];
-				$ProdDescricao = $_POST["ProdDescricao_{$i}"];
-				$ProdValor = MoedaBR($_POST["ProdValor_{$i}"]);
-				$ProdQuantidade = $_POST["ProdQuantidade_{$i}"];
-				$ProdFrete = MoedaBR($_POST["ProdFrete_{$i}"]);
-		
-				mysql_query("INSERT into PagSeguroProdutos SET
-				VendedorEmail='$VendedorEmail',	
-				TransacaoID='$TransacaoID',	
-				Ordem='$i',	
-				ProdID='$ProdID',	
-				ProdDescricao='$ProdDescricao',	
-				ProdValor='$ProdValor',	
-				ProdQuantidade='$ProdQuantidade',	
-				ProdFrete='$ProdFrete'");			
-			}
+// Arquivo de configuracao do ZnoteAAC
+include('config.php');
+// Aqui vai seu Token
+define('TOKEN', $config['pagseguro']['token']);
+// Incluindo o arquivo da biblioteca
+include('retorno.php');
+// Função que captura os dados do retorno
+function retorno_automatico ( $VendedorEmail, $TransacaoID, $Referencia, $TipoFrete, $ValorFrete, $Anotacao, $DataTransacao, $TipoPagamento, $StatusTransacao, $CliNome, $CliEmail, $CliEndereco, $CliNumero, $CliComplemento, $CliBairro, $CliCidade, $CliEstado, $CliCEP, $CliTelefone, $produtos, $NumItens) {
+	global $config;
+	if(strtolower($StatusTransacao) == 'aprovado') {
+		require("system/application/libraries/POT/OTS.php");
+		$ots = POT::getInstance();
+		$ots->connect(POT::DB_MYSQL, array('host' => $config['database']['host'], 'user' => $config['database']['login'], 'password' => $config['database']['password'], 'database' => $config['database']['database']));
+		$SQL = $ots->getDBHandle();
+		$account_logged = $ots->createObject('Account');
+		$account_logged->find($Referencia);
+		if($account_logged->isLoaded()) {
+			$pontos = $account_logged->getCustomField("premium_points");
+			$account_logged->setCustomField("premium_points", $pontos + $produtos[0]['ProdQuantidade']);
+			$nome = $Referencia.'-'.date('d-m-Y',$_SERVER['REQUEST_TIME']).'.txt';
+			if(file_exists('logsPagseguro/'.$nome))
+				$nome = $Referencia.'-2-'.date('d-m-Y',$_SERVER['REQUEST_TIME']).'.txt';
+			$arquivo = fopen('logsPagseguro/'.$nome, "w+");
+			$dados = "Conta: ".$Referencia."\n";
+			$dados = "Email: ".$CliEmail."\n";
+			$dados .= "Total de Points: ".$produtos[0]['ProdQuantidade']."\n";
+			$dados .= "Hora da Transação: ". date('d-m-Y H:i:s', $_SERVER['REQUEST_TIME'])."";
+			fwrite($arquivo, $dados);
+			fclose($arquivo);
 		}
-		
-		
-	} 
-} else {
-	Header("Location: $retorno_site"); exit();
+	}
 }
-?>
+// A partir daqui, é só HTML:
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Estamos verificando seu pagamento</title>
+</head>
+<body>
+  <h1>Pedido em processamento</h1>
+  <p>Recebemos seu pedido e estamos aguardando pela
+  confirmação do pagamento. Obrigado por ajudar.</p>
+</body>
+</html>
