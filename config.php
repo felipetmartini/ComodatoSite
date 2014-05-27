@@ -639,6 +639,10 @@
 	);
 
 
+	//////////////
+	/// PAGSEGURO ///
+	//////////////
+	
 	/*
 	Retorno PagSeguro 2.0 - PHP e MySQL
 	Se você ainda não é cadastrado no PagSeguro, utilize o link abaixo para se cadastrar:
@@ -647,7 +651,23 @@
 	$config['pagseguro'] = array(
 		'enabled' => false,
 		'token' => '0D60BC4F992D42948A112054B5E653F8', // Token gerado pelo PagSeguro
-		'email' => 'felipemartini@brturbo.com.br', // Local da base de dados MySql
+		'email' => 'felipemartini@brturbo.com.br', // Email for payment
+		'currency' => 'BRL',
+		'points_per_currency' => 10, // 1 currency = ? points? [ONLY used to calculate bonuses]		
+		'showBonus' => true,
+	);
+
+
+	// Configure the "buy now" buttons prices, first write price, then how many points you get.
+	// Giving some bonus points for higher donations will tempt users to donate more.
+	$config['pagseguro_prices'] = array(
+	//	price => points,
+		5 => 45, // -10% bonus
+		10 => 100, // 0% bonus
+		15 => 165, // +10% bonus
+		20 => 240, // +20% bonus
+		25 => 325, // +30% bonus
+		30 => 420, // +40% bonus
 	);
 	
 	
