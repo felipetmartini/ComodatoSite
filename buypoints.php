@@ -92,7 +92,7 @@ if ($config['pagseguro']['enabled'] == true) {
 				<input type="hidden" name="tipo" value="CP" />
 				<input type="hidden" name="ref_transacao" value="<?php echo (int)$_SESSION['user_id']; ?>">
 				<input type="hidden" name="item_id_1" value="1">
-				<input type="hidden" name="item_valor_1" value="<?php echo $psprice; ?>.00">
+				<input type="hidden" name="item_valor_1" value="1">
 				<input type="hidden" name="item_quant_1" value="<?php echo $pspoints; ?>">
 				<input type="hidden" name="item_frete_1" value="0">
 				<input type="hidden" name="item_descr_1" value="<?php echo $pspoints .' shop points on '. $config['site_title']; ?>">
