@@ -90,11 +90,11 @@ if ($config['pagseguro']['enabled'] == true) {
 				<input type="hidden" name="email_cobranca" value="<?php echo $pagseguro['email']; ?>">
 				<input type="hidden" name="tipo" value="CP">
 				<input type="hidden" name="moeda" value="<?php echo $pagseguro['currency']; ?>">
-				<input type="hidden" name="item_id" value="1">
-				<input type="hidden" name="item_descr" value="<?php echo $pspoints .' shop points on '. $config['site_title']; ?>">
-				<input type="hidden" name="item_valor" value="<?php echo $psprice; ?>">
-				<input type="hidden" name="item_frete" value="0">
-				<input type="hidden" name="item_peso" value="0">
+				<input type="hidden" name="item_id_1" value="1">
+				<input type="hidden" name="item_descr_1" value="<?php echo $pspoints .' shop points on '. $config['site_title']; ?>">
+				<input type="hidden" name="item_valor_1" value="<?php echo $psprice; ?>">
+				<input type="hidden" name="item_frete_1" value="0">
+				<input type="hidden" name="item_peso_1" value="0">
 				<input type="hidden" name="ref_transacao" value="<?php echo (int)$_SESSION['user_id']; ?>">
 				<input type="submit" value="  PURCHASE  ">
 			</form>
