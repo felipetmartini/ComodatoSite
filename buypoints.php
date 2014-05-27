@@ -104,9 +104,7 @@ if ($config['pagseguro']['enabled'] == true) {
 		}
 		?>
 </table>
-
-
-<?php }	?>
+<?php } ?>
 
 <?php
 if ($config['paygol']['enabled'] == true) {
