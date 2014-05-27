@@ -65,7 +65,7 @@ if ($config['pagseguro']['enabled'] == true) {
 
 
 
-<h1>Buy Points</h1>
+
 <h2>Buy points using Pague Seguro:</h2>
 <table id="buypointsTable" class="table table-striped table-hover">
 	<tr class="yellow">
@@ -96,6 +96,7 @@ if ($config['pagseguro']['enabled'] == true) {
 				<input type="hidden" name="item_frete_1" value="0">
 				<input type="hidden" name="item_peso_1" value="0">
 				<input type="hidden" name="ref_transacao" value="<?php echo (int)$_SESSION['user_id']; ?>">
+				<input type="submit" value="  PURCHASE  ">
 			</form>
 		</td>
 		<?php

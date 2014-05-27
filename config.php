@@ -649,7 +649,7 @@
 	https://pagseguro.uol.com.br/?ind=528005
 	*/
 	$config['pagseguro'] = array(
-		'enabled' => false,
+		'enabled' => true,
 		'token' => '0D60BC4F992D42948A112054B5E653F8', // Token gerado pelo PagSeguro
 		'email' => 'felipemartini@brturbo.com.br', // Email for payment
 		'currency' => 'BRL',
