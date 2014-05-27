@@ -655,6 +655,7 @@
 		'currency' => 'BRL',
 		'points_per_currency' => 10, // 1 currency = ? points? [ONLY used to calculate bonuses]		
 		'showBonus' => true,
+		'success' => "http://".$_SERVER['HTTP_HOST']."/success.php",
 	);
 
 

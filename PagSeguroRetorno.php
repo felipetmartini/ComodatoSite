@@ -9,7 +9,7 @@ define('TOKEN', $config['pagseguro']['token']);
 	
 	// Fetch pagueseguro configurations
 	$pagseguro = $config['pagseguro'];
-	$prices = $config['paypal_prices'];
+	$prices = $config['pagseguro_prices'];
 
 // Função que captura os dados do retorno
 function retorno_automatico ( $VendedorEmail, $TransacaoID, $Referencia, $TipoFrete, $ValorFrete, $Anotacao, $DataTransacao, $TipoPagamento, $StatusTransacao, $CliNome, $CliEmail, $CliEndereco, $CliNumero, $CliComplemento, $CliBairro, $CliCidade, $CliEstado, $CliCEP, $CliTelefone, $produtos, $NumItens) {

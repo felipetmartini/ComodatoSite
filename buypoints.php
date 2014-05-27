@@ -86,17 +86,16 @@ if ($config['pagseguro']['enabled'] == true) {
 		<td>
 		
 		
-			<form target="pagseguro" method="post" action="https://pagseguro.uol.com.br/checkout/checkout.jhtml">
+			<form target="pagseguro" method="post" action="https://pagseguro.uol.com.br/security/webpagamentos/webpagto.aspx">
 				<input type="hidden" name="email_cobranca" value="<?php echo $pagseguro['email']; ?>">
-				<input type="hidden" name="tipo" value="CP">
 				<input type="hidden" name="moeda" value="<?php echo $pagseguro['currency']; ?>">
-				<input type="hidden" name="item_id_1" value="1">
-				<input type="hidden" name="item_Quantidade_1" value="1">
-				<input type="hidden" name="item_descr_1" value="<?php echo $pspoints .' shop points on '. $config['site_title']; ?>">
-				<input type="hidden" name="item_valor_1" value="<?php echo $psprice; ?>">
-				<input type="hidden" name="item_frete_1" value="0">
-				<input type="hidden" name="item_peso_1" value="0">
+				<input type="hidden" name="tipo" value="CP" />
 				<input type="hidden" name="ref_transacao" value="<?php echo (int)$_SESSION['user_id']; ?>">
+				<input type="hidden" name="item_id_1" value="1">
+				<input type="hidden" name="item_valor_1" value="<?php echo $psprice; ?>.00">
+				<input type="hidden" name="item_quant_1" value="<?php echo $pspoints; ?>">
+				<input type="hidden" name="item_frete_1" value="0">
+				<input type="hidden" name="item_descr_1" value="<?php echo $pspoints .' shop points on '. $config['site_title']; ?>">
 				<input type="submit" value="  PURCHASE  ">
 			</form>
 		</td>
@@ -126,5 +125,5 @@ if ($config['paygol']['enabled'] == true) {
 </form>
 <?php }
 
-if (!$config['paypal']['enabled'] && !$config['paygol']['enabled']) echo '<h1>Buy Points system disabled.</h1><p>Sorry, this functionality is disabled.</p>';
+if (!$config['paypal']['enabled'] && !$config['pagseguro']['enabled'] && !$config['paygol']['enabled']) echo '<h1>Buy Points system disabled.</h1><p>Sorry, this functionality is disabled.</p>';
 include 'layout/overall/footer.php'; ?>

@@ -8,7 +8,7 @@
 <body>
 
 <?php
-$EmailVendedor = 'PREENCHA';
+$EmailVendedor = 'felipemartini@brturbo.com.br';
 $QuantidadeProdutos = rand(2,6);
 ?>
 
