@@ -91,6 +91,7 @@ if ($config['pagseguro']['enabled'] == true) {
 				<input type="hidden" name="tipo" value="CP">
 				<input type="hidden" name="moeda" value="<?php echo $pagseguro['currency']; ?>">
 				<input type="hidden" name="item_id_1" value="1">
+				<input name="itemQuantity1" type="hidden" value="1">
 				<input type="hidden" name="item_descr_1" value="<?php echo $pspoints .' shop points on '. $config['site_title']; ?>">
 				<input type="hidden" name="item_valor_1" value="<?php echo $psprice; ?>">
 				<input type="hidden" name="item_frete_1" value="0">
