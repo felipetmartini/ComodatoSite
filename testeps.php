@@ -62,13 +62,6 @@ header('Content-Type: text/html; charset=ISO-8859-1');
 }
 
 
-function ConverterData($data) {
-	$data = explode(' ', $data);
-	$hora = $data[1]; $data = $data[0];
-	$data = explode('/', $data);
-	$data = $data[2].'-'.$data[1].'-'.$data[0].' ';		
-	return $data.$hora;
-}
 
 
 if (count($_POST) > 0) {
@@ -87,7 +80,7 @@ if (count($_POST) > 0) {
 		$Extras = $_POST['Extras'];
 		$TipoFrete = $_POST['TipoFrete'];
 		$ValorFrete = $_POST['ValorFrete'];
-		$DataTransacao = ConverterData($_POST['DataTransacao']);
+		$DataTransacao = $_POST['DataTransacao'];
 		$Anotacao = $_POST['Anotacao'];
 		$TipoPagamento = $_POST['TipoPagamento'];
 		$StatusTransacao = $_POST['StatusTransacao'];
