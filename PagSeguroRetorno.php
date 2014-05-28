@@ -11,7 +11,7 @@
 */
 
 
-header('Content-Type: text/html; charset=ISO-8859-1');
+header("access-control-allow-origin: https://sandbox.pagseguro.uol.com.br");
 
 /* Edite este arquivo e insira suas configurações */
 
