@@ -175,8 +175,14 @@ if (count($_POST) > 0) {
 						mysql_update("UPDATE `znote_accounts` SET `points`='$new_points' WHERE `account_id`='$Referencia'");
 					
 					}
-	} 
+	} else if ($result == "FALSO") {
+		//O post não foi validado pelo PagSeguro.
+		Header("Location: ".$config['pagseguro']['false'].""); exit();
+	} else {
+		//Erro na integração com o PagSeguro.
+		Header("Location: ".$config['pagseguro']['failed'].""); exit();
+	}
 } else {
-	Header("Location: $config['pagseguro']['success']"); exit();
+	Header("Location: ".$config['pagseguro']['success'].""); exit();
 }
 ?>

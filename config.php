@@ -620,9 +620,9 @@
 		'email' => 'felipemartini@brturbo.com.br', // Example: paypal@mail.com
 		'currency' => 'BRL',
 		'points_per_currency' => 10, // 1 currency = ? points? [ONLY used to calculate bonuses]
-		'success' => "http://".$_SERVER['HTTP_HOST']."/success.php",
-		'failed' => "http://".$_SERVER['HTTP_HOST']."/failed.php",
-		'ipn' => "http://".$_SERVER['HTTP_HOST']."/ipn.php",
+		'success' => "http://".$_SERVER['HTTP_HOST']."/comodatosite/success.php",
+		'failed' => "http://".$_SERVER['HTTP_HOST']."/comodatosite/failed.php",
+		'ipn' => "http://".$_SERVER['HTTP_HOST']."/comodatosite/ipn.php",
 		'showBonus' => true,
 	);
 
@@ -650,12 +650,14 @@
 	*/
 	$config['pagseguro'] = array(
 		'enabled' => true,
-		'token' => '0D60BC4F992D42948A112054B5E653F8', // Token gerado pelo PagSeguro
+		'token' => '937B22E0C07F465FA7C1B38B77CEA9DF', // Token gerado pelo PagSeguro
 		'email' => 'felipemartini@brturbo.com.br', // Email for payment
 		'currency' => 'BRL',
 		'points_per_currency' => 10, // 1 currency = ? points? [ONLY used to calculate bonuses]		
 		'showBonus' => true,
-		'success' => "http://".$_SERVER['HTTP_HOST']."/success.php",
+		'success' => "http://".$_SERVER['HTTP_HOST']."/comodatosite/success.php",
+		'failed' => "http://".$_SERVER['HTTP_HOST']."/comodatosite/failed.php",
+		'false' => "http://".$_SERVER['HTTP_HOST']."/comodatosite/false.php",
 	);
 
 

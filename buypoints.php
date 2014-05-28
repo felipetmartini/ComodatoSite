@@ -86,17 +86,15 @@ if ($config['pagseguro']['enabled'] == true) {
 		<td>
 		
 		
-			<form target="pagseguro" method="post" action="https://pagseguro.uol.com.br/security/webpagamentos/webpagto.aspx">
-				<input type="hidden" name="email_cobranca" value="<?php echo $pagseguro['email']; ?>">
-				<input type="hidden" name="moeda" value="<?php echo $pagseguro['currency']; ?>">
-				<input type="hidden" name="tipo" value="CP">
+			<form target="pagseguro" method="post" action="https://sandbox.pagseguro.uol.com.br/v2/checkout/payment.html">
+				<input type="hidden" name="receiverEmail" value="<?php echo $pagseguro['email']; ?>">
+				<input type="hidden" name="currency" value="<?php echo $pagseguro['currency']; ?>">
 				<input type="hidden" name="ref_transacao" value="<?php echo (int)$_SESSION['user_id']; ?>">
-				<input type="hidden" name="item_id_1" value="1">
-				<input type="hidden" name="item_valor_1" value="<?php echo $psprice; ?>.00">
-				<input type="hidden" name="item_quant_1" value="1">
-				<input type="hidden" name="item_frete_1" value="0">
-				<input type="hidden" name="item_descr_1" value="<?php echo $pspoints .' shop points on '. $config['site_title']; ?>">
-				<input type="submit" value="  PURCHASE  ">
+				<input type="hidden" name="itemId1" value="1">
+				<input type="hidden" name="itemAmount1" value="<?php echo $psprice; ?>.00">
+				<input type="hidden" name="itemQuantity1" value="1">
+				<input type="hidden" name="itemDescription1" value="<?php echo $pspoints .' shop points on '. $config['site_title']; ?>">
+				<input alt="Pague com PagSeguro" name="submit"  type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/120x53-pagar.gif"/>
 			</form>
 		</td>
 		<?php
