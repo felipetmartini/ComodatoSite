@@ -47,7 +47,7 @@ header('Content-Type: text/html; charset=ISO-8859-1');
 	
 	private function verify($data) {
 		$curl = curl_init();
-		curl_setopt($curl, CURLOPT_URL, "https://sandbox.pagseguro.uol.com.br/pagseguro-ws/checkout/NPI.jhtml");
+		curl_setopt($curl, CURLOPT_URL, "https://ws.sandbox.pagseguro.uol.com.br/pagseguro-ws/checkout/NPI.jhtml");
 		curl_setopt($curl, CURLOPT_POST, true);
 		curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -169,10 +169,12 @@ if (count($_POST) > 0) {
 					}
 	} else if ($result == "FALSO") {
 		//O post não foi validado pelo PagSeguro.
-		Header("Location: ".$config['pagseguro']['false'].""); exit();
+		print("************* FALSO **************************"); 
+
 	} else {
 		//Erro na integração com o PagSeguro.
-		Header("Location: ".$config['pagseguro']['failed'].""); exit();
+		print("************* ERRO **************************"); 
+		print_r($_POST);
 	}
 } else {
 	Header("Location: ".$config['pagseguro']['success'].""); exit();
