@@ -10,7 +10,7 @@
 	$config['site_title_context'] = 'Global 100% Full SERVER DEDICADO 24h';
 
 	// Path to server folder without / Example: C:\Users\Alvaro\Documents\GitHub\forgottenserver
-	$config['server_path'] = '/home/themask/Desktop/ComodatoGLOBAL'; 
+	$config['server_path'] = '/home/otsmanager/ComodatoGlobal'; 
 
 	// ------------------------ \\
 	// MYSQL CONNECTION DETAILS \\
@@ -630,12 +630,12 @@
 	// Giving some bonus points for higher donations will tempt users to donate more.
 	$config['paypal_prices'] = array(
 	//	price => points,
-		5 => 45, // -10% bonus
-		10 => 100, // 0% bonus
-		15 => 165, // +10% bonus
-		20 => 240, // +20% bonus
-		25 => 325, // +30% bonus
-		30 => 420, // +40% bonus
+		10 => 90, // -10% bonus
+		20 => 200, // 0% bonus
+		30 => 330, // +10% bonus
+		40 => 480, // +20% bonus
+		50 => 750, // +30% bonus
+		100 => 1400, // +40% bonus
 	);
 
 
@@ -663,12 +663,12 @@
 	// Giving some bonus points for higher donations will tempt users to donate more.
 	$config['pagseguro_prices'] = array(
 	//	price => points,
-		5 => 45, // -10% bonus
-		10 => 100, // 0% bonus
-		15 => 165, // +10% bonus
-		20 => 240, // +20% bonus
-		25 => 325, // +30% bonus
-		30 => 420, // +40% bonus
+		10 => 90, // -10% bonus
+		20 => 200, // 0% bonus
+		30 => 330, // +10% bonus
+		40 => 480, // +20% bonus
+		50 => 750, // +30% bonus
+		100 => 1400, // +40% bonus
 	);
 	
 	
