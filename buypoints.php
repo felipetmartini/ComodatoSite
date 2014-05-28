@@ -89,7 +89,7 @@ if ($config['pagseguro']['enabled'] == true) {
 			<form target="pagseguro" method="post" action="https://pagseguro.uol.com.br/security/webpagamentos/webpagto.aspx">
 				<input type="hidden" name="email_cobranca" value="<?php echo $pagseguro['email']; ?>">
 				<input type="hidden" name="moeda" value="<?php echo $pagseguro['currency']; ?>">
-				<input type="hidden" name="tipo" value="CP" />
+				<input type="hidden" name="tipo" value="CP">
 				<input type="hidden" name="ref_transacao" value="<?php echo (int)$_SESSION['user_id']; ?>">
 				<input type="hidden" name="item_id_1" value="1">
 				<input type="hidden" name="item_valor_1" value="<?php echo $psprice; ?>.00">
