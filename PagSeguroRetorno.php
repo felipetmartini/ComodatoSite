@@ -48,7 +48,7 @@ header('Content-Type: text/html; charset=ISO-8859-1');
 	
 	private function verify($data) {
 		$curl = curl_init();
-		curl_setopt($curl, CURLOPT_URL, "https://pagseguro.uol.com.br/pagseguro-ws/checkout/NPI.jhtml");
+		curl_setopt($curl, CURLOPT_URL, "https://sandbox.pagseguro.uol.com.br/pagseguro-ws/checkout/NPI.jhtml");
 		curl_setopt($curl, CURLOPT_POST, true);
 		curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
