@@ -23,7 +23,7 @@ header('Content-Type: text/html; charset=ISO-8859-1');
 
 /* Não é necessário alterar nada desta linha para baixo */
 
-	define('TOKEN', '$config['pagseguro']['token']');
+	define('TOKEN', $config['pagseguro']['token']);
 	
 	class PagSeguroNpi {
 	
