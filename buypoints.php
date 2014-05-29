@@ -94,7 +94,7 @@ if ($config['pagseguro']['enabled'] == true) {
 				<input type="hidden" name="itemAmount1" value="<?php echo $psprice; ?>.00">
 				<input type="hidden" name="itemQuantity1" value="1">
 				<input type="hidden" name="itemDescription1" value="<?php echo $pspoints .' shop points on '. $config['site_title']; ?>">
-				<input alt="Pague com PagSeguro" name="submit"  type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/120x53-pagar.gif"/>
+				<input alt="Pague com PagSeguro" name="submit"  type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/205x30-pagar-preto.gif"/>
 			</form>
 		</td>
 		<?php
