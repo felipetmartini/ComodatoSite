@@ -86,7 +86,7 @@ if ($config['pagseguro']['enabled'] == true) {
 		<td>
 		
 		
-			<form target="pagseguro" method="post" action="https://sandbox.pagseguro.uol.com.br/v2/checkout/payment.html">
+			<form target="pagseguro" method="post" action="https://pagseguro.uol.com.br/v2/checkout/payment.html">
 				<input type="hidden" name="receiverEmail" value="<?php echo $pagseguro['email']; ?>">
 				<input type="hidden" name="currency" value="<?php echo $pagseguro['currency']; ?>">
 				<input type="hidden" name="ref_transacao" value="<?php echo (int)$_SESSION['user_id']; ?>">
