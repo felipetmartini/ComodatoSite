@@ -650,7 +650,7 @@
 	*/
 	$config['pagseguro'] = array(
 		'enabled' => true,
-		'token' => '937B22E0C07F465FA7C1B38B77CEA9DF', // Token gerado pelo PagSeguro
+		'token' => 'CFAC06AFED2E4DDAB920844E0DF9F729', // Token gerado pelo PagSeguro
 		'email' => 'felipemartini@brturbo.com.br', // Email for payment
 		'currency' => 'BRL',
 		'points_per_currency' => 10, // 1 currency = ? points? [ONLY used to calculate bonuses]		

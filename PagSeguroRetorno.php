@@ -47,7 +47,7 @@ header('Content-Type: text/html; charset=ISO-8859-1');
 	
 	private function verify($data) {
 		$curl = curl_init();
-		curl_setopt($curl, CURLOPT_URL, "https://ws.sandbox.pagseguro.uol.com.br/pagseguro-ws/checkout/NPI.jhtml");
+		curl_setopt($curl, CURLOPT_URL, "https://pagseguro.uol.com.br/pagseguro-ws/checkout/NPI.jhtml");
 		curl_setopt($curl, CURLOPT_POST, true);
 		curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -147,7 +147,7 @@ if (count($_POST) > 0) {
 		
 		
 
-					if( $_POST['StatusTransacao'] == 'Aprovado') {
+					if($StatusTransacao == 'Aprovado') {
 
 						$pspaidMoney = 0;
 						$pspaidPoints = 0;
@@ -169,12 +169,10 @@ if (count($_POST) > 0) {
 					}
 	} else if ($result == "FALSO") {
 		//O post não foi validado pelo PagSeguro.
-		print("************* FALSO **************************"); 
-
+		print("************* FALSO NÃO FOI VALIDADO PELO PAGUE SEGURO **************************"); 
 	} else {
 		//Erro na integração com o PagSeguro.
-		print("************* ERRO **************************"); 
-		print_r($_POST);
+		print("************* ERRO NAS INFORMACOES ENVIADAS AO PAGUE SEGURO **************************"); 
 	}
 } else {
 	Header("Location: ".$config['pagseguro']['success'].""); exit();
