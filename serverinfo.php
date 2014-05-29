@@ -12,6 +12,32 @@ if (file_exists($config['server_path'].'/data/XML/stages.xml') && file_exists($c
 	$stages_path = simplexml_load_file($config['server_path'].'/data/XML/stages.xml');
 	$lua_path = parse_ini_file($config['server_path'].'/config.lua');
 
+	// General info 
+
+	$information = array(
+
+		'World type'             => $lua_path['worldType'],
+		'Protection level'       => $lua_path['protectionLevel'],
+		'Kills to red skull'     => $lua_path['killsToRedSkull'],
+		'Kills to black skull'   => $lua_path['killsToBlackSkull'],
+		'Remove ammo'            => $lua_path['removeAmmoWhenUsingDistanceWeapon'],
+		'Remove runes' 		 	 => $lua_path['removeChargesFromRunes'],
+		'Time to decrease frags' => $lua_path['timeToDecreaseFrags'],
+		'House rent period'      => $lua_path['houseRentPeriod'],
+		'AFK Kickout minutes'    => $lua_path['kickIdlePlayerAfterMinutes'],
+		'Location'               => $lua_path['location'],
+		'Owner name'             => $lua_path['ownerName']
+
+	);
+
+	echo "<h2>Server general information</h2><ul>";
+
+	foreach ($information as $key => $value) {
+		echo "<li>".$key." - <b>".$value."</b></li>";
+	}
+
+	echo '</ul>';
+
 	if ($stages_path->config['enabled'] != 0) {
 
 		// Stages are beeing used
@@ -47,40 +73,15 @@ if (file_exists($config['server_path'].'/data/XML/stages.xml') && file_exists($c
 		</tbody></table>";
 	}
 
-	// General info 
-
-	$information = array(
-
-		'World type'             => $lua_path['worldType'],
-		'Protection level'       => $lua_path['protectionLevel'],
-		'Kills to red skull'     => $lua_path['killsToRedSkull'],
-		'Kills to black skull'   => $lua_path['killsToBlackSkull'],
-		'Remove ammo'            => $lua_path['removeAmmoWhenUsingDistanceWeapon'],
-		'Remove runes' 		 	 => $lua_path['removeChargesFromRunes'],
-		'Time to decrease frags' => $lua_path['timeToDecreaseFrags'],
-		'House rent period'      => $lua_path['houseRentPeriod'],
-		'AFK Kickout minutes'    => $lua_path['kickIdlePlayerAfterMinutes'],
-		'Location'               => $lua_path['location'],
-		'Owner name'             => $lua_path['ownerName']
-
-	);
-
-	echo "<h2>Server general information</h2><ul>";
-
-	foreach ($information as $key => $value) {
-		echo "<li>".$key." - <b>".$value."</b></li>";
-	}
-
-	echo '</ul>';
-
-    $talkactions = simplexml_load_file($config['server_path'].'/data/talkactions/talkactions.xml');
-    echo '<table cellpadding="0"><tr class="yellow"><td><center>Player commands</center></td></center></tr>';
-    foreach ($talkactions as $commands) {
-        if ($commands['access'] == '0') {
-    echo '<center><tr><td><center>'.$commands['words'].'</center></td></tr></center>';
-        }
-    }
-    echo '</table></tr>';
+		// Players Commands 
+		$talkactions = simplexml_load_file($config['server_path'].'/data/talkactions/talkactions.xml');
+				echo '<table cellpadding="0"><tr class="yellow"><td><center>Player commands</center></td></center></tr>';
+		foreach ($talkactions as $commands) {
+			if ($commands['access'] == '0') {
+				echo '<center><tr><td><center>'.$commands['words'].'</center></td></tr></center>';
+			}
+		}
+				echo '</table></tr>';
 
 } else {
 
