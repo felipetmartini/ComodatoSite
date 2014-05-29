@@ -10,7 +10,7 @@
 	$config['site_title_context'] = 'Global 100% Full SERVER DEDICADO 24h';
 
 	// Path to server folder without / Example: C:\Users\Alvaro\Documents\GitHub\forgottenserver
-	$config['server_path'] = '/home/otsmanager/ComodatoGlobal'; 
+	$config['server_path'] = '/home/otsmanager/ComodatoGLOBAL'; 
 
 	// ------------------------ \\
 	// MYSQL CONNECTION DETAILS \\
