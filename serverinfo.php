@@ -73,6 +73,15 @@ if (file_exists($config['server_path'].'/data/XML/stages.xml') && file_exists($c
 
 	echo '</ul>';
 
+    $talkactions = simplexml_load_file($config['server_path'].'/data/talkactions/talkactions.xml');
+    echo '<table cellpadding="0"><tr class="yellow"><td><center>Player commands</center></td></center></tr>';
+    foreach ($talkactions as $commands) {
+        if ($commands['access'] == '0') {
+    echo '<center><tr><td><center>'.$commands['words'].'</center></td></tr></center>';
+        }
+    }
+    echo '</table></tr>';
+
 } else {
 
 	echo '<h1>Invliad PATH, please check your config file</h1>';

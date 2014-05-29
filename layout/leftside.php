@@ -85,14 +85,6 @@
 						<div class='RightChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
 					</div>
 				</a>
-				<a href='serverinfo2.php'>
-					<div id='serverinfo' class='Submenuitem' onMouseOver='MouseOverSubmenuItem(this)' onMouseOut='MouseOutSubmenuItem(this)'>
-						<div class='LeftChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
-						<div id='ActiveSubmenuItemIcon_latestserverinfo' class='ActiveSubmenuItemIcon' style='background-image:url(layout/images/global/menu/icon-activesubmenu.gif);'></div>
-						<div id='ActiveSubmenuItemLabel_latestserverinfo' class='SubmenuitemLabel'>Server Info</div>
-						<div class='RightChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
-					</div>
-				</a>
 				<a href='{$path}/index.php/home/archive'>
 					<div id='submenu_newsarchive' class='Submenuitem' onMouseOver='MouseOverSubmenuItem(this)' onMouseOut='MouseOutSubmenuItem(this)'>
 						<div class='LeftChain' style='background-image:url(layout/images/global/general/chain.gif);'></div>
