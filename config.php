@@ -309,7 +309,7 @@
 	// ---------------- \\
 	
 	// Max characters on each account:
-	$config['premmydays'] = 30;
+	$config['premmydays'] = 20;
 	
 	// ---------------- \\
 	// Create Character \\
@@ -409,7 +409,7 @@
 	// Use htaccess rewrite? (basically this makes website.com/username work instead of website.com/characterprofile.php?name=username
 	// Linux users needs to enable mod_rewrite php extention to make it work properly, so set it to false if your lost and using Linux.
 
-	$config['htwrite'] = true;
+	$config['htwrite'] = false;
 
 	// What client version and server port are you using on this OT?
 	// Used for the Downloads page.
@@ -498,7 +498,7 @@
 
 	// What kind of computer are you hosting this website on?
 	// Available options: LINUX or WINDOWS
-	$config['os'] = 'WINDOWS';
+	$config['os'] = 'LINUX';
 
 	// Measure how much players are lagging in-game. (Not completed). 
 	$config['ping'] = false;
