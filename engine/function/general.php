@@ -91,7 +91,7 @@ function calculate_discount($orig, $new) {
 // Proper URLs
 function url($path = false) {
 	$protocol = 'http://worldofcomodato.com';
-	$domain   = 'worldofcomodato.com/' . ($_SERVER['SERVER_PORT'] != 80 ? ':' . $_SERVER['SERVER_PORT'] : null);
+	$domain   = 'worldofcomodato.com' . ($_SERVER['SERVER_PORT'] != 80 ? ':' . $_SERVER['SERVER_PORT'] : null);
 	$folder   = dirname($_SERVER['SCRIPT_NAME']);
 
 	return $protocol . $domain . ($folder == '/' ? '' : $folder) . '/' . $path;
