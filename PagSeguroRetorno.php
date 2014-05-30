@@ -147,7 +147,7 @@ if (count($_POST) > 0) {
 		
 		
 
-					if($StatusTransacao == 'Aprovado') {
+					if($StatusTransacao == 'Completo') {
 
 						$pspaidMoney = 0;
 						$pspaidPoints = 0;
