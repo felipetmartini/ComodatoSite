@@ -1,6 +1,6 @@
 <div id="MenuColumn">
 	<div id="LeftArtwork">             
-		<a href="sub.php?page=news" ><img id="TibiaLogoArtworkTop" src="layout/images/global/header/tibia-logo-artwork-top.gif" alt="logoartwork" /></a>
+		<a href="index.php" ><img id="TibiaLogoArtworkTop" src="layout/images/global/header/tibia-logo-artwork-top.gif" alt="logoartwork" /></a>
 	</div>
 	<?php if (user_logged_in() === true) { ?>
 	<div id="Loginbox">
