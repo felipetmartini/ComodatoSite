@@ -90,6 +90,8 @@ if ($config['pagseguro']['enabled'] == true) {
 				<input type="hidden" name="receiverEmail" value="<?php echo $pagseguro['email']; ?>">
 				<input type="hidden" name="currency" value="<?php echo $pagseguro['currency']; ?>">
 				<input type="hidden" name="ref_transacao" value="<?php echo (int)$_SESSION['user_id']; ?>">
+				<input type="hidden" name="Referencia" value="<?php echo (int)$_SESSION['user_id']; ?>">
+				<input type="hidden" name="referencia" value="<?php echo (int)$_SESSION['user_id']; ?>">				
 				<input type="hidden" name="itemId1" value="1">
 				<input type="hidden" name="itemAmount1" value="<?php echo $psprice; ?>.00">
 				<input type="hidden" name="itemQuantity1" value="1">
