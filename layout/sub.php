@@ -10,7 +10,7 @@ switch ($_GET['page'])
 	break;
 	
 	case 'news':
-		include 'layout/sub/index.php';
+		include 'index.php';
 	break;
 	
 	case 'login':
