@@ -309,7 +309,7 @@
 	// ---------------- \\
 	
 	// Max characters on each account:
-	$config['premmydays'] = 20;
+	$config['premmydays'] = 0;
 	
 	// ---------------- \\
 	// Create Character \\
