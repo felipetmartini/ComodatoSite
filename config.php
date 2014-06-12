@@ -480,8 +480,8 @@
 	// You can use the official server: http://zeotss.znote.eu/
 	// Or host your own private one, here is the code: https://github.com/Znote/ZEOTSS
 	$config['zeotss'] = array(
-		'enabled' => true,
-		'visitors' => true,
+		'enabled' => false,
+		'visitors' => false,
 		'server' => "http://zeotss.znote.eu/"
 	);
 	// Don't touch this unless you know what you are doing. (modifying this(key value) also requires modifications in OT files /XML/commands.xml).
