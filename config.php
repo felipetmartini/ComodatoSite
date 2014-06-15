@@ -1,16 +1,18 @@
-<?php
+﻿<?php
 	// Available options: TFS_02, TFS_03
 	// TFS 0.2 = TFS_02
 	// TFS 0.3 = TFS_03 (If ur using 0.3.6, set $config['salt'] to false)!
 	// TFS 0.4 = TFS_03
 	// TFS 1.0 = TFS_10 (Under developement)
 	$config['TFSVersion'] = 'TFS_10';
+	// As far as I know, OTX is based on TFS_03, so make sure TFS version is configured TFS_03
+	$config['CustomVersion'] = false;
 
 	$config['site_title'] = 'World of Comodato';
 	$config['site_title_context'] = 'Global 100% Full SERVER DEDICADO 24h';
 
 	// Path to server folder without / Example: C:\Users\Alvaro\Documents\GitHub\forgottenserver
-	$config['server_path'] = '/home/otsmanager/ComodatoGLOBAL'; 
+	$config['server_path'] = '/home/themask/comodato/ComodatoGLOBAL'; 
 
 	// ------------------------ \\
 	// MYSQL CONNECTION DETAILS \\
@@ -393,7 +395,7 @@
 	$config['invalidNameTags'] = array("god", "gm", "cm", "gamemaster", "hoster", "admin", "admim", "adm", "owner", "staff");
 
 	// Use guild logo system
-	$config['use_guild_logos'] = 4;
+	$config['use_guild_logos'] = true;
 
 	// Level requirement to create guild? (Just set it to 1 to allow all levels).
 	$config['create_guild_level'] = 8;
@@ -481,7 +483,8 @@
 	// Or host your own private one, here is the code: https://github.com/Znote/ZEOTSS
 	$config['zeotss'] = array(
 		'enabled' => false,
-		'visitors' => false,
+		'visitors' => true,
+		'debug' => false,
 		'server' => "http://zeotss.znote.eu/"
 	);
 	// Don't touch this unless you know what you are doing. (modifying this(key value) also requires modifications in OT files /XML/commands.xml).

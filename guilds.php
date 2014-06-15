@@ -1,5 +1,6 @@
 <?php require_once 'engine/init.php';
 if ($config['require_login']['guilds']) protect_page();
+$isOtx = ($config['CustomVersion'] == 'OTX') ? true : false;
 include 'layout/overall/header.php';
 
 if (user_logged_in() === true) {
@@ -24,7 +25,10 @@ if (empty($_GET['name'])) {
 
 <h1>Guild List:</h1>
 <?php
-$guilds = mysql_select_multi("SELECT `id`, `name`, `creationdata`, (SELECT COUNT('guild_id') FROM `guild_membership` WHERE `guild_id`=`id`) AS `total` FROM `guilds` ORDER BY `name`;");
+//data_dump($guild, false, "guild data");
+if ($config['TFSVersion'] != 'TFS_10') $guilds = mysql_select_multi("SELECT `t`.`id`, `t`.`name`, `t`.`creationdata`, (SELECT count(p.rank_id) FROM players AS p LEFT JOIN guild_ranks AS gr ON gr.id = p.rank_id WHERE gr.guild_id =`t`.`id`) AS `total` FROM `guilds` as `t` ORDER BY `t`.`name`;");
+else $guilds = mysql_select_multi("SELECT `id`, `name`, `creationdata`, (SELECT COUNT('guild_id') FROM `guild_membership` WHERE `guild_id`=`id`) AS `total` FROM `guilds` ORDER BY `name`;");
+
 if ($guilds !== false) {
 ?>
 <table id="guildsTable" class="table table-striped table-hover">
@@ -123,7 +127,8 @@ if (user_logged_in() === true) {
 
 <?php
 } else { // GUILD OVERVIEW
-	$gid = get_guild_id($_GET['name']);
+	$guild = get_guild_data($_GET['name']);
+	$gid = $guild['id'];
 	if ($gid === false) {
 		header('Location: guilds.php');
 		exit();
@@ -167,8 +172,18 @@ if (user_logged_in() === true) {
 	// Display the specific guild page
 ?>
 
-<h1><img src="<?php logo_exists(sanitize($_GET['name'])); ?>"></img> Guild: <?php echo sanitize($_GET['name']); 
-?> </h1>
+<div id="guildTitleDiv">
+	<?php echo (isset($_GET['error'])) ? "<font size='5' color='red'>".sanitize($_GET['error'])."</font><br><br>" : ""; ?>
+	<?php if ($config['use_guild_logos']): ?>
+	<div id="guildImageDiv" style="float: left; margin-right: 10px;">
+		<img style="max-width: 100px; max-height: 100px;" src="<?php logo_exists(sanitize($_GET['name'])); ?>"></img>
+	</div>
+	<?php endif; ?>
+	<div id="guildDescription">
+		<h1>Guild: <?php echo sanitize($_GET['name']); ?></h1>
+		<p><?php echo $guild['motd']; ?></p>
+	</div>
+</div>
 <table id="guildViewTable" class="table table-striped">
 	<tr class="yellow">
 		<th>Rank:</th>
@@ -190,11 +205,18 @@ if (user_logged_in() === true) {
 				$onlinelist[] = $online['player_id'];
 			}
 		}
-		
+
 		foreach ($players as $player) {
-			if ($config['TFSVersion'] !== 'TFS_10') $chardata = user_character_data($player['id'], 'online');
-			else $chardata['online'] = (in_array($player['id'], $onlinelist)) ? 1 : 0;
+			if ($config['TFSVersion'] !== 'TFS_10') {
+				if ($isOtx) {
+					$chardata = mysql_select_single("SELECT `online` FROM `players` WHERE `name`='".$player['name']."' LIMIT 1;");
+				} else $chardata = user_character_data($player['id'], 'online');
+			} else $chardata['online'] = (in_array($player['id'], $onlinelist)) ? 1 : 0;
 			echo '<tr>';
+			if ($isOtx) {
+				$rankdata = mysql_select_single("SELECT `name` FROM `guild_ranks` WHERE `id`='".$player['rank_id']."' LIMIT 1;");
+				$player['rank_name'] = $rankdata['name'];
+			}
 			echo '<td>'. $player['rank_name'] .'</td>';
 			echo '<td><a href="characterprofile.php?name='. $player['name'] .'">'. $player['name'] .'</a></td>';
 			echo '<td>'. $player['level'] .'</td>';
@@ -361,6 +383,13 @@ if ($highest_access >= 2) {
 				exit();
 			} else echo '<font color="red" size="4">That character is already invited(or a member) on this guild.</font>';
 		} else echo '<font color="red" size="4">That character name does not exist.</font>';
+	}
+	// Guild Message (motd)
+	if (!empty($_POST['motd'])) {
+		$motd = sanitize($_POST['motd']);
+		mysql_update("UPDATE `guilds` SET `motd`='$motd' WHERE `id`='$gid' LIMIT 1;");
+		header('Location: guilds.php?name='. $_GET['name']);
+		exit();
 	}
 	
 	if (!empty($_POST['disband'])) {
@@ -542,7 +571,7 @@ if ($highest_access >= 2) {
 			<!-- form to upload guild logo -->
 			<form action="" method="post" enctype="multipart/form-data">
 				<ul>
-					<li>Upload guild logo:<br>
+					<li>Upload guild logo [.gif images only, 100x100px size]:<br>
 						<input type="file" name="file" id="file" accept="image/gif">
 						<input type="submit" name="submit" value="Upload guild logo">
 					</li>
@@ -565,6 +594,16 @@ if ($highest_access >= 2) {
 				<li>Invite Character to guild:<br>
 					<input type="text" name="invite" placeholder="Character name">
 					<input type="submit" value="Invite Character" class="btn btn-primary">
+				</li>
+			</ul>
+		</form>
+		<!-- Guild message of the day motd -->
+		<form action="" method="post">
+			<ul>
+				<li>Change guild message:</li>
+				<li>
+					<textarea name="motd" placeholder="Guild Message" cols="50" rows="3"><?php echo $guild['motd']; ?></textarea><br>
+					<input type="submit" value="Update guild message">
 				</li>
 			</ul>
 		</form>

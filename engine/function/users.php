@@ -527,6 +527,12 @@ function get_guild_id($name) {
 	return ($data !== false) ? $data['id'] : false;
 }
 
+// Returns guild data from name
+function get_guild_data($name) {
+	$name = sanitize($name);
+	return mysql_select_single("SELECT `id`, `name`, `ownerid`, `creationdata`, `motd` FROM `guilds` WHERE `name`='$name' LIMIT 1;");
+}
+
 // Get complete list of guilds
 function get_guilds_list() {
 	return mysql_select_multi("SELECT `id`, `name`, `creationdata` FROM `guilds` ORDER BY `name`;");
@@ -564,18 +570,17 @@ function get_guild_war($warid) {
 function get_guild_war03($warid) {
 	$warid = (int)$warid; // Sanitizing the parameter id
 
-	$wars = mysql_select_multi("SELECT `id`, `guild_id`, `enemy_id`, `status`, `begin`, `end` FROM `guild_wars` ORDER BY `begin` DESC LIMIT 0, 30");
-	if ($wars !== false) {
-		for ($i = 0; $i < count($wars); $i++) {
-			$wars[$i]['guild1'] = $wars[$i]['guild_id'];
-			$wars[$i]['guild2'] = $wars[$i]['enemy_id'];
-			$wars[$i]['name1'] = get_guild_name($wars[$i]['guild_id']);
-			$wars[$i]['name2'] = get_guild_name($wars[$i]['enemy_id']);
-			$wars[$i]['started'] = $wars[$i]['begin'];
-			$wars[$i]['ended'] = $wars[$i]['end'];
-		}
+	$war = mysql_select_single("SELECT `id`, `guild_id`, `enemy_id`, `status`, `begin`, `end` 
+		FROM `guild_wars` WHERE `id`=$warid ORDER BY `begin` DESC LIMIT 0, 30");
+	if ($war !== false) {
+		$war['guild1'] = $war['guild_id'];
+		$war['guild2'] = $war['enemy_id'];
+		$war['name1'] = get_guild_name($war['guild_id']);
+		$war['name2'] = get_guild_name($war['enemy_id']);
+		$war['started'] = $war['begin'];
+		$war['ended'] = $war['end'];
 	}
-	return $wars;
+	return $war;
 }
 
 // List all war entries
