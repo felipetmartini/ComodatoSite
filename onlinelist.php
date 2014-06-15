@@ -12,7 +12,7 @@ if ($array) {
                         <th>Name:</th>
                         <th>Level:</th>
                         <th>Vocation:</th>
-						<th>Guild:</th>
+			<th>Guild:</th>
                 </tr>
 						<?php
 							foreach ($array as $value) {

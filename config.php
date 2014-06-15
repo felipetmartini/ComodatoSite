@@ -50,7 +50,6 @@
 	// ------------------- \\
 	// CUSTOM SERVER STUFF \\
 	// ------------------- \\
-
 	// Enable / disable Questlog function (true / false) 
 	        $config['EnableQuests'] = true;
 
