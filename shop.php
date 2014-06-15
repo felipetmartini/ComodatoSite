@@ -92,7 +92,6 @@ if ($config['shop_auction']['characterAuction']) {
 		<td>Points:</td>
 		<td>Action:</td>
 	</tr>
-	
 		<?php
 		if (!empty($shop_list) || $shop_list !== false) {
     //
