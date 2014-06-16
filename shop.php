@@ -93,26 +93,26 @@ if ($config['shop_auction']['characterAuction']) {
 		<td>Action:</td>
 	</tr>
 		<?php
-	if (!empty($shop_list) || $shop_list !== false) {
-		foreach ($shop_list as $offers) {
-		echo '<tr class="special">';
-		echo '<td>'. $offers['describtion'] .'</td>';
-		if ($config['shop']['showImage']) echo '<td><img src="http://'. $config['shop']['imageServer'] .'/'. $offers['itemid'] .'.'. $config['shop']['imageType'] .'" alt="img"></td>';
-		if ($offers['type'] == 2) echo '<td>'. $offers['count'] .' Days</td>';
-		else if ($offers['type'] == 3 && $offers['count'] == 0) echo '<td>Unlimited</td>';
-		else echo '<td>'. $offers['count'] .'x</td>';
-		echo '<td>'. $offers['points'] .'</td>';
-		echo '<td>';
-		?>
-		<form action="" method="POST">
-			<input type="hidden" name="buy" value="<?php echo (int)$offers; ?>">
-			<input type="submit" value="  PURCHASE  "  class="needconfirmation" data-item-name="<?php echo $offers['describtion']; ?>" data-item-cost="<?php echo $offers['points']; ?>">
-		</form>
-		<?php
-		echo '</td>';
-		echo '</tr>';
-		}
-	}
+        if (!empty($shop_list) || $shop_list !== false) {
+                foreach ($shop_list as $key => $offer) {
+                        echo '<tr class="special">';
+                        echo '<td>'. $offer['describtion'] .'</td>';
+                        if ($config['shop']['showImage']) echo '<td><img src="http://'. $config['shop']['imageServer'] .'/'. $offer['itemid'] .'.'. $config['shop']['imageType'] .'" alt="img"></td>';
+                        if ($offer['type'] == 2) echo '<td>'. $offer['count'] .' Days</td>';
+                        else if ($offer['type'] == 3 && $offer['count'] == 0) echo '<td>Unlimited</td>';
+                        else echo '<td>'. $offer['count'] .'x</td>';
+                        echo '<td>'. $offer['points'] .'</td>';
+                        echo '<td>';
+                        ?>
+                        <form action="" method="POST">
+                                <input type="hidden" name="buy" value="<?php echo (int)$key; ?>">
+                                <input type="submit" value="  PURCHASE  "  class="needconfirmation" data-item-name="<?php echo $offer['describtion']; ?>" data-item-cost="<?php echo $offer['points']; ?>">
+                        </form>
+                        <?php
+                        echo '</td>';
+                        echo '</tr>';
+                }
+        }
 		?>
 </table>
 
