@@ -4,7 +4,7 @@ include 'layout/overall/header.php';
 
 // Import from config:
 $shop = $config['shop'];
-$shop_list = mysql_select_multi("SELECT `id`, `type`, `itemid`, `count`, `describtion`, `points` FROM `znote_shop` WHERE 1;");
+$shop_list = mysql_select_multi("SELECT `id`, `type`, `itemid`, `count`, `describtion`, `points` FROM `znote_shop`;");
 
 if (!empty($_POST['buy'])) {
 	$time = time();
