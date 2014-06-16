@@ -93,9 +93,7 @@ if ($config['shop_auction']['characterAuction']) {
 		<td>Action:</td>
 	</tr>
 		<?php
-		if (!empty($shop_list) || $shop_list !== false) {
-    //
-
+	if (!empty($shop_list) || $shop_list !== false) {
 		foreach ($shop_list as $offers) {
 		echo '<tr class="special">';
 		echo '<td>'. $offers['describtion'] .'</td>';
@@ -114,7 +112,7 @@ if ($config['shop_auction']['characterAuction']) {
 		echo '</td>';
 		echo '</tr>';
 		}
-		}
+	}
 		?>
 </table>
 
