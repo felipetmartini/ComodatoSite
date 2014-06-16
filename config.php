@@ -702,7 +702,7 @@
 		'enableShopConfirmation' => true, // Verify that user wants to buy with popup
 		'useDB' => true, // Fetch offers from database, or the below config array
 		'showImage' => true,
-		'imageServer' => 'worldofcomodato.com/images/items',
+		'imageServer' => 'worldofcomodato.com/comodatosite/images/items',
 		'imageType' => 'gif',
 	);
 
