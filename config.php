@@ -414,7 +414,7 @@
 
 	// What client version and server port are you using on this OT?
 	// Used for the Downloads page.
-	$config['client'] = 1037; // 954 = tibia 9.54
+	$config['client'] = 1041; // 954 = tibia 9.54
 
 	 // Download link to client. Recommended:
 	 // Select download link from remere map editor website!
