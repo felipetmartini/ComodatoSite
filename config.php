@@ -497,14 +497,14 @@
 	);
 
 	// Enable OS advanced feautures? false = no, true = yes
-	$config['os_enabled'] = false;
+	$config['os_enabled'] = true;
 
 	// What kind of computer are you hosting this website on?
 	// Available options: LINUX or WINDOWS
 	$config['os'] = 'LINUX';
 
 	// Measure how much players are lagging in-game. (Not completed). 
-	$config['ping'] = true;
+	$config['ping'] = false;
 
 	// BAN STUFF - Don't touch this unless you know what you are doing.
 	// You can order the lines the way you want, from top to bot, in which order you
